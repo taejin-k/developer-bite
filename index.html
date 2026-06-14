@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="프론트엔드, 백엔드, 클라우드 개발 지식을 읽고 퀴즈로 복습하는 학습 앱"
+    />
+    <meta name="theme-color" content="#f4f0e8" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="/notion_technical_questions_final.txt?v=20260615-terminology"
+      as="fetch"
+      crossorigin
+    />
+    <link rel="stylesheet" href="/styles.css?v=20260615-terminology" />
+    <title>개발한입</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="개발한입 홈">
+          <span class="brand-mark">Q</span>
+          <span>
+            <strong>개발한입</strong>
+            <small>Developer Study Notes</small>
+          </span>
+        </a>
+        <nav class="desktop-nav" aria-label="주요 메뉴">
+          <button class="nav-button is-active" data-view="study">학습</button>
+          <button class="nav-button" data-view="quiz">퀴즈</button>
+          <button class="nav-button" data-view="review">오답노트</button>
+        </nav>
+        <button class="icon-button install-button is-hidden" type="button">
+          앱 설치
+        </button>
+      </header>
+
+      <main>
+        <section class="view is-active" id="study-view">
+          <div class="hero">
+            <div class="hero-copy">
+              <p class="eyebrow">오늘도 하나씩, 확실하게</p>
+              <h1>개발 지식을<br /><em>내 언어</em>로 만들기</h1>
+              <p class="hero-description">
+                읽고, 가리고, 직접 말하며 익혀보세요.
+              </p>
+            </div>
+            <div class="progress-card">
+              <div class="progress-card-head">
+                <span>전체 학습률</span>
+                <strong id="progress-percent">0%</strong>
+              </div>
+              <div class="progress-track">
+                <span id="progress-bar"></span>
+              </div>
+              <div class="progress-meta">
+                <span><b id="completed-count">0</b>개 완료</span>
+                <span>전체 <b id="total-count">0</b>개</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="study-toolbar">
+            <label class="search-box">
+              <span class="search-icon" aria-hidden="true"></span>
+              <input
+                id="search-input"
+                type="search"
+                placeholder="질문이나 키워드 검색"
+                autocomplete="off"
+              />
+            </label>
+            <button class="filter-button" id="bookmark-filter" type="button">
+              <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2.9c.4 0 .8.3 1 .7l2.3 4.7 5.2.8c1 .1 1.4 1.4.7 2.1l-3.8 3.7.9 5.2c.2 1-.9 1.8-1.8 1.3L12 19l-4.6 2.4c-.9.5-2-.3-1.8-1.3l.9-5.2-3.8-3.7c-.7-.7-.3-2 .7-2.1l5.2-.8 2.3-4.7c.3-.4.7-.7 1.1-.7Z" />
+              </svg>
+              <span>북마크</span>
+            </button>
+          </div>
+
+          <div class="category-tabs is-loading" id="category-tabs">
+            <span class="tab-skeleton wide"></span>
+            <span class="tab-skeleton"></span>
+            <span class="tab-skeleton wide"></span>
+            <span class="tab-skeleton"></span>
+            <span class="tab-skeleton"></span>
+          </div>
+
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow" id="result-eyebrow">ALL QUESTIONS</p>
+              <h2 id="result-title">전체 질문</h2>
+            </div>
+            <button
+              class="bulk-complete-button"
+              id="bulk-complete"
+              type="button"
+            >
+              모두 완료
+            </button>
+          </div>
+
+          <div class="question-list is-loading" id="question-list">
+            <div class="question-skeleton"></div>
+            <div class="question-skeleton"></div>
+            <div class="question-skeleton"></div>
+            <div class="question-skeleton"></div>
+          </div>
+          <div class="empty-state is-hidden" id="study-empty">
+            <strong>조건에 맞는 질문이 없습니다.</strong>
+            <p>검색어나 필터를 변경해보세요.</p>
+          </div>
+        </section>
+
+        <section class="view" id="quiz-view">
+          <div class="page-intro">
+            <p class="eyebrow">ACTIVE RECALL</p>
+            <h1>답을 보기 전에<br />먼저 <em>생각하기</em></h1>
+            <p>원하는 방식과 범위를 선택해 퀴즈를 시작하세요.</p>
+          </div>
+
+          <div class="quiz-setup" id="quiz-setup">
+            <div class="setup-card">
+              <span class="setup-number">01</span>
+              <h2>문제 유형</h2>
+              <div class="segmented-control">
+                <button class="is-active" data-quiz-type="multiple">
+                  4지선다
+                </button>
+                <button data-quiz-type="ox">OX 퀴즈</button>
+              </div>
+            </div>
+            <div class="setup-card">
+              <span class="setup-number">02</span>
+              <h2>출제 범위</h2>
+              <div class="select-field" id="quiz-category-field">
+                <button
+                  class="select-trigger"
+                  id="quiz-category-trigger"
+                  type="button"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                >
+                  <span id="quiz-category-value">전체</span>
+                </button>
+                <span class="select-arrow" aria-hidden="true"></span>
+                <div
+                  class="select-options"
+                  id="quiz-category-options"
+                  role="listbox"
+                  aria-label="퀴즈 카테고리"
+                ></div>
+              </div>
+            </div>
+            <div class="setup-card">
+              <span class="setup-number">03</span>
+              <h2>문제 수</h2>
+              <div class="segmented-control" id="quiz-count-control">
+                <button class="is-active" data-count="20">20</button>
+                <button data-count="50">50</button>
+                <button data-count="100">100</button>
+                <button data-count="all">전체</button>
+              </div>
+            </div>
+            <button class="primary-button" id="start-quiz" type="button">
+              퀴즈 시작하기 <span>→</span>
+            </button>
+          </div>
+
+          <div class="quiz-stage is-hidden" id="quiz-stage">
+            <div class="quiz-status">
+              <button class="text-button" id="quit-quiz" type="button">나가기</button>
+              <span id="quiz-progress-text">1 / 10</span>
+              <strong id="quiz-score">0점</strong>
+            </div>
+            <div class="quiz-progress">
+              <span id="quiz-progress-bar"></span>
+            </div>
+            <article class="quiz-card">
+              <p class="eyebrow" id="quiz-category-label">JAVASCRIPT</p>
+              <h2 id="quiz-question"></h2>
+              <div id="quiz-options" class="quiz-options"></div>
+              <div class="quiz-explanation is-hidden" id="quiz-explanation">
+                <strong id="quiz-result-label"></strong>
+                <section class="quiz-explanation-section">
+                  <h3>선택지 해설</h3>
+                  <p class="quiz-selected-reason" id="quiz-selected-reason"></p>
+                </section>
+                <section class="quiz-explanation-section quiz-concept-answer">
+                  <h3>개념 정리</h3>
+                  <div id="quiz-answer-text"></div>
+                </section>
+              </div>
+              <div class="quiz-navigation">
+                <button
+                  class="secondary-button is-hidden"
+                  id="previous-question"
+                  type="button"
+                >
+                  이전 문제
+                </button>
+                <button
+                  class="secondary-button is-hidden"
+                  id="retry-question"
+                  type="button"
+                >
+                  이 문제 다시 풀기
+                </button>
+                <button
+                  class="primary-button is-hidden"
+                  id="next-question"
+                  type="button"
+                >
+                  다음 문제
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="quiz-finish is-hidden" id="quiz-finish">
+            <p class="eyebrow">SESSION COMPLETE</p>
+            <div class="score-ring">
+              <span class="score-value">
+                <strong id="final-score">0</strong>
+                <span>점</span>
+              </span>
+            </div>
+            <h2 id="finish-title">좋은 흐름입니다.</h2>
+            <p id="finish-description"></p>
+            <div class="finish-actions">
+              <button class="primary-button" id="retry-quiz" type="button">
+                다시 풀기
+              </button>
+              <button class="secondary-button" data-view-link="review">
+                오답 확인
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="review-view">
+          <div class="page-intro compact">
+            <p class="eyebrow">REVIEW NOTE</p>
+            <h1>틀린 문제를<br /><em>내 것으로</em> 만들기</h1>
+            <p>오답과 북마크를 다시 확인하세요.</p>
+          </div>
+          <div class="review-summary">
+            <div><strong id="wrong-count">0</strong><span>오답</span></div>
+            <div><strong id="bookmark-count">0</strong><span>북마크</span></div>
+            <button class="clear-review-button" id="clear-review" type="button">
+              오답 초기화
+            </button>
+          </div>
+          <div class="question-list" id="review-list"></div>
+          <div class="empty-state" id="review-empty">
+            <strong>아직 복습할 질문이 없습니다.</strong>
+            <p>퀴즈를 풀거나 질문에 북마크를 표시해보세요.</p>
+          </div>
+        </section>
+      </main>
+
+      <nav class="mobile-nav" aria-label="모바일 메뉴">
+        <button class="is-active" data-view="study">
+          <span>▤</span>학습
+        </button>
+        <button data-view="quiz"><span>◇</span>퀴즈</button>
+        <button data-view="review">
+          <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2.9c.4 0 .8.3 1 .7l2.3 4.7 5.2.8c1 .1 1.4 1.4.7 2.1l-3.8 3.7.9 5.2c.2 1-.9 1.8-1.8 1.3L12 19l-4.6 2.4c-.9.5-2-.3-1.8-1.3l.9-5.2-3.8-3.7c-.7-.7-.3-2 .7-2.1l5.2-.8 2.3-4.7c.3-.4.7-.7 1.1-.7Z" />
+          </svg>
+          오답노트
+        </button>
+      </nav>
+    </div>
+
+    <template id="question-template">
+      <article class="question-card">
+        <div class="question-header">
+          <button class="question-main" type="button">
+            <span class="question-index"></span>
+            <span class="question-content">
+              <small class="question-category"></small>
+              <strong class="question-title"></strong>
+            </span>
+          </button>
+          <div class="question-actions">
+            <button class="complete-button" type="button">학습 미완료</button>
+            <button class="bookmark-button" type="button" aria-label="북마크">
+              <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2.9c.4 0 .8.3 1 .7l2.3 4.7 5.2.8c1 .1 1.4 1.4.7 2.1l-3.8 3.7.9 5.2c.2 1-.9 1.8-1.8 1.3L12 19l-4.6 2.4c-.9.5-2-.3-1.8-1.3l.9-5.2-3.8-3.7c-.7-.7-.3-2 .7-2.1l5.2-.8 2.3-4.7c.3-.4.7-.7 1.1-.7Z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="answer-panel">
+          <div class="answer-panel-inner">
+            <div class="answer-body"></div>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="/app.js?v=20260615-terminology"></script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "developer-bite",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "quiz:build": "node scripts/build-curated-quiz-bank.mjs",
+    "quiz:scaffold": "node scripts/scaffold-quiz-concept.mjs",
+    "quiz:approve-source": "node scripts/refresh-quiz-source-hash.mjs",
+    "quiz:validate": "node scripts/validate-curated-quiz-bank.mjs",
+    "content:validate": "node scripts/validate-content-pipeline.mjs",
+    "content:approve": "node scripts/approve-content.mjs",
+    "quality": "npm run quiz:build && npm run quiz:validate && npm run content:validate",
+    "build": "node scripts/build-site.mjs"
+  }
+}
