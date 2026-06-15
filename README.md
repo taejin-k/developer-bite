@@ -59,7 +59,7 @@ python3 -m http.server 4173 -d dist
 
 ## 품질 기준
 
-신규 퀴즈는 `qualityVersion: 2`를 사용합니다.
+모든 퀴즈는 `qualityVersion: 2`를 사용합니다.
 
 - 사실 선택지 3개 이상
 - 오개념 선택지 4개 이상

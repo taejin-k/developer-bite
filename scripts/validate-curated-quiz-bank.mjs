@@ -101,6 +101,9 @@ const terminologyRules = [
 
 for (const item of items) {
   const qualityVersion = qualityVersionByItemId.get(item.id) ?? 1;
+  if (qualityVersion < 2) {
+    errors.push(`${item.id}: legacy quality version is not allowed`);
+  }
   if (item.truths.length < 3) errors.push(`${item.id}: truths < 3`);
   if (item.misconceptions.length < 4) {
     errors.push(`${item.id}: misconceptions < 4`);
@@ -121,9 +124,8 @@ for (const item of items) {
       errors.push(`${item.id}: obvious negative ending in "${text}"`);
     }
     if (
-      qualityVersion >= 2 &&
-      ((reason.match(/[.!?](?:\s|$)/g) ?? []).length < 2 ||
-        reason.length < 60)
+      (reason.match(/[.!?](?:\s|$)/g) ?? []).length < 2 ||
+      reason.length < 60
     ) {
       errors.push(`${item.id}: v2 explanation needs two substantial sentences for "${text}"`);
     }
