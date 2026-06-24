@@ -149,13 +149,14 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 82px;
+  min-width: 100px;
+  text-align: center;
 }
 
 .sync-button::before {
   position: absolute;
   top: 50%;
-  left: 14px;
+  left: 17px;
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -271,6 +272,12 @@ main {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
+}
+
+.sync-actions .primary-button,
+.sync-actions .secondary-button {
+  justify-content: center;
+  text-align: center;
 }
 
 .view {
@@ -1348,11 +1355,11 @@ h1 em {
   }
 
   .sync-button {
-    min-width: 74px;
+    min-width: 96px;
   }
 
   .sync-button::before {
-    left: 11px;
+    left: 15px;
   }
 
   main {
@@ -1380,6 +1387,12 @@ h1 em {
 
   .sync-actions {
     display: grid;
+    justify-content: stretch;
+  }
+
+  .sync-actions .primary-button,
+  .sync-actions .secondary-button {
+    width: 100%;
   }
 
   .study-toolbar {
