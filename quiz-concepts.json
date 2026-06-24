@@ -2519,11 +2519,11 @@
         "reason": "브라우저는 콜백 내부 코드를 자동으로 쪼개지 않습니다. 개발자가 timeRemaining을 확인하고 작업을 작은 단위로 나누어 다음 유휴 시간에 이어가야 합니다."
       },
       {
-        "text": "SSR을 적용하면 클라이언트 JavaScript 실행과 하이드레이션이 모두 제거되어 메인 스레드 성능 문제가 자동으로 해결됩니다.",
-        "reason": "SSR은 초기 HTML을 서버에서 만들 수 있지만 상호작용에 필요한 JavaScript와 하이드레이션 비용은 남을 수 있습니다. 전송량과 실행량을 별도로 최적화해야 합니다."
+        "text": "Web Worker로 계산을 옮기면 DOM 조작까지 Worker 안에서 직접 처리할 수 있어 메인 스레드가 필요하지 않습니다.",
+        "reason": "Web Worker는 DOM에 직접 접근할 수 없습니다. 계산은 별도 실행 컨텍스트에서 처리할 수 있지만, 화면 변경은 결과를 메인 스레드로 전달한 뒤 메인 스레드에서 처리해야 합니다."
       }
     ],
-    "sourceHash": "65603dd0f0525bcda9e94a365a3bf70b99322928c28461042cf7a42c44a79b65",
+    "sourceHash": "51ed4d297100986692f5455b8f98bc1deca5fe62290a20d3396dde1ddc8ea607",
     "reviewStatus": "approved",
     "qualityVersion": 2
   },

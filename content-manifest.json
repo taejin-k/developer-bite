@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-06-15T00:23:11.927Z",
+  "approvedAt": "2026-06-24T12:32:47.861Z",
   "questions": {
     "CSRF란?": "c57390a623d6c2ccb19b584fc5414c84d6bafcb30196f51463aa6524b39ce56c",
     "SameSite란?": "75ba0483278ab85138f3c4cc6b35325b3c69c976ec96bdd49defae9dce28713e",
@@ -17,7 +17,7 @@
     "스레드란?": "8689bfc88ce8f73d93a7d987d688407c5416ba926d879d8d7dbce9d91d35cc61",
     "멀티 스레드 / 싱글 스레드란?": "448c28c4d95b90a446009041fd86771c785a352abcd10547cc31c39b73c69e8f",
     "경쟁 상태(Race Condition) 관리란?": "9d57aa06e3a8aa644046663e4a4d138952f7ff824ce229532948f540d1d29eb9",
-    "브라우저 메인 스레드의 역할은?": "65603dd0f0525bcda9e94a365a3bf70b99322928c28461042cf7a42c44a79b65",
+    "브라우저 메인 스레드의 역할은?": "51ed4d297100986692f5455b8f98bc1deca5fe62290a20d3396dde1ddc8ea607",
     "CRP란?": "715c58ba28b2828522ae17dde2572bab2bd79acf62aa8caf0132d8f1a12ba061",
     "script의 defer와 async란?": "e50f09da0bc9641d2be67025a03094c5df9f51ed8e2361c03a3046f437b10408",
     "Web Worker란?": "794015dfe07097a0ec25fde8a94753da5cb5376c3a87ac013baacec101fbc700",
