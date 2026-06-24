@@ -1,13 +1,13 @@
-const CACHE_NAME = "interview-bite-v21";
+const CACHE_NAME = "interview-bite-v22";
 const APP_SHELL = [
   "/",
   "/index.html",
-  "/styles.css?v=20260624-css-blocking-v1",
-  "/app.js?v=20260624-css-blocking-v1",
+  "/styles.css?v=20260624-sync-v1",
+  "/app.js?v=20260624-sync-v1",
   "/manifest.webmanifest",
   "/icon.svg",
-  "/notion_technical_questions_final.txt?v=20260624-css-blocking-v1",
-  "/quiz-bank-v2.json?v=20260624-css-blocking-v1"
+  "/notion_technical_questions_final.txt?v=20260624-sync-v1",
+  "/quiz-bank-v2.json?v=20260624-sync-v1"
 ];
 
 self.addEventListener("install", (event) => {
@@ -30,6 +30,8 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+  const url = new URL(event.request.url);
+  if (url.pathname.startsWith("/api/")) return;
   event.respondWith(
     fetch(event.request)
       .then((response) => {

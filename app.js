@@ -1,6 +1,11 @@
-const DATA_URL = "/notion_technical_questions_final.txt?v=20260624-css-blocking-v1";
-const QUIZ_BANK_URL = "/quiz-bank-v2.json?v=20260624-css-blocking-v1";
+const DATA_URL = "/notion_technical_questions_final.txt?v=20260624-sync-v1";
+const QUIZ_BANK_URL = "/quiz-bank-v2.json?v=20260624-sync-v1";
 const STORAGE_KEY = "interview-bite-state-v1";
+const SYNC_ID_KEY = "interview-bite-sync-id-v1";
+const SYNC_CLIENT_ID_KEY = "interview-bite-sync-client-id-v1";
+const SYNC_DEBOUNCE_MS = 800;
+const SYNC_POLL_MS = 60_000;
+const SYNC_COLLECTIONS = ["completed", "bookmarks", "wrong"];
 
 const categories = [
   {
@@ -225,6 +230,20 @@ const state = {
   completed: new Set(),
   bookmarks: new Set(),
   wrong: new Set(),
+  records: {
+    completed: {},
+    bookmarks: {},
+    wrong: {},
+  },
+  clientId: "",
+  sync: {
+    id: "",
+    status: "idle",
+    message: "기기별로 저장 중",
+    lastSyncedAt: null,
+    timer: null,
+    poller: null,
+  },
   quizType: "multiple",
   quizCount: 20,
   quizCategory: "all",
@@ -366,26 +385,265 @@ function categoryLabel(id) {
   return categories.find((category) => category.id === id)?.label ?? "기타";
 }
 
+function getClientId() {
+  let clientId = localStorage.getItem(SYNC_CLIENT_ID_KEY);
+  if (!clientId) {
+    clientId =
+      crypto.randomUUID?.() ??
+      `client-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    localStorage.setItem(SYNC_CLIENT_ID_KEY, clientId);
+  }
+  return clientId;
+}
+
+function recordFromValue(value, updatedAt = Date.now()) {
+  return {
+    value: Boolean(value),
+    updatedAt,
+    clientId: state.clientId,
+  };
+}
+
+function createRecordsFromIds(ids, updatedAt) {
+  return Object.fromEntries(
+    [...new Set(ids || [])].map((id) => [id, recordFromValue(true, updatedAt)]),
+  );
+}
+
+function sanitizeRecords(records) {
+  const safeRecords = {
+    completed: {},
+    bookmarks: {},
+    wrong: {},
+  };
+
+  for (const collection of SYNC_COLLECTIONS) {
+    const source =
+      records?.[collection] && typeof records[collection] === "object"
+        ? records[collection]
+        : {};
+    for (const [id, record] of Object.entries(source)) {
+      safeRecords[collection][id] = {
+        value: Boolean(record?.value),
+        updatedAt: Number(record?.updatedAt) || 0,
+        clientId: String(record?.clientId || ""),
+      };
+    }
+  }
+
+  return safeRecords;
+}
+
+function applyRecordsToSets() {
+  for (const collection of SYNC_COLLECTIONS) {
+    state[collection] = new Set(
+      Object.entries(state.records[collection])
+        .filter(([, record]) => record.value)
+        .map(([id]) => id),
+    );
+  }
+}
+
+function serializeState() {
+  return {
+    version: 2,
+    updatedAt: Date.now(),
+    clientId: state.clientId,
+    records: state.records,
+  };
+}
+
 function loadState() {
+  state.clientId = getClientId();
+  state.sync.id = localStorage.getItem(SYNC_ID_KEY) || "";
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-    state.completed = new Set(saved.completed || []);
-    state.bookmarks = new Set(saved.bookmarks || []);
-    state.wrong = new Set(saved.wrong || []);
+    if (saved.records) {
+      state.records = sanitizeRecords(saved.records);
+    } else {
+      const updatedAt = Number(saved.updatedAt) || Date.now();
+      state.records = {
+        completed: createRecordsFromIds(saved.completed, updatedAt),
+        bookmarks: createRecordsFromIds(saved.bookmarks, updatedAt),
+        wrong: createRecordsFromIds(saved.wrong, updatedAt),
+      };
+    }
+    applyRecordsToSets();
   } catch {
     // Corrupted local state should not block the app.
   }
 }
 
-function saveState() {
+function saveState({ sync = true } = {}) {
   localStorage.setItem(
     STORAGE_KEY,
-    JSON.stringify({
-      completed: [...state.completed],
-      bookmarks: [...state.bookmarks],
-      wrong: [...state.wrong],
-    }),
+    JSON.stringify(serializeState()),
   );
+  if (sync) scheduleSyncPush();
+}
+
+function setTrackedValue(collection, id, value) {
+  if (!SYNC_COLLECTIONS.includes(collection)) return;
+  if (value) state[collection].add(id);
+  else state[collection].delete(id);
+  state.records[collection][id] = recordFromValue(value);
+}
+
+function toggleTrackedValue(collection, id) {
+  setTrackedValue(collection, id, !state[collection].has(id));
+}
+
+function mergeRecords(remoteState) {
+  if (!remoteState?.records) return false;
+  let changed = false;
+  const remoteRecords = sanitizeRecords(remoteState.records);
+
+  for (const collection of SYNC_COLLECTIONS) {
+    for (const [id, remoteRecord] of Object.entries(
+      remoteRecords[collection],
+    )) {
+      const localRecord = state.records[collection][id];
+      if (!localRecord || remoteRecord.updatedAt > localRecord.updatedAt) {
+        state.records[collection][id] = remoteRecord;
+        changed = true;
+      }
+    }
+  }
+
+  if (changed) applyRecordsToSets();
+  return changed;
+}
+
+function renderAllState() {
+  renderStudy();
+  renderReview();
+}
+
+function formatSyncedAt(value) {
+  if (!value) return "";
+  return new Intl.DateTimeFormat("ko-KR", {
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(value);
+}
+
+function updateSyncStatus(message = state.sync.message, status = state.sync.status) {
+  state.sync.message = message;
+  state.sync.status = status;
+  const statusElement = $("#sync-status");
+  const button = $("#sync-open");
+  if (!statusElement || !button) return;
+
+  const suffix =
+    state.sync.lastSyncedAt && status === "synced"
+      ? ` · ${formatSyncedAt(state.sync.lastSyncedAt)}`
+      : "";
+  statusElement.textContent = `${message}${suffix}`;
+  statusElement.dataset.status = status;
+  button.classList.toggle("is-synced", Boolean(state.sync.id));
+  button.setAttribute(
+    "aria-label",
+    state.sync.id ? "동기화 설정 열기" : "동기화 시작하기",
+  );
+}
+
+function syncEndpoint() {
+  return `/api/sync-state?id=${encodeURIComponent(state.sync.id)}`;
+}
+
+async function requestSync(method, body) {
+  const response = await fetch(syncEndpoint(), {
+    method,
+    headers: body ? { "Content-Type": "application/json" } : undefined,
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const error = new Error(data.error || "동기화에 실패했습니다.");
+    error.code = data.code;
+    throw error;
+  }
+  return data.state;
+}
+
+async function pushSyncState({ silent = false } = {}) {
+  if (!state.sync.id) return;
+  if (!silent) updateSyncStatus("동기화 중", "syncing");
+  try {
+    const remoteState = await requestSync("PUT", { state: serializeState() });
+    if (mergeRecords(remoteState)) {
+      saveState({ sync: false });
+      renderAllState();
+    }
+    state.sync.lastSyncedAt = Date.now();
+    updateSyncStatus("동기화됨", "synced");
+  } catch (error) {
+    updateSyncStatus(
+      error.code === "SYNC_STORAGE_NOT_CONFIGURED"
+        ? "저장소 연결 필요"
+        : error.message,
+      "error",
+    );
+  }
+}
+
+async function syncNow({ silent = false } = {}) {
+  if (!state.sync.id) return;
+  if (!silent) updateSyncStatus("동기화 중", "syncing");
+  try {
+    const remoteState = await requestSync("GET");
+    if (mergeRecords(remoteState)) {
+      saveState({ sync: false });
+      renderAllState();
+    }
+    await pushSyncState({ silent: true });
+  } catch (error) {
+    updateSyncStatus(
+      error.code === "SYNC_STORAGE_NOT_CONFIGURED"
+        ? "저장소 연결 필요"
+        : error.message,
+      "error",
+    );
+  }
+}
+
+function scheduleSyncPush() {
+  if (!state.sync.id) return;
+  clearTimeout(state.sync.timer);
+  state.sync.timer = setTimeout(() => {
+    pushSyncState({ silent: true });
+  }, SYNC_DEBOUNCE_MS);
+}
+
+function startSyncPolling() {
+  clearInterval(state.sync.poller);
+  if (!state.sync.id) return;
+  state.sync.poller = setInterval(() => {
+    if (document.visibilityState === "visible") syncNow({ silent: true });
+  }, SYNC_POLL_MS);
+}
+
+function saveSyncId(value) {
+  state.sync.id = value.trim();
+  if (state.sync.id) localStorage.setItem(SYNC_ID_KEY, state.sync.id);
+  else localStorage.removeItem(SYNC_ID_KEY);
+  $("#sync-id-input").value = state.sync.id;
+  updateSyncStatus(
+    state.sync.id ? "동기화 준비됨" : "기기별로 저장 중",
+    state.sync.id ? "idle" : "off",
+  );
+  startSyncPolling();
+}
+
+function openSyncModal() {
+  $("#sync-id-input").value = state.sync.id;
+  $("#sync-modal").classList.remove("is-hidden");
+  updateSyncStatus();
+  requestAnimationFrame(() => $("#sync-id-input").focus());
+}
+
+function closeSyncModal() {
+  $("#sync-modal").classList.add("is-hidden");
 }
 
 function renderCategoryControls() {
@@ -518,14 +776,14 @@ function createQuestionCard(question, index) {
     main.setAttribute("aria-expanded", String(open));
   });
   completeButton.addEventListener("click", () => {
-    toggleSet(state.completed, question.id);
+    toggleTrackedValue("completed", question.id);
     saveState();
     updateProgress();
     updateCardState(card, question.id);
     updateBulkCompletionButton();
   });
   bookmarkButton.addEventListener("click", () => {
-    toggleSet(state.bookmarks, question.id);
+    toggleTrackedValue("bookmarks", question.id);
     saveState();
     if (state.bookmarkOnly) renderStudy();
     else updateCardState(card, question.id);
@@ -551,11 +809,6 @@ function updateCardState(card, id) {
     "aria-pressed",
     String(bookmarked),
   );
-}
-
-function toggleSet(set, value) {
-  if (set.has(value)) set.delete(value);
-  else set.add(value);
 }
 
 function updateBulkCompletionButton(questions = filteredQuestions()) {
@@ -841,7 +1094,7 @@ function answerQuiz(button, option) {
   item.selected = option.text;
 
   if (!correct) {
-    state.wrong.add(item.source.id);
+    setTrackedValue("wrong", item.source.id, true);
   }
   updateQuizScore();
   saveState();
@@ -957,6 +1210,28 @@ function bindEvents() {
       switchView(button.dataset.viewLink),
     ),
   );
+  $("#sync-open").addEventListener("click", openSyncModal);
+  $("#sync-close").addEventListener("click", closeSyncModal);
+  $("#sync-modal").addEventListener("click", (event) => {
+    if (event.target.id === "sync-modal") closeSyncModal();
+  });
+  $("#sync-save").addEventListener("click", async () => {
+    saveSyncId($("#sync-id-input").value);
+    if (state.sync.id) await syncNow();
+  });
+  $("#sync-now").addEventListener("click", async () => {
+    if (!state.sync.id) saveSyncId($("#sync-id-input").value);
+    if (state.sync.id) await syncNow();
+    else updateSyncStatus("동기화 ID를 입력하세요.", "error");
+  });
+  $("#sync-id-input").addEventListener("keydown", async (event) => {
+    if (event.key !== "Enter") return;
+    saveSyncId(event.currentTarget.value);
+    if (state.sync.id) await syncNow();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeSyncModal();
+  });
   $("#search-input").addEventListener("input", (event) => {
     state.search = event.target.value.trim();
     renderStudy();
@@ -973,8 +1248,7 @@ function bindEvents() {
       state.completed.has(question.id),
     );
     questions.forEach((question) => {
-      if (allCompleted) state.completed.delete(question.id);
-      else state.completed.add(question.id);
+      setTrackedValue("completed", question.id, !allCompleted);
     });
     saveState();
     renderStudy();
@@ -1033,7 +1307,7 @@ function bindEvents() {
   $("#quit-quiz").addEventListener("click", quitQuiz);
   $("#retry-quiz").addEventListener("click", startQuiz);
   $("#clear-review").addEventListener("click", () => {
-    state.wrong.clear();
+    [...state.wrong].forEach((id) => setTrackedValue("wrong", id, false));
     saveState();
     renderReview();
   });
@@ -1060,10 +1334,18 @@ function bindEvents() {
     );
   });
   window.addEventListener("appinstalled", updateInstallButton);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") syncNow({ silent: true });
+  });
   window
     .matchMedia("(display-mode: standalone)")
     .addEventListener("change", updateInstallButton);
   updateInstallButton();
+  updateSyncStatus(
+    state.sync.id ? "동기화 준비됨" : "기기별로 저장 중",
+    state.sync.id ? "idle" : "off",
+  );
+  startSyncPolling();
 }
 
 async function init() {
@@ -1084,6 +1366,7 @@ async function init() {
     state.quizBank = await quizBankResponse.json();
     renderStudy();
     renderReview();
+    syncNow({ silent: true });
   } catch (error) {
     $("#question-list").innerHTML = `
       <div class="empty-state">
