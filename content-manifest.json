@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-06-24T12:32:47.861Z",
+  "approvedAt": "2026-06-24T13:01:17.002Z",
   "questions": {
     "CSRF란?": "c57390a623d6c2ccb19b584fc5414c84d6bafcb30196f51463aa6524b39ce56c",
     "SameSite란?": "75ba0483278ab85138f3c4cc6b35325b3c69c976ec96bdd49defae9dce28713e",
@@ -19,6 +19,7 @@
     "경쟁 상태(Race Condition) 관리란?": "9d57aa06e3a8aa644046663e4a4d138952f7ff824ce229532948f540d1d29eb9",
     "브라우저 메인 스레드의 역할은?": "51ed4d297100986692f5455b8f98bc1deca5fe62290a20d3396dde1ddc8ea607",
     "CRP란?": "715c58ba28b2828522ae17dde2572bab2bd79acf62aa8caf0132d8f1a12ba061",
+    "렌더링을 차단하는 CSS를 최소화하는 방법은?": "1b60cd657de1ca832fc350fcdf5fe307d5444c7f4181d0ff8c2e300d8733fcd3",
     "script의 defer와 async란?": "e50f09da0bc9641d2be67025a03094c5df9f51ed8e2361c03a3046f437b10408",
     "Web Worker란?": "794015dfe07097a0ec25fde8a94753da5cb5376c3a87ac013baacec101fbc700",
     "requestAnimationFrame이란?": "8bc170cc49b0335811a98694f770804839c49ec8c5b774b53aef432871607f24",
