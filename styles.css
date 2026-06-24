@@ -145,24 +145,20 @@ button {
 }
 
 .sync-button {
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   min-width: 100px;
-  text-align: center;
 }
 
 .sync-button::before {
-  position: absolute;
-  top: 50%;
-  left: 17px;
   width: 7px;
   height: 7px;
+  flex: 0 0 auto;
   border-radius: 50%;
   background: #b6afa4;
   content: "";
-  transform: translateY(-50%);
 }
 
 .sync-button.is-synced::before {
@@ -1356,10 +1352,6 @@ h1 em {
 
   .sync-button {
     min-width: 96px;
-  }
-
-  .sync-button::before {
-    left: 15px;
   }
 
   main {
