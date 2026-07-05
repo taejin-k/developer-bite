@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-07-05T15:14:38.250Z",
+  "approvedAt": "2026-07-05T15:27:22.299Z",
   "questions": {
     "호스트란?": "b2d1b6d111182c96e0a48332142899a29155de896ee333fbfece3fe8cd3966df",
     "Origin이란?": "a4bef5d336b9eb64e1a1e5a249058384c7f638925615d43bcf568d546c6715d9",
     "도메인이란?": "e0a4b7e0fbf4eac62a26c6500b6ef352f831070b424c50e4c5fb90f1bb3a5a8b",
     "CSRF란?": "c57390a623d6c2ccb19b584fc5414c84d6bafcb30196f51463aa6524b39ce56c",
-    "SameSite란?": "75ba0483278ab85138f3c4cc6b35325b3c69c976ec96bdd49defae9dce28713e",
+    "SameSite란?": "355a546a16403517cc9deae237c86483f9ec5cbcba6735d1d367274e87fd10aa",
     "Secure란?": "35e09943ea064b5d67dfd3a797f9f3061feab4ea145cbca2800b4d329a213ed0",
     "HttpOnly란?": "deeab5673c46e9ca0fe79e4c3659fe0bc0273728a8a832fd8740ddf03c44f24a",
     "XSS란?": "67d860b02774b773a7f07ade27b72fe9ed6e47d5eb27b30785d1fc3b14502068",

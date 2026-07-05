@@ -328,7 +328,11 @@
       },
       {
         "text": "None을 사용해 교차 사이트 요청에 쿠키를 보내려면 일반적으로 Secure 속성도 함께 설정해야 합니다.",
-        "reason": "None을 사용해 교차 사이트 요청에 쿠키를 보내려면 일반적으로 Secure 속성도 함께 설정해야 합니다. 현대 브라우저는 SameSite=None 쿠키에 Secure를 요구합니다."
+        "reason": "None을 사용해 교차 사이트 요청에 쿠키를 보내려면 일반적으로 Secure 속성도 함께 설정해야 합니다. 현대 브라우저는 SameSite=None 쿠키에 Secure를 요구하며, Secure가 없으면 쿠키를 저장하지 않거나 무시할 수 있습니다."
+      },
+      {
+        "text": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다.",
+        "reason": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다. 그래서 `app.example.com`과 `api.example.com`은 다른 Origin이어도 같은 site로 볼 수 있습니다."
       }
     ],
     "misconceptions": [
@@ -342,11 +346,15 @@
       },
       {
         "text": "SameSite=None은 쿠키를 어떤 요청에도 첨부하지 않도록 비활성화하는 설정입니다.",
-        "reason": "None은 SameSite 제한 없이 교차 사이트 요청에도 쿠키를 허용한다는 의미입니다. 최신 브라우저에서는 SameSite=None 쿠키에 Secure도 함께 설정해야 HTTPS 연결에서 전송됩니다."
+        "reason": "None은 SameSite 제한 없이 교차 사이트 요청에도 쿠키를 허용한다는 의미입니다. 최신 브라우저에서는 SameSite=None 쿠키에 Secure도 함께 설정해야 하며, 없으면 쿠키가 저장되지 않거나 무시될 수 있습니다."
       },
       {
         "text": "SameSite를 설정하면 CSRF 토큰과 요청 메서드 검증은 항상 불필요해집니다.",
         "reason": "SameSite는 교차 사이트 쿠키 전송을 제한하는 완화책이지만 모든 요청 흐름을 대신 검증하지는 않습니다. 상태 변경 요청에는 적절한 HTTP 메서드와 CSRF 토큰, Origin 검증 등을 함께 적용하는 편이 안전합니다."
+      },
+      {
+        "text": "SameSite는 path와 query까지 모두 같아야 같은 사이트 요청으로 판단합니다.",
+        "reason": "SameSite의 site 판단은 path와 query를 기준으로 하지 않습니다. 보통 scheme과 등록 가능한 도메인을 기준으로 판단하므로 URL 경로가 달라도 같은 site 요청일 수 있습니다."
       }
     ]
   },
@@ -367,7 +375,11 @@
       },
       {
         "text": "None을 사용해 교차 사이트 요청에 쿠키를 보내려면 일반적으로 Secure 속성도 함께 설정해야 합니다.",
-        "reason": "None을 사용해 교차 사이트 요청에 쿠키를 보내려면 일반적으로 Secure 속성도 함께 설정해야 합니다. 현대 브라우저는 SameSite=None 쿠키에 Secure를 요구합니다."
+        "reason": "None을 사용해 교차 사이트 요청에 쿠키를 보내려면 일반적으로 Secure 속성도 함께 설정해야 합니다. 현대 브라우저는 SameSite=None 쿠키에 Secure를 요구하며, Secure가 없으면 쿠키를 저장하지 않거나 무시할 수 있습니다."
+      },
+      {
+        "text": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다.",
+        "reason": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다. 그래서 `app.example.com`과 `api.example.com`은 다른 Origin이어도 같은 site로 볼 수 있습니다."
       }
     ],
     "misconceptions": [
@@ -381,11 +393,15 @@
       },
       {
         "text": "SameSite=None은 쿠키를 어떤 요청에도 첨부하지 않도록 비활성화하는 설정입니다.",
-        "reason": "None은 SameSite 제한 없이 교차 사이트 요청에도 쿠키를 허용한다는 의미입니다. 최신 브라우저에서는 SameSite=None 쿠키에 Secure도 함께 설정해야 HTTPS 연결에서 전송됩니다."
+        "reason": "None은 SameSite 제한 없이 교차 사이트 요청에도 쿠키를 허용한다는 의미입니다. 최신 브라우저에서는 SameSite=None 쿠키에 Secure도 함께 설정해야 하며, 없으면 쿠키가 저장되지 않거나 무시될 수 있습니다."
       },
       {
         "text": "SameSite를 설정하면 CSRF 토큰과 요청 메서드 검증은 항상 불필요해집니다.",
         "reason": "SameSite는 교차 사이트 쿠키 전송을 제한하는 완화책이지만 모든 요청 흐름을 대신 검증하지는 않습니다. 상태 변경 요청에는 적절한 HTTP 메서드와 CSRF 토큰, Origin 검증 등을 함께 적용하는 편이 안전합니다."
+      },
+      {
+        "text": "SameSite는 path와 query까지 모두 같아야 같은 사이트 요청으로 판단합니다.",
+        "reason": "SameSite의 site 판단은 path와 query를 기준으로 하지 않습니다. 보통 scheme과 등록 가능한 도메인을 기준으로 판단하므로 URL 경로가 달라도 같은 site 요청일 수 있습니다."
       }
     ]
   },
