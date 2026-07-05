@@ -7,6 +7,19 @@
 커버 추가
 댓글 추가
 기술 질문
+호스트란?
+호스트는 네트워크에서 접속 대상이 되는 서버나 장치를 가리키는 이름입니다. URL에서는 `https://api.example.com:443/users`에서 `api.example.com` 부분이 호스트입니다.
+호스트는 도메인 이름일 수도 있고 IP 주소일 수도 있습니다. 예를 들어 `example.com`, `api.example.com`, `127.0.0.1`은 모두 URL의 호스트가 될 수 있습니다.
+면접에서 중요한 점은 호스트가 도메인과 완전히 같은 말은 아니라는 것입니다. 도메인은 이름 체계에 가까운 표현이고, 호스트는 실제 요청을 보낼 대상 이름을 의미합니다. 브라우저 보안 정책에서 Origin을 판단할 때도 이 호스트 값이 기준에 포함됩니다.
+Origin이란?
+Origin은 브라우저가 보안 정책에서 출처를 판단할 때 사용하는 기준으로, scheme, host, port의 조합입니다. 예를 들어 `https://api.example.com:443`에서 scheme은 `https`, host는 `api.example.com`, port는 `443`입니다.
+두 URL의 scheme, host, port가 모두 같으면 같은 Origin이고, 하나라도 다르면 다른 Origin입니다. `https://example.com`과 `http://example.com`은 scheme이 달라 다른 Origin이고, `https://app.example.com`과 `https://api.example.com`은 host가 달라 다른 Origin입니다.
+CORS와 Same-Origin Policy는 이 Origin을 기준으로 동작합니다. 그래서 서브 도메인이 같아 보이거나 같은 회사의 도메인처럼 보여도, 브라우저 입장에서는 Origin이 다르면 다른 출처로 판단할 수 있습니다.
+도메인이란?
+도메인은 사람이 읽기 쉬운 인터넷 주소 이름입니다. 예를 들어 `example.com`은 도메인이고, `api.example.com`이나 `admin.example.com`은 `example.com` 아래의 서브 도메인으로 볼 수 있습니다.
+등록 도메인 또는 registrable domain은 사용자가 실제로 등록할 수 있는 도메인 단위를 말합니다. 예를 들어 `app.example.com`과 `api.example.com`은 host는 다르지만 등록 도메인은 보통 `example.com`으로 같습니다. 반면 `example.co.kr`처럼 공용 suffix가 포함된 경우에는 단순히 마지막 두 조각만 보고 판단하면 안 되고, Public Suffix List 기준을 고려해야 합니다.
+부모 도메인이라는 표현은 보통 `example.com`이 `api.example.com`의 상위에 있다는 의미로 느슨하게 사용합니다. 다만 쿠키나 SameSite에서는 단순 문자열상의 부모보다 등록 도메인 기준이 더 중요합니다.
+쿠키의 Domain 속성을 설정하면 특정 도메인과 그 하위 도메인에 쿠키를 보낼 수 있습니다. 예를 들어 `Domain=example.com`으로 설정한 쿠키는 조건을 만족하면 `app.example.com`이나 `api.example.com`에도 전송될 수 있습니다. 반대로 Domain을 지정하지 않은 host-only 쿠키는 기본적으로 쿠키를 설정한 호스트에만 전송됩니다.
 CSRF란?
 CSRF는 쿠키가 요청에 자동으로 담기는 것을 이용해, 사용자가 의도하지 않은 요청을 강제로 실행시키는 공격입니다.
 방어 방법으로는 첫째, 서버에서 예측 불가능한 CSRF 토큰을 생성해서 세션에 저장하고 클라이언트에 전달합니다. 이후, 클라이언트는 폼이나 요청 헤더에 이 토큰을 포함시켜 서버에서 검증합니다. 둘째, SameSite를 Strict나 Lax로 설정하면 외부 사이트에서 쿠키가 자동으로 전송되지 않습니다.
