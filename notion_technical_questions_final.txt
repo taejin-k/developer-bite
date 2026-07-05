@@ -10,7 +10,7 @@
 호스트란?
 호스트는 네트워크에서 접속 대상이 되는 서버나 장치를 가리키는 이름입니다. URL에서는 `https://api.example.com:443/users`에서 `api.example.com` 부분이 호스트입니다.
 호스트는 도메인 이름일 수도 있고 IP 주소일 수도 있습니다. 예를 들어 `example.com`, `api.example.com`, `127.0.0.1`은 모두 URL의 호스트가 될 수 있습니다.
-면접에서 중요한 점은 호스트가 도메인과 완전히 같은 말은 아니라는 것입니다. 도메인은 이름 체계에 가까운 표현이고, 호스트는 실제 요청을 보낼 대상 이름을 의미합니다. 브라우저 보안 정책에서 Origin을 판단할 때도 이 호스트 값이 기준에 포함됩니다.
+호스트와 도메인은 겹치는 경우가 많지만 완전히 같은 말은 아닙니다. 도메인은 사람이 읽기 쉬운 이름 체계이고, 호스트는 실제 요청을 보낼 접속 대상입니다. 예를 들어 `api.example.com`은 도메인 이름이면서 동시에 URL 안에서는 호스트이고, `127.0.0.1`은 호스트가 될 수 있지만 일반적인 도메인 이름은 아닙니다.
 Origin이란?
 Origin은 브라우저가 보안 정책에서 출처를 판단할 때 사용하는 기준으로, scheme, host, port의 조합입니다. 예를 들어 `https://api.example.com:443`에서 scheme은 `https`, host는 `api.example.com`, port는 `443`입니다.
 두 URL의 scheme, host, port가 모두 같으면 같은 Origin이고, 하나라도 다르면 다른 Origin입니다. `https://example.com`과 `http://example.com`은 scheme이 달라 다른 Origin이고, `https://app.example.com`과 `https://api.example.com`은 host가 달라 다른 Origin입니다.
