@@ -26,6 +26,11 @@ const terminologyChecks = [
   ["Memory Leak이란?", "메모리 누수란?"],
   ["Call Stack", "콜 스택"],
   ["제로 런타임", "Zero Runtime"],
+  ["registrable domain", "등록 도메인"],
+  ["등록 가능한 도메인", "등록 도메인"],
+  ["Public Suffix List", "등록 도메인"],
+  ["공용 suffix", "등록 도메인"],
+  ["URL의 host는 `api`만이 아니라", "서브 도메인 설명"],
 ];
 
 for (const [invalid, canonical] of terminologyChecks) {

@@ -22,6 +22,13 @@ const bannedFragments = [
   "그래서",
   "아둥",
 ];
+const deprecatedFragments = [
+  "registrable domain",
+  "등록 가능한 도메인",
+  "Public Suffix List",
+  "공용 suffix",
+  "URL의 host는 `api`만이 아니라",
+];
 const terminologyRules = [
   {
     conceptIds: new Set(["web-worker-correct", "web-worker-incorrect"]),
@@ -119,6 +126,11 @@ for (const item of items) {
     }
     if (bannedFragments.some((fragment) => text.includes(fragment))) {
       errors.push(`${item.id}: awkward fragment in "${text}"`);
+    }
+    for (const fragment of deprecatedFragments) {
+      if (text.includes(fragment) || reason.includes(fragment)) {
+        errors.push(`${item.id}: deprecated terminology "${fragment}" in "${text}"`);
+      }
     }
     if (/(아닙니다|없습니다)[.!]?$/.test(text)) {
       errors.push(`${item.id}: obvious negative ending in "${text}"`);
