@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-07-05T16:01:09.151Z",
+  "approvedAt": "2026-07-05T16:25:24.286Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "Origin이란?": "a4bef5d336b9eb64e1a1e5a249058384c7f638925615d43bcf568d546c6715d9",
@@ -12,7 +12,7 @@
     "XSS란?": "67d860b02774b773a7f07ade27b72fe9ed6e47d5eb27b30785d1fc3b14502068",
     "이스케이프 처리란?": "3a93153316b00cb6b0aabc209dfd6bcbb48a788dd6cb5d97f5bce0ce3a8914be",
     "HTML 엔티티란?": "c2833025d4445a1e90969eb9a84a99e7f78d2d7b1c483b630acea52534555639",
-    "JSX란?": "caeab323012b1122ceaf146aac4123a6ed8c1e549021f0b4cc7fabde97a54468",
+    "JSX란?": "1afb959371fd1e5b3ff11c697ba1542df8850d3067f0acc5b2fc5cf39338dcf6",
     "트랜스파일러란?": "e6e62b7ef432346efefdc472296fcaf1f47107a72943f22d6958dac6e7cb369a",
     "컴파일러란?": "0488362670131438482659c8811c80b6b7080f5bd4108cffecb1b4c1a8e86b4c",
     "폴리필이란?": "59e83488cf3f7fc8499c3b9e09c54cd332da1ae1499e63cb9da52dacab15bf2d",

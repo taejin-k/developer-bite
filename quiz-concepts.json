@@ -3077,7 +3077,7 @@
         "reason": "여러 요소를 하나의 반환값으로 묶어야 한다는 제약과 실제 DOM 요소 추가는 같은 의미가 아닙니다. Fragment를 사용하면 별도의 래퍼 DOM 노드 없이 여러 자식을 그룹화할 수 있습니다."
       }
     ],
-    "sourceHash": "caeab323012b1122ceaf146aac4123a6ed8c1e549021f0b4cc7fabde97a54468",
+    "sourceHash": "1afb959371fd1e5b3ff11c697ba1542df8850d3067f0acc5b2fc5cf39338dcf6",
     "reviewStatus": "approved",
     "qualityVersion": 2
   },

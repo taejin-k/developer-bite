@@ -1,4 +1,4 @@
-const CACHE_NAME = "interview-bite-v28";
+const CACHE_NAME = "interview-bite-v29";
 const APP_SHELL = [
   "/",
   "/index.html",
