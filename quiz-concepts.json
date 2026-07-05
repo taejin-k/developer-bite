@@ -86,7 +86,7 @@
   {
     "id": "domain",
     "sourceTitle": "도메인이란?",
-    "sourceHash": "e0a4b7e0fbf4eac62a26c6500b6ef352f831070b424c50e4c5fb90f1bb3a5a8b",
+    "sourceHash": "53fbed22b3b79147cf8a1b2597d46c57459bf3cc0cc2ea9b1e83c6c61a870511",
     "category": "security",
     "reviewStatus": "approved",
     "correctPrompt": "도메인에 대한 설명으로 가장 적절한 것은?",
@@ -98,21 +98,21 @@
       },
       {
         "text": "서브 도메인은 `api.example.com`처럼 더 상위 도메인 아래에 붙은 이름으로 볼 수 있습니다.",
-        "reason": "서브 도메인은 `api.example.com`처럼 더 상위 도메인 아래에 붙은 이름으로 볼 수 있습니다. 이때 URL의 host는 `api`만이 아니라 `api.example.com` 전체입니다."
+        "reason": "서브 도메인은 `api.example.com`처럼 더 상위 도메인 아래에 붙은 이름으로 볼 수 있습니다. 보통 API 서버, 관리자 페이지, 서비스별 화면처럼 용도를 나누기 위해 사용합니다."
       },
       {
-        "text": "쿠키의 Domain 속성은 조건을 만족하는 하위 도메인에도 쿠키를 보낼 수 있게 합니다.",
-        "reason": "쿠키의 Domain 속성은 조건을 만족하는 하위 도메인에도 쿠키를 보낼 수 있게 합니다. 반대로 Domain을 지정하지 않은 host-only 쿠키는 기본적으로 쿠키를 설정한 호스트에만 전송됩니다."
+        "text": "쿠키의 `Domain` 속성은 조건을 만족하는 하위 도메인에도 쿠키를 보낼 수 있게 합니다.",
+        "reason": "쿠키의 `Domain` 속성은 조건을 만족하는 하위 도메인에도 쿠키를 보낼 수 있게 합니다. 예를 들어 `Domain=example.com`으로 설정한 쿠키는 조건을 만족하면 `app.example.com`과 `api.example.com` 요청에도 포함될 수 있습니다."
       }
     ],
     "misconceptions": [
       {
-        "text": "등록 도메인은 항상 마지막 두 조각으로 정해지므로 `example.co.kr`도 `co.kr` 기준으로 묶입니다.",
-        "reason": "등록 도메인은 단순히 마지막 두 조각만 잘라서 판단하면 위험합니다. `co.kr` 같은 공용 suffix가 있으므로 registrable domain을 판단할 때는 Public Suffix List 같은 기준이 필요합니다."
+        "text": "등록 도메인은 URL의 마지막 두 조각만 잘라내면 항상 정확하게 판단할 수 있습니다.",
+        "reason": "`example.com`이나 `example.co.kr`처럼 실제로 등록할 수 있는 단위가 등록 도메인입니다. 단순히 문자열 조각 개수만 보는 것이 아니라, 어떤 도메인 단위를 소유하고 그 아래에 서브 도메인을 만들 수 있는지를 기준으로 이해해야 합니다."
       },
       {
-        "text": "Domain을 지정하지 않은 쿠키는 모든 서브 도메인으로 자동 전송되는 공유 쿠키가 됩니다.",
-        "reason": "Domain을 지정하지 않은 쿠키는 일반적으로 host-only 쿠키로 취급됩니다. 따라서 기본적으로 쿠키를 설정한 호스트에만 전송되고, 모든 서브 도메인에 자동 공유되지 않습니다."
+        "text": "`Domain`을 지정하지 않은 쿠키는 모든 서브 도메인으로 자동 전송되는 공유 쿠키가 됩니다.",
+        "reason": "`Domain`을 지정하지 않은 쿠키는 일반적으로 host-only 쿠키로 취급됩니다. 따라서 기본적으로 쿠키를 설정한 정확한 호스트에만 전송되고, 모든 서브 도메인에 자동 공유되지 않습니다."
       },
       {
         "text": "부모 도메인은 브라우저 보안 정책에서 항상 Origin과 같은 의미로 사용됩니다.",
@@ -170,7 +170,7 @@
   {
     "id": "samesite",
     "sourceTitle": "SameSite란?",
-    "sourceHash": "2b9c04a32a1cb9b425b60b31d5e50ccfbeac5bd149174fce0a3abebd96e002d0",
+    "sourceHash": "946c28a4d81555e4df4395fd322fb7acebc382cd6b99dc025301cfb02bb5b61c",
     "category": "security",
     "reviewStatus": "approved",
     "correctPrompt": "SameSite 쿠키에 대한 설명으로 가장 적절한 것은?",
@@ -189,8 +189,8 @@
         "reason": "None을 사용해 교차 사이트 요청에 쿠키를 보내려면 일반적으로 Secure 속성도 함께 설정해야 합니다. 현대 브라우저는 SameSite=None 쿠키에 Secure를 요구하며, Secure가 없으면 쿠키를 저장하지 않거나 무시할 수 있습니다."
       },
       {
-        "text": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다.",
-        "reason": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다. 그래서 `app.example.com`과 `api.example.com`은 다른 Origin이어도 둘 다 `https + example.com` 기준으로 묶이면 같은 site로 볼 수 있습니다."
+        "text": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 도메인으로 판단합니다.",
+        "reason": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 도메인으로 판단합니다. 그래서 `app.example.com`과 `api.example.com`은 다른 Origin이어도 둘 다 `https + example.com` 기준으로 묶이면 같은 site로 볼 수 있습니다."
       }
     ],
     "misconceptions": [
@@ -212,7 +212,7 @@
       },
       {
         "text": "SameSite는 path와 query까지 모두 같아야 같은 사이트 요청으로 판단합니다.",
-        "reason": "SameSite의 site 판단은 path와 query를 기준으로 하지 않습니다. 보통 scheme과 등록 가능한 도메인을 기준으로 판단하므로 URL 경로가 달라도 같은 site 요청일 수 있습니다."
+        "reason": "SameSite의 site 판단은 path와 query를 기준으로 하지 않습니다. 보통 scheme과 등록 도메인을 기준으로 판단하므로 URL 경로가 달라도 같은 site 요청일 수 있습니다."
       }
     ],
     "qualityVersion": 2

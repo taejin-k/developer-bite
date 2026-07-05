@@ -1,5 +1,5 @@
-const DATA_URL = "/notion_technical_questions_final.txt?v=20260706-host-v1";
-const QUIZ_BANK_URL = "/quiz-bank-v2.json?v=20260706-host-v1";
+const DATA_URL = "/notion_technical_questions_final.txt?v=20260706-domain-v1";
+const QUIZ_BANK_URL = "/quiz-bank-v2.json?v=20260706-domain-v1";
 const STORAGE_KEY = "interview-bite-state-v1";
 const SYNC_ID_KEY = "interview-bite-sync-id-v1";
 const SYNC_CLIENT_ID_KEY = "interview-bite-sync-client-id-v1";
