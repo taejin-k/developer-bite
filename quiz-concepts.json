@@ -170,7 +170,7 @@
   {
     "id": "samesite",
     "sourceTitle": "SameSite란?",
-    "sourceHash": "355a546a16403517cc9deae237c86483f9ec5cbcba6735d1d367274e87fd10aa",
+    "sourceHash": "2b9c04a32a1cb9b425b60b31d5e50ccfbeac5bd149174fce0a3abebd96e002d0",
     "category": "security",
     "reviewStatus": "approved",
     "correctPrompt": "SameSite 쿠키에 대한 설명으로 가장 적절한 것은?",
@@ -190,7 +190,7 @@
       },
       {
         "text": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다.",
-        "reason": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다. 그래서 `app.example.com`과 `api.example.com`은 다른 Origin이어도 같은 site로 볼 수 있습니다."
+        "reason": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다. 그래서 `app.example.com`과 `api.example.com`은 다른 Origin이어도 둘 다 `https + example.com` 기준으로 묶이면 같은 site로 볼 수 있습니다."
       }
     ],
     "misconceptions": [

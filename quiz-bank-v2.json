@@ -332,7 +332,7 @@
       },
       {
         "text": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다.",
-        "reason": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다. 그래서 `app.example.com`과 `api.example.com`은 다른 Origin이어도 같은 site로 볼 수 있습니다."
+        "reason": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다. 그래서 `app.example.com`과 `api.example.com`은 다른 Origin이어도 둘 다 `https + example.com` 기준으로 묶이면 같은 site로 볼 수 있습니다."
       }
     ],
     "misconceptions": [
@@ -379,7 +379,7 @@
       },
       {
         "text": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다.",
-        "reason": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다. 그래서 `app.example.com`과 `api.example.com`은 다른 Origin이어도 같은 site로 볼 수 있습니다."
+        "reason": "SameSite의 site 기준은 전체 URL이 아니라 보통 scheme과 등록 가능한 도메인으로 판단합니다. 그래서 `app.example.com`과 `api.example.com`은 다른 Origin이어도 둘 다 `https + example.com` 기준으로 묶이면 같은 site로 볼 수 있습니다."
       }
     ],
     "misconceptions": [
