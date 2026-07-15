@@ -4677,7 +4677,7 @@
         "reason": "네트워크 요청 같은 작업은 브라우저의 Web API 영역에 위임되고, 완료된 뒤 콜백이나 Promise 반응이 큐에 들어갑니다. 이벤트 루프가 콜 스택이 비었을 때 이를 실행하므로 JavaScript는 싱글 스레드 모델에서도 논블로킹 비동기 처리를 할 수 있습니다."
       }
     ],
-    "sourceHash": "2d4bce67c57752708da8c1321269ed12259e2ea32751d38c20027e63589b9de5",
+    "sourceHash": "912ee464acaccdc8c7b7c2679f4f864f2c4f306de6b63abd3a944aa7749b3521",
     "reviewStatus": "approved",
     "qualityVersion": 2
   }

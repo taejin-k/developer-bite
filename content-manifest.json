@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-07-15T12:53:29.762Z",
+  "approvedAt": "2026-07-15T12:59:15.349Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "Origin이란?": "a4bef5d336b9eb64e1a1e5a249058384c7f638925615d43bcf568d546c6715d9",
@@ -19,7 +19,7 @@
     "프로세스란?": "843616f719c864aaf78ea256b2e3384aa896ffb8bb3c6fbdd45a097ebb4643ef",
     "스레드란?": "8689bfc88ce8f73d93a7d987d688407c5416ba926d879d8d7dbce9d91d35cc61",
     "멀티 스레드 / 싱글 스레드란?": "448c28c4d95b90a446009041fd86771c785a352abcd10547cc31c39b73c69e8f",
-    "자바스크립트가 싱글 스레드로 동작하는 이유는?": "2d4bce67c57752708da8c1321269ed12259e2ea32751d38c20027e63589b9de5",
+    "자바스크립트가 싱글 스레드로 동작하는 이유는?": "912ee464acaccdc8c7b7c2679f4f864f2c4f306de6b63abd3a944aa7749b3521",
     "경쟁 상태(Race Condition) 관리란?": "9d57aa06e3a8aa644046663e4a4d138952f7ff824ce229532948f540d1d29eb9",
     "브라우저 메인 스레드의 역할은?": "51ed4d297100986692f5455b8f98bc1deca5fe62290a20d3396dde1ddc8ea607",
     "CRP란?": "715c58ba28b2828522ae17dde2572bab2bd79acf62aa8caf0132d8f1a12ba061",
