@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-07-15T13:12:03.286Z",
+  "approvedAt": "2026-07-15T13:21:54.484Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "Origin이란?": "a4bef5d336b9eb64e1a1e5a249058384c7f638925615d43bcf568d546c6715d9",
@@ -116,7 +116,7 @@
     "메모리 누수란?": "0ec38c288aaff2a989c7bc9aa257bf16e309ec1ff3ba0f7ec1304cc85fa36e54",
     "React Hooks의 규칙은?": "47f657931ccd9b2049be404b648a3584d5c4d33fdad0019d673280835b673702",
     "useEffect의 클린업 함수란?": "ecbf768136f32165933d64a2cdd8aaecebb44fee337d4c6be5ffe3a70c9f6c47",
-    "React 컴포넌트의 실행 순서는?": "d7ffa292b25feae67966faad8b2d932ffbd8b4855e55ad5a8d1ae668738cc682",
+    "React 컴포넌트의 실행 순서는?": "edae6d11216808bcb3d5be772acf26eb0b0f5a1abc57343e236e4109d6e16122",
     "useLayoutEffect이란?": "9e7f3dbf101b63fab257139b0ccbee91bdc630f911624a0bb7281e756db45a2e",
     "고차 컴포넌트란?": "8f79f19fe73dd389639b4558a627a996a99edc4b7cf169be4364ef68efe6ef0a",
     "Next의 실행 순서는?": "968cf48daf035b85ace8fbd2fa515e87658b620e04ec862de02c709575ebd7c3",
