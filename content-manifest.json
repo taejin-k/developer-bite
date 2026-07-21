@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-07-21T16:13:48.776Z",
+  "approvedAt": "2026-07-21T16:20:25.402Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "Origin이란?": "a4bef5d336b9eb64e1a1e5a249058384c7f638925615d43bcf568d546c6715d9",
@@ -32,7 +32,7 @@
     "콜 스택이란?": "ae428d662dccedf891e8fca0ebb9816d2d5527abf21b8622b76ec77d725a0752",
     "실행 컨텍스트란?": "5ed6d2d6469c253d1968f652a598e2d31e82679e9ab607d31a074889c0ef0ab0",
     "렉시컬 환경이란?": "df9de0aeedacb095940c286ccebb7373ae8f9e502118e58ff10a77247d9b31f1",
-    "클로저란?": "a3c8a297b41711e5f747da61345943ed7f67c07c18844b0876bc70918d1fa135",
+    "클로저란?": "cc9ddb59e3ad725b1db00bfdb026d97d2d036f4f099e018864dc49815249ea09",
     "비동기 함수란?": "d25e3eb369735e042a050c90a8d4d2ffa511de1ade60460c660e3de8741cf501",
     "이벤트 루프란?": "16763d8a590b6898b25cdecab7d2cce587e1e75c28c555ea9a5cc2333bc787a9",
     "Web API란?": "7a3ea1dc9bbd6960c8a5cc56af4417d9f501ef9e5e068fa853bc28f18f750043",

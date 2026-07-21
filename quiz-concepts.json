@@ -430,7 +430,7 @@
   {
     "id": "closure",
     "sourceTitle": "클로저란?",
-    "sourceHash": "a3c8a297b41711e5f747da61345943ed7f67c07c18844b0876bc70918d1fa135",
+    "sourceHash": "cc9ddb59e3ad725b1db00bfdb026d97d2d036f4f099e018864dc49815249ea09",
     "category": "javascript",
     "reviewStatus": "approved",
     "correctPrompt": "클로저에 대한 설명으로 가장 적절한 것은?",
@@ -445,8 +445,8 @@
         "reason": "은닉 상태를 유지하는 팩토리 함수나 콜백에서 외부 변수의 수명을 연장하는 데 활용할 수 있습니다. 외부에서 직접 접근할 수 없는 상태를 함수가 지속적으로 참조할 수 있습니다."
       },
       {
-        "text": "React의 이벤트 핸들러는 자신이 만들어진 렌더링 시점의 state와 setState를 클로저로 참조할 수 있습니다.",
-        "reason": "React의 이벤트 핸들러는 자신이 만들어진 렌더링 시점의 state와 setState를 클로저로 참조할 수 있습니다. 그래서 컴포넌트 함수 실행이 끝난 뒤 이벤트가 발생해도 해당 핸들러는 자신이 만들어질 때 참조하던 값과 함수에 접근할 수 있습니다."
+        "text": "학습용으로 useState를 클로저로 흉내 낼 수는 있지만, React의 실제 state 저장 방식은 그보다 복잡합니다.",
+        "reason": "학습용으로 useState를 클로저로 흉내 낼 수는 있지만, React의 실제 state 저장 방식은 그보다 복잡합니다. 실제 state 값은 useState 함수 내부 변수나 컴포넌트 함수의 클로저 변수에 저장되는 것이 아니라 Fiber, Hook 호출 순서, 업데이트 큐를 기준으로 관리됩니다."
       }
     ],
     "misconceptions": [
@@ -463,8 +463,8 @@
         "reason": "클로저는 변수 접근 범위와 수명에 관한 개념이며 비동기 실행 순서를 제어하지 않습니다. 실제로는 함수가 선언될 때의 렉시컬 환경을 기억해 외부 함수 실행이 끝난 뒤에도 변수에 접근할 수 있게 합니다."
       },
       {
-        "text": "useState의 실제 state 값은 컴포넌트 함수의 클로저 변수에 저장되므로 React 내부 저장 구조는 필요하지 않습니다.",
-        "reason": "useState를 사용할 때 클로저 특성이 드러나지만 실제 state 저장소가 컴포넌트 함수의 클로저 변수인 것은 아닙니다. React가 컴포넌트 위치와 Hook 호출 순서, 업데이트 큐를 기준으로 state를 관리합니다."
+        "text": "useState의 실제 state 값은 useState 함수 내부 지역 변수나 컴포넌트 함수의 클로저 변수에 저장됩니다.",
+        "reason": "React의 실제 state 값은 useState 함수 내부 지역 변수나 컴포넌트 함수의 클로저 변수에 직접 저장되지 않습니다. React는 Fiber와 Hook 호출 순서, 업데이트 큐를 기준으로 state를 관리합니다."
       }
     ],
     "qualityVersion": 2
