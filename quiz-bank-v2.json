@@ -499,6 +499,14 @@
         "reason": "비단순 요청은 실제 요청 전에 OPTIONS 프리플라이트로 허용 메서드와 헤더를 확인할 수 있습니다. 프리플라이트는 서버가 실제 교차 출처 요청을 허용하는지 사전에 확인합니다."
       },
       {
+        "text": "GET이나 HEAD 요청이라도 Authorization 같은 허용 목록 밖의 헤더가 포함되면 preflight가 발생할 수 있습니다.",
+        "reason": "GET이나 HEAD 요청이라도 Authorization 같은 허용 목록 밖의 헤더가 포함되면 preflight가 발생할 수 있습니다. 단순 요청 여부는 메서드만이 아니라 요청 헤더와 Content-Type 조건까지 함께 봅니다."
+      },
+      {
+        "text": "POST 요청도 Content-Type과 헤더 조건을 만족하면 preflight 없이 단순 요청으로 전송될 수 있습니다.",
+        "reason": "POST 요청도 Content-Type과 헤더 조건을 만족하면 preflight 없이 단순 요청으로 전송될 수 있습니다. 예를 들어 허용되는 Content-Type과 커스텀 헤더가 없는 요청은 단순 요청 조건에 들어갈 수 있습니다."
+      },
+      {
         "text": "자격 증명을 포함한 요청에서는 와일드카드 출처 대신 명시적인 출처 허용이 필요합니다.",
         "reason": "자격 증명을 포함한 요청에서는 와일드카드 출처 대신 명시적인 출처 허용이 필요합니다. credentials 요청은 Access-Control-Allow-Origin: *와 함께 사용할 수 없습니다."
       }
@@ -519,6 +527,14 @@
       {
         "text": "동일한 호스트 이름이면 포트와 프로토콜이 달라도 항상 같은 출처로 판단합니다.",
         "reason": "브라우저는 출처를 스킴, 호스트, 포트의 조합으로 판단합니다. 따라서 호스트가 같아도 http와 https가 다르거나 포트가 다르면 서로 다른 출처입니다."
+      },
+      {
+        "text": "GET 요청은 어떤 헤더를 붙여도 항상 단순 요청이므로 preflight가 발생하지 않습니다.",
+        "reason": "GET이라도 Authorization처럼 CORS 안전 목록에 없는 헤더를 붙이면 단순 요청 조건을 벗어날 수 있습니다. 이 경우 브라우저는 실제 요청 전에 OPTIONS preflight로 서버가 해당 헤더를 허용하는지 확인할 수 있습니다."
+      },
+      {
+        "text": "POST 요청은 메서드가 POST라는 이유만으로 항상 preflight가 필요한 비단순 요청입니다.",
+        "reason": "POST도 Content-Type이 application/x-www-form-urlencoded, multipart/form-data, text/plain 중 하나이고 커스텀 헤더가 없으면 단순 요청이 될 수 있습니다. 반대로 application/json이나 커스텀 헤더가 있으면 preflight가 발생할 수 있습니다."
       }
     ]
   },
@@ -538,6 +554,14 @@
         "reason": "비단순 요청은 실제 요청 전에 OPTIONS 프리플라이트로 허용 메서드와 헤더를 확인할 수 있습니다. 프리플라이트는 서버가 실제 교차 출처 요청을 허용하는지 사전에 확인합니다."
       },
       {
+        "text": "GET이나 HEAD 요청이라도 Authorization 같은 허용 목록 밖의 헤더가 포함되면 preflight가 발생할 수 있습니다.",
+        "reason": "GET이나 HEAD 요청이라도 Authorization 같은 허용 목록 밖의 헤더가 포함되면 preflight가 발생할 수 있습니다. 단순 요청 여부는 메서드만이 아니라 요청 헤더와 Content-Type 조건까지 함께 봅니다."
+      },
+      {
+        "text": "POST 요청도 Content-Type과 헤더 조건을 만족하면 preflight 없이 단순 요청으로 전송될 수 있습니다.",
+        "reason": "POST 요청도 Content-Type과 헤더 조건을 만족하면 preflight 없이 단순 요청으로 전송될 수 있습니다. 예를 들어 허용되는 Content-Type과 커스텀 헤더가 없는 요청은 단순 요청 조건에 들어갈 수 있습니다."
+      },
+      {
         "text": "자격 증명을 포함한 요청에서는 와일드카드 출처 대신 명시적인 출처 허용이 필요합니다.",
         "reason": "자격 증명을 포함한 요청에서는 와일드카드 출처 대신 명시적인 출처 허용이 필요합니다. credentials 요청은 Access-Control-Allow-Origin: *와 함께 사용할 수 없습니다."
       }
@@ -558,6 +582,14 @@
       {
         "text": "동일한 호스트 이름이면 포트와 프로토콜이 달라도 항상 같은 출처로 판단합니다.",
         "reason": "브라우저는 출처를 스킴, 호스트, 포트의 조합으로 판단합니다. 따라서 호스트가 같아도 http와 https가 다르거나 포트가 다르면 서로 다른 출처입니다."
+      },
+      {
+        "text": "GET 요청은 어떤 헤더를 붙여도 항상 단순 요청이므로 preflight가 발생하지 않습니다.",
+        "reason": "GET이라도 Authorization처럼 CORS 안전 목록에 없는 헤더를 붙이면 단순 요청 조건을 벗어날 수 있습니다. 이 경우 브라우저는 실제 요청 전에 OPTIONS preflight로 서버가 해당 헤더를 허용하는지 확인할 수 있습니다."
+      },
+      {
+        "text": "POST 요청은 메서드가 POST라는 이유만으로 항상 preflight가 필요한 비단순 요청입니다.",
+        "reason": "POST도 Content-Type이 application/x-www-form-urlencoded, multipart/form-data, text/plain 중 하나이고 커스텀 헤더가 없으면 단순 요청이 될 수 있습니다. 반대로 application/json이나 커스텀 헤더가 있으면 preflight가 발생할 수 있습니다."
       }
     ]
   },
