@@ -507,6 +507,10 @@
         "reason": "POST 요청도 Content-Type과 헤더 조건을 만족하면 preflight 없이 단순 요청으로 전송될 수 있습니다. 예를 들어 허용되는 Content-Type과 커스텀 헤더가 없는 요청은 단순 요청 조건에 들어갈 수 있습니다."
       },
       {
+        "text": "CORS 오류는 서버의 허용 Origin, 메서드, 헤더, credentials 설정이 브라우저 요청과 맞지 않을 때 발생할 수 있습니다.",
+        "reason": "CORS 오류는 서버의 허용 Origin, 메서드, 헤더, credentials 설정이 브라우저 요청과 맞지 않을 때 발생할 수 있습니다. 쿠키를 포함한 요청에서는 구체적인 프론트엔드 Origin과 Access-Control-Allow-Credentials: true가 필요하고, 커스텀 헤더나 Authorization, Content-Type 같은 요청 헤더도 Access-Control-Allow-Headers에 허용되어야 합니다."
+      },
+      {
         "text": "자격 증명을 포함한 요청에서는 와일드카드 출처 대신 명시적인 출처 허용이 필요합니다.",
         "reason": "자격 증명을 포함한 요청에서는 와일드카드 출처 대신 명시적인 출처 허용이 필요합니다. credentials 요청은 Access-Control-Allow-Origin: *와 함께 사용할 수 없습니다."
       }
@@ -535,6 +539,14 @@
       {
         "text": "POST 요청은 메서드가 POST라는 이유만으로 항상 preflight가 필요한 비단순 요청입니다.",
         "reason": "POST도 Content-Type이 application/x-www-form-urlencoded, multipart/form-data, text/plain 중 하나이고 커스텀 헤더가 없으면 단순 요청이 될 수 있습니다. 반대로 application/json이나 커스텀 헤더가 있으면 preflight가 발생할 수 있습니다."
+      },
+      {
+        "text": "Access-Control-Allow-Origin만 맞으면 preflight 요청의 메서드와 헤더 허용 여부는 CORS 판단에 영향을 주지 않습니다.",
+        "reason": "CORS에서는 Origin뿐 아니라 실제 요청에서 사용할 메서드와 헤더도 서버가 허용해야 합니다. Access-Control-Allow-Methods에 실제 요청 메서드가 없거나, Access-Control-Allow-Headers에 커스텀 헤더, Authorization, Content-Type 같은 요청 헤더가 허용되어 있지 않으면 실패할 수 있습니다."
+      },
+      {
+        "text": "credentials를 포함한 요청은 Access-Control-Allow-Origin: *만 설정해도 브라우저가 항상 허용합니다.",
+        "reason": "credentials를 포함한 CORS 요청은 와일드카드 Origin과 함께 사용할 수 없습니다. 이 경우 서버는 구체적인 프론트엔드 Origin을 허용하고 Access-Control-Allow-Credentials도 맞게 응답해야 합니다."
       }
     ]
   },
@@ -562,6 +574,10 @@
         "reason": "POST 요청도 Content-Type과 헤더 조건을 만족하면 preflight 없이 단순 요청으로 전송될 수 있습니다. 예를 들어 허용되는 Content-Type과 커스텀 헤더가 없는 요청은 단순 요청 조건에 들어갈 수 있습니다."
       },
       {
+        "text": "CORS 오류는 서버의 허용 Origin, 메서드, 헤더, credentials 설정이 브라우저 요청과 맞지 않을 때 발생할 수 있습니다.",
+        "reason": "CORS 오류는 서버의 허용 Origin, 메서드, 헤더, credentials 설정이 브라우저 요청과 맞지 않을 때 발생할 수 있습니다. 쿠키를 포함한 요청에서는 구체적인 프론트엔드 Origin과 Access-Control-Allow-Credentials: true가 필요하고, 커스텀 헤더나 Authorization, Content-Type 같은 요청 헤더도 Access-Control-Allow-Headers에 허용되어야 합니다."
+      },
+      {
         "text": "자격 증명을 포함한 요청에서는 와일드카드 출처 대신 명시적인 출처 허용이 필요합니다.",
         "reason": "자격 증명을 포함한 요청에서는 와일드카드 출처 대신 명시적인 출처 허용이 필요합니다. credentials 요청은 Access-Control-Allow-Origin: *와 함께 사용할 수 없습니다."
       }
@@ -590,6 +606,14 @@
       {
         "text": "POST 요청은 메서드가 POST라는 이유만으로 항상 preflight가 필요한 비단순 요청입니다.",
         "reason": "POST도 Content-Type이 application/x-www-form-urlencoded, multipart/form-data, text/plain 중 하나이고 커스텀 헤더가 없으면 단순 요청이 될 수 있습니다. 반대로 application/json이나 커스텀 헤더가 있으면 preflight가 발생할 수 있습니다."
+      },
+      {
+        "text": "Access-Control-Allow-Origin만 맞으면 preflight 요청의 메서드와 헤더 허용 여부는 CORS 판단에 영향을 주지 않습니다.",
+        "reason": "CORS에서는 Origin뿐 아니라 실제 요청에서 사용할 메서드와 헤더도 서버가 허용해야 합니다. Access-Control-Allow-Methods에 실제 요청 메서드가 없거나, Access-Control-Allow-Headers에 커스텀 헤더, Authorization, Content-Type 같은 요청 헤더가 허용되어 있지 않으면 실패할 수 있습니다."
+      },
+      {
+        "text": "credentials를 포함한 요청은 Access-Control-Allow-Origin: *만 설정해도 브라우저가 항상 허용합니다.",
+        "reason": "credentials를 포함한 CORS 요청은 와일드카드 Origin과 함께 사용할 수 없습니다. 이 경우 서버는 구체적인 프론트엔드 Origin을 허용하고 Access-Control-Allow-Credentials도 맞게 응답해야 합니다."
       }
     ]
   },
