@@ -262,7 +262,7 @@
   {
     "id": "cors",
     "sourceTitle": "CORS란?",
-    "sourceHash": "f9a23c3d693fd63408e7d4555142a0ac781a9ac83f87c0e21c86d7baea126fd9",
+    "sourceHash": "0a7104cd0b3c23e1ea8efeec5ba6dfdce1f7653ef731685b5b724c44d2ebf9ab",
     "category": "security",
     "reviewStatus": "approved",
     "correctPrompt": "CORS에 대한 설명으로 가장 적절한 것은?",
