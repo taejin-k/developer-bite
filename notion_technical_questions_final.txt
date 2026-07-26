@@ -13,7 +13,6 @@
 호스트와 도메인은 겹치는 경우가 많지만 완전히 같은 말은 아닙니다. 도메인은 사람이 읽기 쉬운 이름 체계이고, 호스트는 실제 요청을 보낼 접속 대상입니다. 예를 들어 `api.example.com`은 도메인 이름이면서 동시에 URL 안에서는 호스트이고, `127.0.0.1`은 호스트가 될 수 있지만 일반적인 도메인 이름은 아닙니다.
 도메인이란?
 도메인은 사람이 읽기 쉬운 인터넷 주소 이름입니다. 예를 들어 `example.com`은 도메인이고, `api.example.com`이나 `admin.example.com`은 `example.com` 아래의 서브 도메인으로 볼 수 있습니다.
-등록 도메인은 사용자가 실제로 등록할 수 있는 도메인 단위를 말합니다. 예를 들어 `example.com`이나 `example.co.kr`은 등록 도메인입니다. `app.example.com`과 `api.example.com`은 host는 다르지만 등록 도메인은 보통 `example.com`으로 같습니다.
 부모 도메인이라는 표현은 보통 `example.com`이 `api.example.com`의 상위에 있다는 의미로 느슨하게 사용합니다.
 쿠키의 Domain 속성을 설정하면 특정 도메인과 그 하위 도메인에 쿠키를 보낼 수 있습니다. 예를 들어 `Domain=example.com`으로 설정한 쿠키는 조건을 만족하면 `app.example.com`이나 `api.example.com`에도 전송될 수 있습니다. 반대로 Domain을 지정하지 않은 host-only 쿠키는 기본적으로 쿠키를 설정한 호스트에만 전송됩니다.
 Origin이란?
