@@ -1,13 +1,13 @@
-const CACHE_NAME = "interview-bite-v43";
+const CACHE_NAME = "interview-bite-v44";
 const APP_SHELL = [
   "/",
   "/index.html",
-  "/styles.css?v=20260727-cors-errors-v2",
-  "/app.js?v=20260727-cors-errors-v2",
+  "/styles.css?v=20260728-cors-origin-v1",
+  "/app.js?v=20260728-cors-origin-v1",
   "/manifest.webmanifest",
   "/icon.svg",
-  "/notion_technical_questions_final.txt?v=20260727-cors-errors-v2",
-  "/quiz-bank-v2.json?v=20260727-cors-errors-v2"
+  "/notion_technical_questions_final.txt?v=20260728-cors-origin-v1",
+  "/quiz-bank-v2.json?v=20260728-cors-origin-v1"
 ];
 
 self.addEventListener("install", (event) => {

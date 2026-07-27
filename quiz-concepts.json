@@ -44,7 +44,7 @@
   {
     "id": "origin",
     "sourceTitle": "Origin이란?",
-    "sourceHash": "a4bef5d336b9eb64e1a1e5a249058384c7f638925615d43bcf568d546c6715d9",
+    "sourceHash": "bb0b62d16c6d8bab455b4f411b41bceab4fde1f69db55433054bce9887e77958",
     "category": "security",
     "reviewStatus": "approved",
     "correctPrompt": "Origin에 대한 설명으로 가장 적절한 것은?",
@@ -66,7 +66,7 @@
     "misconceptions": [
       {
         "text": "Origin은 도메인 이름만 비교하므로 port와 scheme은 CORS 판단에 영향을 주지 않습니다.",
-        "reason": "CORS는 Origin을 기준으로 동작하고 Origin에는 scheme, host, port가 포함됩니다. 따라서 같은 host라도 protocol이나 port가 다르면 브라우저는 다른 출처로 판단할 수 있습니다."
+        "reason": "CORS는 Origin을 기준으로 동작하고 Origin에는 scheme, host, port가 포함됩니다. 따라서 같은 host라도 protocol이나 port가 다르면 브라우저는 다른 Origin으로 판단할 수 있습니다."
       },
       {
         "text": "URL의 path와 query가 다르면 scheme, host, port가 같아도 다른 Origin으로 분리됩니다.",
@@ -262,19 +262,19 @@
   {
     "id": "cors",
     "sourceTitle": "CORS란?",
-    "sourceHash": "0a7104cd0b3c23e1ea8efeec5ba6dfdce1f7653ef731685b5b724c44d2ebf9ab",
+    "sourceHash": "300af198aef2d989f03e4d3aefcc81a6ec8a0baa3cf865f766ffd1a88f4724d9",
     "category": "security",
     "reviewStatus": "approved",
     "correctPrompt": "CORS에 대한 설명으로 가장 적절한 것은?",
     "incorrectPrompt": "CORS에 관한 설명으로 틀린 것은?",
     "truths": [
       {
-        "text": "브라우저가 다른 출처의 응답을 프론트엔드 코드에 노출할지 서버의 응답 헤더를 기준으로 판단하는 정책입니다.",
-        "reason": "브라우저가 다른 출처의 응답을 프론트엔드 코드에 노출할지 서버의 응답 헤더를 기준으로 판단하는 정책입니다. CORS는 브라우저의 동일 출처 정책을 선택적으로 완화하는 메커니즘입니다."
+        "text": "브라우저가 다른 Origin의 응답을 프론트엔드 코드에 노출할지 서버의 응답 헤더를 기준으로 판단하는 정책입니다.",
+        "reason": "브라우저가 다른 Origin의 응답을 프론트엔드 코드에 노출할지 서버의 응답 헤더를 기준으로 판단하는 정책입니다. CORS는 브라우저의 Same-Origin Policy를 선택적으로 완화하는 메커니즘입니다."
       },
       {
         "text": "비단순 요청은 실제 요청 전에 OPTIONS 프리플라이트로 허용 메서드와 헤더를 확인할 수 있습니다.",
-        "reason": "비단순 요청은 실제 요청 전에 OPTIONS 프리플라이트로 허용 메서드와 헤더를 확인할 수 있습니다. 프리플라이트는 서버가 실제 교차 출처 요청을 허용하는지 사전에 확인합니다."
+        "reason": "비단순 요청은 실제 요청 전에 OPTIONS 프리플라이트로 허용 메서드와 헤더를 확인할 수 있습니다. 프리플라이트는 서버가 실제 Cross-Origin 요청을 허용하는지 사전에 확인합니다."
       },
       {
         "text": "GET이나 HEAD 요청이라도 Authorization 같은 허용 목록 밖의 헤더가 포함되면 preflight가 발생할 수 있습니다.",
@@ -289,26 +289,26 @@
         "reason": "CORS 오류는 서버의 허용 Origin, 메서드, 헤더, credentials 설정이 브라우저 요청과 맞지 않을 때 발생할 수 있습니다. 쿠키를 포함한 요청에서는 구체적인 프론트엔드 Origin과 Access-Control-Allow-Credentials: true가 필요하고, 커스텀 헤더나 Authorization, Content-Type 같은 요청 헤더도 Access-Control-Allow-Headers에 허용되어야 합니다."
       },
       {
-        "text": "자격 증명을 포함한 요청에서는 와일드카드 출처 대신 명시적인 출처 허용이 필요합니다.",
-        "reason": "자격 증명을 포함한 요청에서는 와일드카드 출처 대신 명시적인 출처 허용이 필요합니다. credentials 요청은 Access-Control-Allow-Origin: *와 함께 사용할 수 없습니다."
+        "text": "자격 증명을 포함한 요청에서는 와일드카드 Origin 대신 명시적인 Origin 허용이 필요합니다.",
+        "reason": "자격 증명을 포함한 요청에서는 와일드카드 Origin 대신 명시적인 Origin 허용이 필요합니다. credentials 요청은 Access-Control-Allow-Origin: *와 함께 사용할 수 없습니다."
       }
     ],
     "misconceptions": [
       {
         "text": "CORS는 서버 간 HTTP 요청에도 브라우저와 동일하게 강제되는 네트워크 방화벽 규칙입니다.",
-        "reason": "CORS는 주로 브라우저가 응답 노출을 제한하는 정책이며 서버 간 요청에는 같은 방식으로 적용되지 않습니다. 실제로는 브라우저가 다른 출처의 응답을 프론트엔드 코드에 노출할지 서버의 응답 헤더를 기준으로 판단하는 정책입니다."
+        "reason": "CORS는 주로 브라우저가 응답 노출을 제한하는 정책이며 서버 간 요청에는 같은 방식으로 적용되지 않습니다. 실제로는 브라우저가 다른 Origin의 응답을 프론트엔드 코드에 노출할지 서버의 응답 헤더를 기준으로 판단하는 정책입니다."
       },
       {
         "text": "프리플라이트가 성공하면 이후 응답의 상태 코드와 헤더를 확인하지 않고 본문을 항상 공개합니다.",
-        "reason": "실제 응답에도 적절한 CORS 헤더가 있어야 브라우저가 응답을 공개합니다. 실제로는 브라우저가 다른 출처의 응답을 프론트엔드 코드에 노출할지 서버의 응답 헤더를 기준으로 판단하는 정책입니다."
+        "reason": "실제 응답에도 적절한 CORS 헤더가 있어야 브라우저가 응답을 공개합니다. 실제로는 브라우저가 다른 Origin의 응답을 프론트엔드 코드에 노출할지 서버의 응답 헤더를 기준으로 판단하는 정책입니다."
       },
       {
         "text": "Access-Control-Allow-Origin을 설정하면 인증되지 않은 사용자의 API 접근까지 자동으로 차단됩니다.",
-        "reason": "CORS는 인증·인가 수단이 아니므로 서버는 별도로 접근 권한을 검증해야 합니다. 실제로는 브라우저가 다른 출처의 응답을 프론트엔드 코드에 노출할지 서버의 응답 헤더를 기준으로 판단하는 정책입니다."
+        "reason": "CORS는 인증·인가 수단이 아니므로 서버는 별도로 접근 권한을 검증해야 합니다. 실제로는 브라우저가 다른 Origin의 응답을 프론트엔드 코드에 노출할지 서버의 응답 헤더를 기준으로 판단하는 정책입니다."
       },
       {
-        "text": "동일한 호스트 이름이면 포트와 프로토콜이 달라도 항상 같은 출처로 판단합니다.",
-        "reason": "브라우저는 출처를 스킴, 호스트, 포트의 조합으로 판단합니다. 따라서 호스트가 같아도 http와 https가 다르거나 포트가 다르면 서로 다른 출처입니다."
+        "text": "동일한 호스트 이름이면 포트와 프로토콜이 달라도 항상 같은 Origin으로 판단합니다.",
+        "reason": "브라우저는 Origin을 scheme, host, port의 조합으로 판단합니다. 따라서 host가 같아도 http와 https가 다르거나 port가 다르면 서로 다른 Origin입니다."
       },
       {
         "text": "GET 요청은 어떤 헤더를 붙여도 항상 단순 요청이므로 preflight가 발생하지 않습니다.",

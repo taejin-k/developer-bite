@@ -9,7 +9,7 @@
 Origin이란?
 Origin은 브라우저가 보안 정책에서 출처를 판단할 때 사용하는 기준으로, scheme, host, port의 조합입니다. 예를 들어 `https://api.example.com:443`에서 scheme은 `https`, host는 `api.example.com`, port는 `443`입니다.
 두 URL의 scheme, host, port가 모두 같으면 같은 Origin이고, 하나라도 다르면 다른 Origin입니다. `https://example.com`과 `http://example.com`은 scheme이 달라 다른 Origin이고, `https://app.example.com`과 `https://api.example.com`은 host가 달라 다른 Origin입니다.
-CORS와 Same-Origin Policy는 이 Origin을 기준으로 동작합니다. 그래서 서브 도메인이 같아 보이거나 같은 회사의 도메인처럼 보여도, 브라우저 입장에서는 Origin이 다르면 다른 출처로 판단할 수 있습니다.
+CORS와 Same-Origin Policy는 이 Origin을 기준으로 동작합니다. 그래서 서브 도메인이 같아 보이거나 같은 회사의 도메인처럼 보여도, 브라우저 입장에서는 Origin이 다르면 다른 Origin으로 판단할 수 있습니다.
 도메인이란?
 도메인은 사람이 읽기 쉬운 인터넷 주소 이름입니다. 예를 들어 `example.com`은 도메인이고, `api.example.com`이나 `admin.example.com`은 `example.com` 아래의 서브 도메인으로 볼 수 있습니다.
 부모 도메인이라는 표현은 보통 `example.com`이 `api.example.com`의 상위에 있다는 의미로 느슨하게 사용합니다.
@@ -256,9 +256,9 @@ RESTful API는 REST 아키텍처 원칙을 따르는 API를 말합니다. REST�
 RESTful API의 핵심 원칙은 첫째, 클라이언트와 서버의 역할이 명확히 분리됩니다. 둘째, 무상태성으로 각 요청은 독립적이고 서버는 클라이언트의 상태를 저장하지 않습니다.
 실무에서는 GET으로 조회, POST로 생성, PUT이나 PATCH로 수정, DELETE로 삭제하는 방식으로 구현하며, URL은 명사형으로 자원을 표현하고 HTTP 메서드는 동사로 표현합니다.
 CORS란?
-CORS는 Cross-Origin Resource Sharing의 약자로, 다른 출처의 리소스에 접근할 수 있도록 허용하는 브라우저의 보안 메커니즘입니다.
-웹 브라우저는 기본적으로 Same-Origin Policy, 즉 동일 출처 정책을 따릅니다. 출처는 scheme(프로토콜), host, port로 구성되며, 이 중 하나라도 다르면 다른 출처로 판단합니다.
-CORS는 서버가 특정 출처의 요청을 허용하도록 설정할 수 있게 해줍니다. 서버가 응답 헤더에 Access-Control-Allow-Origin을 포함시키면 브라우저가 해당 출처의 요청을 허용합니다.
+CORS는 Cross-Origin Resource Sharing의 약자로, 다른 Origin의 리소스에 접근할 수 있도록 허용하는 브라우저의 보안 메커니즘입니다.
+웹 브라우저는 기본적으로 Same-Origin Policy, 즉 동일 Origin 정책을 따릅니다. Origin은 scheme(프로토콜), host, port로 구성되며, 이 중 하나라도 다르면 다른 Origin으로 판단합니다.
+CORS는 서버가 특정 Origin의 요청을 허용하도록 설정할 수 있게 해줍니다. 서버가 응답 헤더에 Access-Control-Allow-Origin을 포함시키면 브라우저가 해당 Origin의 요청을 허용합니다.
 preflight는 실제 요청을 보내기 전에 브라우저가 OPTIONS 요청으로 서버에 먼저 확인하는 과정입니다. 브라우저는 이 요청을 통해 실제 요청에서 사용할 HTTP 메서드와 헤더를 서버가 허용하는지 확인합니다.
 다만 모든 CORS 요청에서 preflight가 발생하는 것은 아닙니다. 일부 조건을 만족하는 단순 요청은 preflight 없이 바로 서버로 전송됩니다. GET이나 HEAD 요청이고 커스텀 헤더가 없으면 보통 preflight 없이 전송되며, POST도 Content-Type이 application/x-www-form-urlencoded, multipart/form-data, text/plain 중 하나이고 커스텀 헤더가 없으면 단순 요청이 될 수 있습니다.
 CORS 오류는 보통 서버의 CORS 응답 헤더가 실제 브라우저 요청 조건과 맞지 않을 때 발생합니다.
