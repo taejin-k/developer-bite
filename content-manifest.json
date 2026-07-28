@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-07-28T13:13:35.726Z",
+  "approvedAt": "2026-07-28T13:23:36.712Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "도메인이란?": "47ca31ab47b7710fe1f48e90749d904e43ae1dfcb28c674e46cf67f7cf13046f",
@@ -17,7 +17,7 @@
     "트랜스파일러란?": "e6e62b7ef432346efefdc472296fcaf1f47107a72943f22d6958dac6e7cb369a",
     "컴파일러란?": "0488362670131438482659c8811c80b6b7080f5bd4108cffecb1b4c1a8e86b4c",
     "폴리필이란?": "59e83488cf3f7fc8499c3b9e09c54cd332da1ae1499e63cb9da52dacab15bf2d",
-    "인증 상태를 유지하는 방식이란?": "8e4319799ebeac1933b8905af369ac7402e9bd2975dd0964cb16395f37099a66",
+    "인증 상태를 유지하는 방식이란?": "359490f59b9bd19d2958bfdd4b11f776c1dea77650244a4ae77e0680f2bba7de",
     "세션 기반 인증 방식이란?": "e2390ca6ba3023f7a67a6e7d6675cf73bbf9e13fd940b3e2047ef3d556fa6732",
     "JWT 기반 인증 방식이란?": "da9e1b5b977512e2d0f68288c42a8d9db64d3ebc0264d88f97470c9265174806",
     "세션 쿠키 인증 방식이란?": "c619bf30dc1dd72b7ad146dcdc63e8bd9f0a0877faec1fd76ce8cf516742e1dc",
