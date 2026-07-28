@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-07-28T13:23:36.712Z",
+  "approvedAt": "2026-07-28T13:25:20.311Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "도메인이란?": "47ca31ab47b7710fe1f48e90749d904e43ae1dfcb28c674e46cf67f7cf13046f",
@@ -18,7 +18,7 @@
     "컴파일러란?": "0488362670131438482659c8811c80b6b7080f5bd4108cffecb1b4c1a8e86b4c",
     "폴리필이란?": "59e83488cf3f7fc8499c3b9e09c54cd332da1ae1499e63cb9da52dacab15bf2d",
     "인증 상태를 유지하는 방식이란?": "359490f59b9bd19d2958bfdd4b11f776c1dea77650244a4ae77e0680f2bba7de",
-    "세션 기반 인증 방식이란?": "e2390ca6ba3023f7a67a6e7d6675cf73bbf9e13fd940b3e2047ef3d556fa6732",
+    "세션 기반 인증 방식이란?": "c7a995b9ea3c094eab2f75ecfe2598a698bd4ef3a820f9593538a0c314d11b96",
     "JWT 기반 인증 방식이란?": "da9e1b5b977512e2d0f68288c42a8d9db64d3ebc0264d88f97470c9265174806",
     "세션 쿠키 인증 방식이란?": "c619bf30dc1dd72b7ad146dcdc63e8bd9f0a0877faec1fd76ce8cf516742e1dc",
     "JWT를 쿠키에 저장하는 방식이란?": "d74796bdfe085a4323d7a6ede64600cc81084a1fdff9f83e836ee2531473ec56",
