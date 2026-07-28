@@ -1,5 +1,5 @@
-const DATA_URL = "/notion_technical_questions_final.txt?v=20260728-auth-concepts-v2";
-const QUIZ_BANK_URL = "/quiz-bank-v2.json?v=20260728-auth-concepts-v2";
+const DATA_URL = "/notion_technical_questions_final.txt?v=20260728-auth-concepts-v3";
+const QUIZ_BANK_URL = "/quiz-bank-v2.json?v=20260728-auth-concepts-v3";
 const STORAGE_KEY = "interview-bite-state-v1";
 const SYNC_ID_KEY = "interview-bite-sync-id-v1";
 const SYNC_CLIENT_ID_KEY = "interview-bite-sync-client-id-v1";
