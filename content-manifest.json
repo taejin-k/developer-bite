@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-07-27T15:30:50.125Z",
+  "approvedAt": "2026-07-28T12:10:02.073Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "도메인이란?": "47ca31ab47b7710fe1f48e90749d904e43ae1dfcb28c674e46cf67f7cf13046f",
@@ -13,7 +13,6 @@
     "XSS란?": "67d860b02774b773a7f07ade27b72fe9ed6e47d5eb27b30785d1fc3b14502068",
     "이스케이프 처리란?": "3a93153316b00cb6b0aabc209dfd6bcbb48a788dd6cb5d97f5bce0ce3a8914be",
     "HTML 엔티티란?": "c2833025d4445a1e90969eb9a84a99e7f78d2d7b1c483b630acea52534555639",
-    "CSP란?": "19b324cd1ca84246a1fe0ba1e0dffc7c11c47d97d2ce0797f70955d92905f383",
     "JWT 인증 방식이란?": "e620c7faace87a8b224c06843ae87d0cc80ac5e7a9a8e7de745e25fc2c54b361",
     "세션 쿠키 인증 방식이란?": "bdf13df40445326ad8c9e2edc60b564b12d4297f60faf378ce574362205a87d8",
     "SSO란?": "290430d326201952649e131def13bc9c79bec75d611952c7612f4ee46f01a221",
