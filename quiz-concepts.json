@@ -416,7 +416,7 @@
   {
     "id": "jwt-auth",
     "sourceTitle": "JWT 기반 인증 방식이란?",
-    "sourceHash": "70c62020a8b9701249e06f8cb474195d4e38dfcd06bf9ef83043327e20ecb3e9",
+    "sourceHash": "d349eb7ae9f1a0d02e959d3d7ddabf723037606db084350657e61e83b2245d2c",
     "category": "security",
     "reviewStatus": "approved",
     "correctPrompt": "JWT 기반 인증 방식에 대한 설명으로 가장 적절한 것은?",
@@ -431,8 +431,8 @@
         "reason": "JWT payload는 암호화가 아니라 인코딩된 값이므로 비밀번호 같은 민감한 정보는 담지 않아야 합니다. 일반적인 서명 JWT는 내용을 숨기는 기술이 아닙니다. 토큰을 가진 사람은 payload를 디코딩해 볼 수 있으므로 식별자나 권한 판단에 필요한 최소 정보만 담는 것이 안전합니다."
       },
       {
-        "text": "JWT는 서버가 사용자 로그인 상태를 세션 저장소에 보관하지 않아도 signature와 만료 시간 검증으로 요청을 인증할 수 있어 확장에 유리합니다.",
-        "reason": "JWT는 서버가 사용자 로그인 상태를 세션 저장소에 보관하지 않아도 signature와 만료 시간 검증으로 요청을 인증할 수 있어 확장에 유리합니다. 여러 서버가 같은 서명 키로 토큰을 검증할 수 있으므로 세션 저장소를 공유하지 않아도 인증 판단을 할 수 있습니다. 반대로 이미 발급된 토큰을 즉시 무효화하려면 짧은 만료 시간, Refresh Token, 토큰 버전, 블랙리스트 같은 보조 전략이 필요합니다."
+        "text": "JWT 기반 인증에서 access token은 실제 API 요청 인증에 사용하고, Refresh Token은 access token을 다시 발급받는 용도로 사용합니다.",
+        "reason": "JWT 기반 인증에서 access token은 실제 API 요청 인증에 사용하고, Refresh Token은 access token을 다시 발급받는 용도로 사용합니다. access token은 노출되었을 때 피해를 줄이기 위해 보통 만료 시간을 짧게 가져갑니다. Refresh Token은 access token이 만료되었을 때 재로그인 없이 새 access token을 받기 위한 값이므로 더 오래 살지만 더 엄격하게 관리해야 합니다."
       }
     ],
     "misconceptions": [
@@ -445,8 +445,8 @@
         "reason": "signature는 변조 여부를 검증하는 장치이지 내용을 숨기는 암호화가 아닙니다. payload는 쉽게 디코딩할 수 있으므로 비밀번호, 주민번호 같은 민감 정보는 담지 않아야 합니다."
       },
       {
-        "text": "JWT는 한 번 발급하면 만료 시간 없이 영구적으로 사용하게 만드는 것이 일반적인 보안 설정입니다.",
-        "reason": "JWT가 탈취되면 만료 전까지 악용될 수 있으므로 access token은 보통 짧게 만료시킵니다. 필요한 경우 Refresh Token으로 재발급 흐름을 분리합니다."
+        "text": "JWT 기반 인증에서는 access token과 Refresh Token을 같은 만료 시간과 같은 보관 정책으로 다루는 것이 일반적입니다.",
+        "reason": "access token과 Refresh Token은 역할과 위험도가 다릅니다. access token은 API 요청 인증에 자주 쓰이므로 짧게 만료시키고, Refresh Token은 새 access token을 받는 용도라 더 오래 사용할 수 있지만 탈취 위험 때문에 저장과 회전 정책을 더 엄격하게 잡는 경우가 많습니다."
       },
       {
         "text": "JWT의 signature는 토큰 문자열 형식만 확인하므로 payload 변조 여부와는 관련이 적습니다.",
