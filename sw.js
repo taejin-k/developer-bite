@@ -1,13 +1,13 @@
-const CACHE_NAME = "interview-bite-v50";
+const CACHE_NAME = "interview-bite-v51";
 const APP_SHELL = [
   "/",
   "/index.html",
-  "/styles.css?v=20260728-auth-concepts-v4",
-  "/app.js?v=20260728-auth-concepts-v4",
+  "/styles.css?v=20260728-auth-concepts-v5",
+  "/app.js?v=20260728-auth-concepts-v5",
   "/manifest.webmanifest",
   "/icon.svg",
-  "/notion_technical_questions_final.txt?v=20260728-auth-concepts-v4",
-  "/quiz-bank-v2.json?v=20260728-auth-concepts-v4"
+  "/notion_technical_questions_final.txt?v=20260728-auth-concepts-v5",
+  "/quiz-bank-v2.json?v=20260728-auth-concepts-v5"
 ];
 
 self.addEventListener("install", (event) => {
