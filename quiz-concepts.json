@@ -2899,7 +2899,7 @@
         "reason": "SYN과 ACK는 TCP 연결과 수신 확인에 사용하는 플래그입니다. TLS 사용 여부와 관계없이 TCP 기반 HTTP 연결 수립에 사용됩니다."
       }
     ],
-    "sourceHash": "c87c5968a3f75e7411997233d6d592549dd05815e81f3e04da6974401ad4d47e",
+    "sourceHash": "a543fecc548bb59b1e5f4eac1dfd36678240d290efba25af779187a4b1bedb20",
     "reviewStatus": "approved",
     "qualityVersion": 2
   },
