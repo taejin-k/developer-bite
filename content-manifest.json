@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-08-10T13:21:31.370Z",
+  "approvedAt": "2026-08-10T13:23:19.083Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "도메인이란?": "47ca31ab47b7710fe1f48e90749d904e43ae1dfcb28c674e46cf67f7cf13046f",
@@ -28,7 +28,7 @@
     "3-Way Handshake / 4-Way Handshake란?": "a543fecc548bb59b1e5f4eac1dfd36678240d290efba25af779187a4b1bedb20",
     "대칭키와 비대칭키란?": "676bd2c045784f19a88c6061c29db6daa47d548bf00469fc5ddcc9aa48631870",
     "하이브리드 암호화란?": "7a4fb20bf2b7dc9cdf83e0c8cda311a18489a8fe70169417a2b9925a4a1abe88",
-    "HTTP Keep-Alive란?": "9ae1818e274812f5d00af84135fe3539f9eb35c2ec70559c25115511f41a5454",
+    "HTTP Keep-Alive란?": "6bcabb35bdcd92c4f9d50301364d0ce3680e13a0b2d43646fd6b374e0dbb01e0",
     "HTTP/2와 HTTP/3의 차이는?": "34d6c7771a28ee008aad6a89eb324289802d2613e18d229f49124c2ac2744bb6",
     "HTTP와 HTTPS의 차이란?": "c29aa11ae27ee84659e683abb739989b2d1f089f62393b9059ae84db84df7339",
     "SSL과 TLS란?": "2062f9286a725adafda3a5937f6be216909e4a0b5a9090912bffa383d4a0cd3f",
