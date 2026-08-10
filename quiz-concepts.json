@@ -1684,7 +1684,7 @@
   {
     "id": "keep-alive",
     "sourceTitle": "HTTP Keep-Alive란?",
-    "sourceHash": "f878c017bb894566aec82ac233480288224979f4d67c7cf4c86c92f2f5319d94",
+    "sourceHash": "9ae1818e274812f5d00af84135fe3539f9eb35c2ec70559c25115511f41a5454",
     "category": "network",
     "reviewStatus": "approved",
     "correctPrompt": "HTTP Keep-Alive에 대한 설명으로 가장 적절한 것은?",
