@@ -1600,7 +1600,7 @@
   {
     "id": "tcp",
     "sourceTitle": "TCP/UDP란?",
-    "sourceHash": "b48b741954043cd1a19b46f255f03d65270a00faf0e19e5390a38f46308ee211",
+    "sourceHash": "9cf88749256430fc827446f23014148cabda99e51535f2d5b5dba02d3753e889",
     "category": "network",
     "reviewStatus": "approved",
     "correctPrompt": "TCP에 대한 설명으로 가장 적절한 것은?",
@@ -1642,7 +1642,7 @@
   {
     "id": "udp",
     "sourceTitle": "TCP/UDP란?",
-    "sourceHash": "b48b741954043cd1a19b46f255f03d65270a00faf0e19e5390a38f46308ee211",
+    "sourceHash": "9cf88749256430fc827446f23014148cabda99e51535f2d5b5dba02d3753e889",
     "category": "network",
     "reviewStatus": "approved",
     "correctPrompt": "UDP에 대한 설명으로 가장 적절한 것은?",
