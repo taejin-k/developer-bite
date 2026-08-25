@@ -416,7 +416,7 @@
   {
     "id": "jwt-auth",
     "sourceTitle": "JWT 기반 인증 방식이란?",
-    "sourceHash": "d349eb7ae9f1a0d02e959d3d7ddabf723037606db084350657e61e83b2245d2c",
+    "sourceHash": "22893725e60a54d477346e482f82b4ad4d41c891b72b26805909733a366f22d9",
     "category": "security",
     "reviewStatus": "approved",
     "correctPrompt": "JWT 기반 인증 방식에 대한 설명으로 가장 적절한 것은?",

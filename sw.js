@@ -1,13 +1,13 @@
-const CACHE_NAME = "interview-bite-v57";
+const CACHE_NAME = "interview-bite-v58";
 const APP_SHELL = [
   "/",
   "/index.html",
-  "/styles.css?v=20260810-keep-alive-cleanup-v1",
-  "/app.js?v=20260810-keep-alive-cleanup-v1",
+  "/styles.css?v=20260826-jwt-detail-v1",
+  "/app.js?v=20260826-jwt-detail-v1",
   "/manifest.webmanifest",
   "/icon.svg",
-  "/notion_technical_questions_final.txt?v=20260810-keep-alive-cleanup-v1",
-  "/quiz-bank-v2.json?v=20260810-keep-alive-cleanup-v1"
+  "/notion_technical_questions_final.txt?v=20260826-jwt-detail-v1",
+  "/quiz-bank-v2.json?v=20260826-jwt-detail-v1"
 ];
 
 self.addEventListener("install", (event) => {
