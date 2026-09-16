@@ -1,12 +1,12 @@
-const CACHE_NAME = "interview-bite-v59";
+const CACHE_NAME = "interview-bite-v60";
 const APP_SHELL = [
   "/",
   "/index.html",
   "/styles.css?v=20260826-jwt-detail-v1",
-  "/app.js?v=20260916-hybrid-crypto-v1",
+  "/app.js?v=20260916-asymmetric-key-v2",
   "/manifest.webmanifest",
   "/icon.svg",
-  "/notion_technical_questions_final.txt?v=20260916-hybrid-crypto-v1",
+  "/notion_technical_questions_final.txt?v=20260916-asymmetric-key-v2",
   "/quiz-bank-v2.json?v=20260916-hybrid-crypto-v1"
 ];
 
