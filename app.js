@@ -1,5 +1,5 @@
-const DATA_URL = "/notion_technical_questions_final.txt?v=20260826-jwt-detail-v1";
-const QUIZ_BANK_URL = "/quiz-bank-v2.json?v=20260826-jwt-detail-v1";
+const DATA_URL = "/notion_technical_questions_final.txt?v=20260916-hybrid-crypto-v1";
+const QUIZ_BANK_URL = "/quiz-bank-v2.json?v=20260916-hybrid-crypto-v1";
 const STORAGE_KEY = "interview-bite-state-v1";
 const SYNC_ID_KEY = "interview-bite-sync-id-v1";
 const SYNC_CLIENT_ID_KEY = "interview-bite-sync-client-id-v1";
@@ -1217,7 +1217,8 @@ function bindEvents() {
   });
   $("#sync-save").addEventListener("click", async () => {
     saveSyncId($("#sync-id-input").value);
-    if (state.sync.id) await syncNow();
+    if (state.sync.id) await pushSyncState();
+    else updateSyncStatus("동기화 ID를 입력하세요.", "error");
   });
   $("#sync-now").addEventListener("click", async () => {
     if (!state.sync.id) saveSyncId($("#sync-id-input").value);
