@@ -1,11 +1,10 @@
-const DATA_URL = "/notion_technical_questions_final.txt?v=20260916-asymmetric-key-v3";
-const QUIZ_BANK_URL = "/quiz-bank-v2.json?v=20260916-hybrid-crypto-v1";
+const DATA_URL = "/notion_technical_questions_final.txt?v=20260921-study-only-v1";
 const STORAGE_KEY = "interview-bite-state-v1";
 const SYNC_ID_KEY = "interview-bite-sync-id-v1";
 const SYNC_CLIENT_ID_KEY = "interview-bite-sync-client-id-v1";
 const SYNC_DEBOUNCE_MS = 800;
 const SYNC_POLL_MS = 60_000;
-const SYNC_COLLECTIONS = ["completed", "bookmarks", "wrong"];
+const SYNC_COLLECTIONS = ["completed", "bookmarks"];
 
 const categories = [
   {
@@ -222,18 +221,14 @@ const categories = [
 
 const state = {
   questions: [],
-  quizBank: [],
-  view: "study",
   category: "all",
   search: "",
   bookmarkOnly: false,
   completed: new Set(),
   bookmarks: new Set(),
-  wrong: new Set(),
   records: {
     completed: {},
     bookmarks: {},
-    wrong: {},
   },
   clientId: "",
   sync: {
@@ -244,19 +239,7 @@ const state = {
     timer: null,
     poller: null,
   },
-  quizType: "multiple",
-  quizCount: 20,
-  quizCategory: "all",
-  quizItems: [],
-  quizIndex: 0,
-  quizScore: 0,
-  quizAnswered: false,
   deferredInstallPrompt: null,
-  scrollPositions: {
-    study: 0,
-    quiz: 0,
-    review: 0,
-  },
 };
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -333,7 +316,6 @@ function parseQuestions(raw) {
         number: index + 1,
         title: item.title,
         answer,
-        shortAnswer: firstSentence(answer),
         category,
       };
     });
@@ -359,12 +341,6 @@ function detectCategory(title, answer) {
     }
   }
   return bestScore ? best.id : "tooling";
-}
-
-function firstSentence(answer) {
-  const clean = answer.replace(/\n/g, " ").trim();
-  const match = clean.match(/^(.{20,180}?[.!?])(?:\s|$)/);
-  return match ? match[1] : `${clean.slice(0, 150)}${clean.length > 150 ? "…" : ""}`;
 }
 
 function renderParagraphs(container, text) {
@@ -414,7 +390,6 @@ function sanitizeRecords(records) {
   const safeRecords = {
     completed: {},
     bookmarks: {},
-    wrong: {},
   };
 
   for (const collection of SYNC_COLLECTIONS) {
@@ -465,7 +440,7 @@ function loadState() {
       state.records = {
         completed: createRecordsFromIds(saved.completed, updatedAt),
         bookmarks: createRecordsFromIds(saved.bookmarks, updatedAt),
-        wrong: createRecordsFromIds(saved.wrong, updatedAt),
+
       };
     }
     applyRecordsToSets();
@@ -516,7 +491,6 @@ function mergeRecords(remoteState) {
 
 function renderAllState() {
   renderStudy();
-  renderReview();
 }
 
 function formatSyncedAt(value) {
@@ -679,43 +653,6 @@ function renderCategoryControls() {
     ),
   );
 
-  const options = $("#quiz-category-options");
-  if (!options.children.length) {
-    for (const item of items.filter(
-      (category) =>
-        category.id === "all" ||
-        state.questions.some((question) => question.category === category.id),
-    )) {
-      const option = document.createElement("button");
-      option.type = "button";
-      option.className = "select-option";
-      option.role = "option";
-      option.dataset.value = item.id;
-      option.textContent = item.label;
-      option.addEventListener("click", () => {
-        state.quizCategory = item.id;
-        updateQuizCategorySelect();
-        closeQuizCategorySelect();
-      });
-      options.append(option);
-    }
-  }
-  updateQuizCategorySelect();
-}
-
-function updateQuizCategorySelect() {
-  $("#quiz-category-value").textContent =
-    state.quizCategory === "all" ? "전체" : categoryLabel(state.quizCategory);
-  $$(".select-option", $("#quiz-category-options")).forEach((option) => {
-    const selected = option.dataset.value === state.quizCategory;
-    option.classList.toggle("is-selected", selected);
-    option.setAttribute("aria-selected", String(selected));
-  });
-}
-
-function closeQuizCategorySelect() {
-  $("#quiz-category-field").classList.remove("is-open");
-  $("#quiz-category-trigger").setAttribute("aria-expanded", "false");
 }
 
 function filteredQuestions() {
@@ -787,7 +724,6 @@ function createQuestionCard(question, index) {
     saveState();
     if (state.bookmarkOnly) renderStudy();
     else updateCardState(card, question.id);
-    renderReview();
   });
   return fragment;
 }
@@ -866,350 +802,7 @@ function updateProgress() {
   $("#total-count").textContent = total;
 }
 
-function shuffle(items) {
-  const result = [...items];
-  for (let index = result.length - 1; index > 0; index -= 1) {
-    const randomIndex = Math.floor(Math.random() * (index + 1));
-    [result[index], result[randomIndex]] = [result[randomIndex], result[index]];
-  }
-  return result;
-}
-
-function buildQuizItem(definition) {
-  return state.quizType === "multiple"
-    ? buildMultipleQuestion(definition)
-    : buildOxQuestion(definition);
-}
-
-function quizItemSignature(item) {
-  return [
-    item.prompt,
-    item.correct,
-    ...item.options.map(({ text }) => text).sort(),
-  ].join("\n");
-}
-
-function buildVariedQuizItems(pool, count) {
-  if (!pool.length) return [];
-
-  const targetCount = count === "all" ? pool.length : count;
-  const items = [];
-  const signatures = new Set();
-  let queue = [];
-  let attempts = 0;
-  const maxUniqueAttempts = Math.max(targetCount * 80, pool.length * 20);
-
-  while (items.length < targetCount && attempts < maxUniqueAttempts) {
-    if (!queue.length) queue = shuffle(pool);
-    const item = buildQuizItem(queue.pop());
-    const signature = quizItemSignature(item);
-    attempts += 1;
-    if (signatures.has(signature)) continue;
-    signatures.add(signature);
-    items.push(item);
-  }
-
-  // OX처럼 만들 수 있는 고유 조합 수가 요청 수보다 적을 때만 반복을 허용합니다.
-  while (items.length < targetCount) {
-    if (!queue.length) queue = shuffle(pool);
-    items.push(buildQuizItem(queue.pop()));
-  }
-  return items;
-}
-
-function buildQuiz() {
-  const pool = state.quizBank.filter(
-    (item) =>
-      state.quizCategory === "all" || item.category === state.quizCategory,
-  );
-  state.quizItems = buildVariedQuizItems(pool, state.quizCount);
-  state.quizIndex = 0;
-  state.quizScore = 0;
-  state.quizAnswered = false;
-}
-
-function findSourceQuestion(item) {
-  return (
-    state.questions.find((question) => question.title === item.sourceTitle) ?? {
-      id: `quiz-${item.id}`,
-      category: item.category,
-      title: item.sourceTitle,
-      answer: "",
-    }
-  );
-}
-
-function asQuizOption(option, isAnswer) {
-  return { ...option, isAnswer };
-}
-
-function buildMultipleQuestion(item) {
-  const answerPool =
-    item.kind === "correct" ? item.truths : item.misconceptions;
-  const otherPool =
-    item.kind === "correct" ? item.misconceptions : item.truths;
-  const answer = shuffle(answerPool)[0];
-  const options = shuffle([
-    asQuizOption(answer, true),
-    ...shuffle(otherPool).slice(0, 3).map((entry) => asQuizOption(entry, false)),
-  ]);
-
-  return {
-    definition: item,
-    source: findSourceQuestion(item),
-    kind: item.kind,
-    prompt: item.prompt,
-    correct: answer.text,
-    options,
-    selected: null,
-  };
-}
-
-function buildOxQuestion(item) {
-  const isTrue = Math.random() >= 0.5;
-  const statement = shuffle(
-    isTrue ? item.truths : item.misconceptions,
-  )[0];
-  const answer = isTrue ? "O" : "X";
-  return {
-    definition: item,
-    source: findSourceQuestion(item),
-    kind: "ox",
-    prompt: `${item.prompt.replace(/(?:가장 적절한|틀린) 것은\?$/, "다음 문장을 판단해보세요.")}\n\n“${statement.text}”`,
-    correct: answer,
-    options: [
-      { text: "O", reason: statement.reason, isAnswer: answer === "O" },
-      { text: "X", reason: statement.reason, isAnswer: answer === "X" },
-    ],
-    selected: null,
-  };
-}
-
-function quizOptionFeedback(item, option) {
-  if (option.isAnswer) {
-    return {
-      label: "정답입니다.",
-      reason: option.reason,
-    };
-  }
-  if (item.kind === "incorrect") {
-    return {
-      label: "이 설명은 맞습니다.",
-      reason: `${option.reason} 따라서 틀린 설명을 찾는 이 문제의 정답은 아닙니다.`,
-    };
-  }
-  if (item.kind === "correct") {
-    return {
-      label: "이 설명은 정확하지 않습니다.",
-      reason: option.reason,
-    };
-  }
-  return {
-    label:
-      item.correct === "O"
-        ? "제시된 문장은 맞습니다."
-        : "제시된 문장은 틀립니다.",
-    reason: option.reason,
-  };
-}
-
-function updateQuizScore() {
-  if (!state.quizItems.length) {
-    state.quizScore = 0;
-    return;
-  }
-  state.quizScore = Math.round(
-    (state.quizItems.filter(
-      (quizItem) => quizItem.selected === quizItem.correct,
-    ).length /
-      state.quizItems.length) *
-      100,
-  );
-}
-
-function renderQuizQuestion() {
-  const item = state.quizItems[state.quizIndex];
-  if (!item) return finishQuiz();
-  state.quizAnswered = item.selected !== null;
-
-  $("#quiz-progress-text").textContent =
-    `${state.quizIndex + 1} / ${state.quizItems.length}`;
-  $("#quiz-score").textContent = `${state.quizScore}점`;
-  $("#quiz-progress-bar").style.width =
-    `${((state.quizIndex + 1) / state.quizItems.length) * 100}%`;
-  $("#quiz-category-label").textContent = categoryLabel(item.source.category);
-  $("#quiz-question").textContent = item.prompt;
-  $("#previous-question").classList.toggle("is-hidden", state.quizIndex === 0);
-  $("#retry-question").classList.toggle("is-hidden", !state.quizAnswered);
-  $("#next-question").classList.toggle("is-hidden", !state.quizAnswered);
-  $("#next-question").textContent =
-    state.quizIndex === state.quizItems.length - 1 ? "결과 보기" : "다음 문제";
-  $("#quiz-explanation").classList.toggle("is-hidden", !state.quizAnswered);
-
-  const options = $("#quiz-options");
-  options.innerHTML = "";
-  item.options.forEach((option, index) => {
-    const button = document.createElement("button");
-    button.className = "quiz-option";
-    if (state.quizType === "multiple") {
-      const label = document.createElement("span");
-      label.className = "quiz-option-label";
-      label.textContent = `${String.fromCharCode(65 + index)}.`;
-      const text = document.createElement("span");
-      text.textContent = option.text;
-      button.append(label, text);
-    } else {
-      button.classList.add("is-ox");
-      button.textContent = option.text;
-    }
-    button.addEventListener("click", () => answerQuiz(button, option));
-    if (state.quizAnswered) {
-      button.disabled = true;
-      if (option.isAnswer) button.classList.add("is-correct");
-      if (option.text === item.selected && !option.isAnswer) {
-        button.classList.add("is-wrong");
-      }
-    }
-    options.append(button);
-  });
-
-  if (state.quizAnswered) {
-    const selectedOption = item.options.find(
-      (option) => option.text === item.selected,
-    );
-    const feedback = selectedOption
-      ? quizOptionFeedback(item, selectedOption)
-      : { label: "", reason: "" };
-    $("#quiz-result-label").textContent = feedback.label;
-    $("#quiz-selected-reason").textContent = feedback.reason;
-    renderParagraphs($("#quiz-answer-text"), item.source.answer);
-  }
-}
-
-function answerQuiz(button, option) {
-  if (state.quizAnswered) return;
-  state.quizAnswered = true;
-  const item = state.quizItems[state.quizIndex];
-  const correct = option.isAnswer;
-  item.selected = option.text;
-
-  if (!correct) {
-    setTrackedValue("wrong", item.source.id, true);
-  }
-  updateQuizScore();
-  saveState();
-
-  $$(".quiz-option").forEach((optionButton, index) => {
-    optionButton.disabled = true;
-    if (item.options[index].isAnswer) {
-      optionButton.classList.add("is-correct");
-    }
-  });
-  if (!correct) button.classList.add("is-wrong");
-
-  const feedback = quizOptionFeedback(item, option);
-  $("#quiz-result-label").textContent = feedback.label;
-  $("#quiz-selected-reason").textContent = feedback.reason;
-  renderParagraphs($("#quiz-answer-text"), item.source.answer);
-  $("#quiz-explanation").classList.remove("is-hidden");
-  $("#retry-question").classList.remove("is-hidden");
-  $("#next-question").classList.remove("is-hidden");
-  $("#quiz-score").textContent = `${state.quizScore}점`;
-}
-
-function retryCurrentQuestion() {
-  const current = state.quizItems[state.quizIndex];
-  if (!current?.definition) return;
-
-  state.quizItems[state.quizIndex] =
-    state.quizType === "multiple"
-      ? buildMultipleQuestion(current.definition)
-      : buildOxQuestion(current.definition);
-  updateQuizScore();
-  renderQuizQuestion();
-}
-
-function startQuiz() {
-  buildQuiz();
-  $("#quiz-setup").classList.add("is-hidden");
-  $("#quiz-finish").classList.add("is-hidden");
-  $("#quiz-stage").classList.remove("is-hidden");
-  $("#quiz-view").classList.add("is-running");
-  renderQuizQuestion();
-  window.scrollTo({ top: 0, behavior: "auto" });
-}
-
-function finishQuiz() {
-  $("#quiz-stage").classList.add("is-hidden");
-  $("#quiz-finish").classList.remove("is-hidden");
-  const finalScore = Math.min(100, state.quizScore);
-  $("#final-score").textContent = finalScore;
-  const wrongCount = state.quizItems.length - Math.round(
-    (finalScore / 100) * state.quizItems.length,
-  );
-  $("#finish-title").textContent =
-    finalScore >= 80
-      ? "좋은 흐름입니다."
-      : finalScore >= 50
-        ? "조금만 더 다듬어볼까요?"
-        : "지금부터 기억에 남기면 됩니다.";
-  $("#finish-description").textContent =
-    wrongCount > 0
-      ? `${state.quizItems.length}문제 중 ${wrongCount}문제를 오답노트에 추가했습니다.`
-      : "모든 문제를 맞혔습니다. 다른 카테고리에도 도전해보세요.";
-  renderReview();
-}
-
-function quitQuiz() {
-  $("#quiz-stage").classList.add("is-hidden");
-  $("#quiz-finish").classList.add("is-hidden");
-  $("#quiz-setup").classList.remove("is-hidden");
-  $("#quiz-view").classList.remove("is-running");
-}
-
-function renderReview() {
-  const ids = new Set([...state.wrong, ...state.bookmarks]);
-  const questions = state.questions.filter((question) => ids.has(question.id));
-  const list = $("#review-list");
-  const fragment = document.createDocumentFragment();
-  questions.forEach((question, index) =>
-    fragment.append(createQuestionCard(question, index)),
-  );
-  list.replaceChildren(fragment);
-  $("#wrong-count").textContent = state.wrong.size;
-  $("#bookmark-count").textContent = state.bookmarks.size;
-  $("#review-empty").classList.toggle("is-hidden", questions.length > 0);
-}
-
-function switchView(view) {
-  if (view === state.view) return;
-
-  if (state.view === "study") state.scrollPositions.study = window.scrollY;
-  state.view = view;
-  $$(".view").forEach((element) =>
-    element.classList.toggle("is-active", element.id === `${view}-view`),
-  );
-  $$("[data-view]").forEach((button) =>
-    button.classList.toggle("is-active", button.dataset.view === view),
-  );
-  if (view === "review") renderReview();
-  requestAnimationFrame(() => {
-    window.scrollTo({
-      top: view === "study" ? state.scrollPositions.study : 0,
-      behavior: "instant",
-    });
-  });
-}
-
 function bindEvents() {
-  $$("[data-view]").forEach((button) =>
-    button.addEventListener("click", () => switchView(button.dataset.view)),
-  );
-  $$("[data-view-link]").forEach((button) =>
-    button.addEventListener("click", () =>
-      switchView(button.dataset.viewLink),
-    ),
-  );
   $("#sync-open").addEventListener("click", openSyncModal);
   $("#sync-close").addEventListener("click", closeSyncModal);
   $("#sync-modal").addEventListener("click", (event) => {
@@ -1254,65 +847,6 @@ function bindEvents() {
     saveState();
     renderStudy();
   });
-  $$("[data-quiz-type]").forEach((button) =>
-    button.addEventListener("click", () => {
-      state.quizType = button.dataset.quizType;
-      $$("[data-quiz-type]").forEach((item) =>
-        item.classList.toggle("is-active", item === button),
-      );
-    }),
-  );
-  $$("[data-count]").forEach((button) =>
-    button.addEventListener("click", () => {
-      state.quizCount =
-        button.dataset.count === "all"
-          ? "all"
-          : Number(button.dataset.count);
-      $$("[data-count]").forEach((item) =>
-        item.classList.toggle("is-active", item === button),
-      );
-    }),
-  );
-  $("#quiz-category-trigger").addEventListener("click", () => {
-    const field = $("#quiz-category-field");
-    const open = !field.classList.contains("is-open");
-    field.classList.toggle("is-open", open);
-    $("#quiz-category-trigger").setAttribute("aria-expanded", String(open));
-  });
-  document.addEventListener("click", (event) => {
-    if (!event.target.closest("#quiz-category-field")) {
-      closeQuizCategorySelect();
-    }
-  });
-  $("#quiz-category-field").addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeQuizCategorySelect();
-      $("#quiz-category-trigger").focus();
-    }
-  });
-  $("#start-quiz").addEventListener("click", startQuiz);
-  $("#next-question").addEventListener("click", () => {
-    if (state.quizIndex === state.quizItems.length - 1) {
-      finishQuiz();
-      return;
-    }
-    state.quizIndex += 1;
-    renderQuizQuestion();
-  });
-  $("#previous-question").addEventListener("click", () => {
-    if (state.quizIndex === 0) return;
-    state.quizIndex -= 1;
-    renderQuizQuestion();
-  });
-  $("#retry-question").addEventListener("click", retryCurrentQuestion);
-  $("#quit-quiz").addEventListener("click", quitQuiz);
-  $("#retry-quiz").addEventListener("click", startQuiz);
-  $("#clear-review").addEventListener("click", () => {
-    [...state.wrong].forEach((id) => setTrackedValue("wrong", id, false));
-    saveState();
-    renderReview();
-  });
-
   window.addEventListener("beforeinstallprompt", (event) => {
     event.preventDefault();
     state.deferredInstallPrompt = event;
@@ -1353,20 +887,12 @@ async function init() {
   loadState();
   bindEvents();
   try {
-    const [questionResponse, quizBankResponse] = await Promise.all([
-      fetch(DATA_URL),
-      fetch(QUIZ_BANK_URL),
-    ]);
+    const questionResponse = await fetch(DATA_URL);
     if (!questionResponse.ok) {
       throw new Error("질문 데이터를 불러오지 못했습니다.");
     }
-    if (!quizBankResponse.ok) {
-      throw new Error("퀴즈 선택지 데이터를 불러오지 못했습니다.");
-    }
     state.questions = parseQuestions(await questionResponse.text());
-    state.quizBank = await quizBankResponse.json();
     renderStudy();
-    renderReview();
     syncNow({ silent: true });
   } catch (error) {
     $("#question-list").innerHTML = `

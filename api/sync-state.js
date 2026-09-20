@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 
 const MAX_SYNC_ID_LENGTH = 80;
 const MAX_BODY_SIZE = 256_000;
-const COLLECTIONS = ["completed", "bookmarks", "wrong"];
+const COLLECTIONS = ["completed", "bookmarks"];
 
 function getRedisConfig() {
   return {
@@ -89,7 +89,6 @@ function sanitizeState(input) {
     records: {
       completed: {},
       bookmarks: {},
-      wrong: {},
     },
   };
 

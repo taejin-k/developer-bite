@@ -16,7 +16,6 @@ const files = [
   "index.html",
   "manifest.webmanifest",
   "notion_technical_questions_final.txt",
-  "quiz-bank-v2.json",
   "styles.css",
   "sw.js",
 ];

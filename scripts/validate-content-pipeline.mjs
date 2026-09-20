@@ -1,6 +1,5 @@
 import { readFile } from "node:fs/promises";
 import {
-  hashQuestion,
   parseQuestions,
   questionManifest,
 } from "./content-utils.mjs";
@@ -14,7 +13,6 @@ const source = await readFile(
 const questions = parseQuestions(source);
 const currentManifest = questionManifest(questions);
 const approvedManifest = (await readJson("../content-manifest.json")).questions;
-const concepts = await readJson("../quiz-concepts.json");
 const errors = [];
 const terminologyChecks = [
   ["Synthetic Event란?", "합성 이벤트란?"],
@@ -41,10 +39,6 @@ for (const [invalid, canonical] of terminologyChecks) {
 
 const currentTitles = new Set(Object.keys(currentManifest));
 const approvedTitles = new Set(Object.keys(approvedManifest));
-const questionByTitle = new Map(
-  questions.map((question) => [question.title, question]),
-);
-
 for (const title of currentTitles) {
   if (!approvedTitles.has(title)) {
     errors.push(`승인되지 않은 새 학습 항목: ${title}`);
@@ -58,35 +52,14 @@ for (const title of approvedTitles) {
   }
 }
 
-const ids = new Set();
-for (const concept of concepts) {
-  if (ids.has(concept.id)) errors.push(`중복 퀴즈 개념 ID: ${concept.id}`);
-  ids.add(concept.id);
-  if (concept.reviewStatus !== "approved") {
-    errors.push(`검수되지 않은 퀴즈 개념: ${concept.id}`);
-  }
-  const sourceQuestion = questionByTitle.get(concept.sourceTitle);
-  if (!sourceQuestion) {
-    errors.push(
-      `${concept.id}: 학습 원본을 찾을 수 없음 (${concept.sourceTitle})`,
-    );
-    continue;
-  }
-  if (concept.sourceHash !== hashQuestion(sourceQuestion)) {
-    errors.push(
-      `${concept.id}: 학습 내용이 바뀌어 퀴즈 재검수가 필요함 (${concept.sourceTitle})`,
-    );
-  }
-}
-
 if (errors.length) {
   console.error(errors.join("\n"));
   console.error(
-    "\nNotion 변경 후에는 퀴즈를 검수하고 `npm run content:approve`를 실행해야 합니다.",
+    "\n학습 변경 후에는 내용을 검수하고 `npm run content:approve`를 실행해야 합니다.",
   );
   process.exit(1);
 }
 
 console.log(
-  `Validated content pipeline: ${questions.length} approved learning entries, ${concepts.length} approved quiz concepts.`,
+  `Validated content pipeline: ${questions.length} approved learning entries.`,
 );
