@@ -1,4 +1,4 @@
-import { createResumeView } from "./resume.js?v=20260928-resume-v1";
+import { createResumeView } from "./resume.js?v=20260928-resume-v2";
 
 const DATA_URL = "/notion_technical_questions_final.txt?v=20260921-study-only-v1";
 let resumeView;

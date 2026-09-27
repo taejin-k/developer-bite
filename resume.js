@@ -1,11 +1,9 @@
-const CONTENT_URL = "/resume-content.json?v=20260928-resume-v1";
+const CONTENT_URL = "/resume-content.json?v=20260928-resume-v2";
 const $ = (selector, root = document) => root.querySelector(selector);
 
 export function createResumeView({ state, setTrackedValue, toggleTrackedValue, saveState, renderParagraphs, updateCardState }) {
   let content = null;
   let loading = false;
-  let group = "all";
-  let kind = "all";
   let search = "";
   let bookmarkOnly = false;
   const openQuestions = new Set();
@@ -18,9 +16,7 @@ export function createResumeView({ state, setTrackedValue, toggleTrackedValue, s
     return content.questions.filter((q) => {
       const project = content.groups.find((g) => g.id === q.group);
       const source = content.statements.find((s) => s.id === q.source);
-      return (group === "all" || q.group === group) &&
-        (kind === "all" || q.kind === kind) &&
-        (!bookmarkOnly || state.bookmarks.has(q.id)) &&
+      return (!bookmarkOnly || state.bookmarks.has(q.id)) &&
         (!query || [q.title, q.answer, q.note || "", project.label, project.company, source.text].join(" ").toLocaleLowerCase().includes(query));
     });
   }
@@ -36,7 +32,7 @@ export function createResumeView({ state, setTrackedValue, toggleTrackedValue, s
     element.dataset.id = q.id;
     element.classList.toggle("is-open", openQuestions.has(q.id));
     $(".question-index", fragment).textContent = String(index + 1).padStart(2, "0");
-    $(".question-category", fragment).textContent = `${project.company} · ${project.label} · ${content.kinds[q.kind]}`;
+    $(".question-category", fragment).textContent = `${project.company} · ${project.label}`;
     $(".question-title", fragment).textContent = q.title;
     panel.id = `answer-${q.id}`;
     panel.inert = !openQuestions.has(q.id);
@@ -125,15 +121,11 @@ export function createResumeView({ state, setTrackedValue, toggleTrackedValue, s
     const fragment = document.createDocumentFragment();
     questions.forEach((q, index) => fragment.append(card(q, index)));
     list.replaceChildren(fragment);
-    el("#resume-result-title").textContent = `${group === "all" ? "전체 질문" : content.groups.find((g) => g.id === group).label}${bookmarkOnly ? " 북마크" : ""}`;
+    el("#resume-result-title").textContent = bookmarkOnly ? "북마크 질문" : "전체 질문";
     el("#resume-result-count").textContent = `${questions.length}개 질문 · 전체 ${content.questions.length}개`;
     el("#resume-empty").classList.toggle("is-hidden", questions.length > 0);
     el("#resume-bookmark-filter").classList.toggle("is-active", bookmarkOnly);
     el("#resume-bookmark-filter").setAttribute("aria-pressed", String(bookmarkOnly));
-    for (const button of el("#resume-kinds").children) {
-      button.classList.toggle("is-active", button.dataset.kind === kind);
-      button.setAttribute("aria-pressed", String(button.dataset.kind === kind));
-    }
     progress();
   }
 
@@ -148,26 +140,6 @@ export function createResumeView({ state, setTrackedValue, toggleTrackedValue, s
       const data = await response.json();
       if (!Array.isArray(data.questions) || !data.questions.length) throw new Error("invalid resume content");
       content = data;
-      const select = el("#resume-project");
-      select.replaceChildren(new Option("전체 프로젝트", "all"));
-      for (const company of new Set(content.groups.map((g) => g.company))) {
-        const optgroup = document.createElement("optgroup");
-        optgroup.label = company;
-        for (const g of content.groups.filter((g) => g.company === company)) {
-          optgroup.append(new Option(`${g.label} (${content.questions.filter((q) => q.group === g.id).length})`, g.id));
-        }
-        select.append(optgroup);
-      }
-      el("#resume-kinds").replaceChildren();
-      for (const [id, label] of Object.entries({ all: "전체", ...content.kinds })) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "category-tab";
-        button.dataset.kind = id;
-        button.textContent = label;
-        button.addEventListener("click", () => { kind = id; render(); });
-        el("#resume-kinds").append(button);
-      }
       render();
     } catch {
       el("#resume-question-list").classList.remove("is-loading");
@@ -178,7 +150,6 @@ export function createResumeView({ state, setTrackedValue, toggleTrackedValue, s
   }
 
   el("#resume-search").addEventListener("input", (event) => { search = event.target.value.trim(); render(); });
-  el("#resume-project").addEventListener("change", (event) => { group = event.target.value; render(); });
   el("#resume-bookmark-filter").addEventListener("click", () => { bookmarkOnly = !bookmarkOnly; render(); });
   el("#resume-bulk-complete").addEventListener("click", () => {
     const questions = filtered();
