@@ -5,7 +5,10 @@
   "scripts": {
     "content:validate": "node scripts/validate-content-pipeline.mjs",
     "content:approve": "node scripts/approve-content.mjs",
-    "quality": "npm run content:validate",
+    "resume:build": "node scripts/build-resume-content.mjs",
+    "resume:validate": "node scripts/validate-resume-content.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "quality": "npm run content:validate && npm run resume:validate && npm test",
     "build": "node scripts/build-site.mjs"
   }
 }

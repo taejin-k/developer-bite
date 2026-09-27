@@ -1,5 +1,6 @@
 import { cp, mkdir, rm } from "node:fs/promises";
 import { spawnSync } from "node:child_process";
+import "./build-resume-content.mjs";
 
 const quality = spawnSync("npm", ["run", "quality"], {
   cwd: new URL("..", import.meta.url),
@@ -12,6 +13,8 @@ const root = new URL("..", import.meta.url);
 const dist = new URL("../dist/", import.meta.url);
 const files = [
   "app.js",
+  "resume.js",
+  "resume-content.json",
   "icon.svg",
   "index.html",
   "manifest.webmanifest",

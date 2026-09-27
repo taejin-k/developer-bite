@@ -1,9 +1,11 @@
-const CACHE_NAME = "interview-bite-v62";
+const CACHE_NAME = "interview-bite-v63";
 const APP_SHELL = [
   "/",
   "/index.html",
-  "/styles.css?v=20260921-study-only-v1",
-  "/app.js?v=20260921-study-only-v1",
+  "/styles.css?v=20260928-resume-v1",
+  "/app.js?v=20260928-resume-v1",
+  "/resume.js?v=20260928-resume-v1",
+  "/resume-content.json?v=20260928-resume-v1",
   "/manifest.webmanifest",
   "/icon.svg",
   "/notion_technical_questions_final.txt?v=20260921-study-only-v1",

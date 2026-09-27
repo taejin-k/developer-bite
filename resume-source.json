@@ -1,0 +1,276 @@
+{
+  "fileKey": "K9DPGRsoERfy17REOni3nf",
+  "retrievedAt": "2026-09-28",
+  "pages": [
+    {
+      "id": "104:35",
+      "name": "Page 1",
+      "texts": [
+        {
+          "id": "104:38",
+          "text": "김태진"
+        },
+        {
+          "id": "332:2",
+          "text": "사용자의 경험과 만족도를 최우선에 두는 프론트엔드 개발자"
+        },
+        {
+          "id": "2905:5",
+          "text": "Contact"
+        },
+        {
+          "id": "2906:22",
+          "text": "About Me"
+        },
+        {
+          "id": "2905:6",
+          "text": "어드민 및 고객 서비스 웹 구축, 크로스 플랫폼 앱 개발, 디자인 시스템 개발 등 다양한 경험이 있습니다.\n프론트엔드뿐 아니라 백엔드 개발에도 참여하며, 서비스 전반에 대한 이해를 넓히고 있습니다.\n반복적인 작업을 줄이고 프로세스 자동화를 추구합니다. 코드 자동 생성 도구들에 관심을 가지고 있습니다.\n프론트엔드 팀을 리딩하며 코드 컨벤션 정의, 일정 수립, 업무 분배, 기술 교육을 담당한 경험이 있습니다.\nFOUC, 레이아웃 시프트 등 플리커링 현상을 최소화하는 UI/UX 최적화에 관심이 많습니다.\n작업 효율을 높일 수 있는 배려 있는 커뮤니케이션을 중시합니다. 기분이 태도가 되지 않으려 노력합니다."
+        },
+        {
+          "id": "2904:10",
+          "text": "Skills"
+        },
+        {
+          "id": "2904:11",
+          "text": "React, NextJS, React-Native, JavaScript, TypeScript, JQuery, Flask\nTailwindCSS, Vanila-Extract, Emotion, Styled-Components, CSS Module, Ant Design, Flowbite\nTanStack Query, Zustand, Redux, Redux-toolkit, Recoil\nZod, React Hook Form, OpenAPI-TS, MSW, FakerJS, Kubb\nJira, Confluence, Notion, Slack, Figma\nKotlin, Spring Boot, MySQL, Docker"
+        }
+      ]
+    },
+    {
+      "id": "3106:32",
+      "name": "Page 2",
+      "texts": [
+        {
+          "id": "3131:2",
+          "text": "Work Experience"
+        },
+        {
+          "id": "3131:5",
+          "text": "2024.08 - 현재"
+        },
+        {
+          "id": "760:28",
+          "text": "(주)퓨쳐위즈\n두나무의 사내 업무 시스템과 서비스 운영 백오피스, 고객 대상 웹 서비스를 개발하는 IT 솔루션 기업"
+        },
+        {
+          "id": "760:29",
+          "text": "주요업무\n두나무의 사내 업무 시스템과 서비스 운영 백오피스, 고객 대상 웹 서비스 개발\nVue 기반 서비스를 NextJS로 점진적으로 전환하며, 모듈화 및 성능 개선을 병행\n신규 페이지 개발 세팅 시간 단축을 위한 팀 공통 Frontend Boilerplate 설계 및 개발\n두나무 현업팀과 커뮤니케이션을 통해 일정 조율 및 컨텐츠 수급"
+        },
+        {
+          "id": "3106:41",
+          "text": "업클래스 올바른 금융 상식과 디지털 금융 역량 강화를 위한 두나무의 ESG 교육 프로그램 웹 서비스\nNextJS, Typescript, TailwindCSS, TanStack Query, Zustand"
+        },
+        {
+          "id": "3106:42",
+          "text": "UI 전반을 주도적으로 개발하고, 누적 약 50,000명이 참여한 3회의 이벤트를 운영했습니다.\nNext.js SSR과 TanStack Query의 Prefetching·Hydration을 결합해 첫 화면에 로딩 UI 없이 콘텐츠를 표시하고, 레이아웃 시프트를 최소화했습니다.\n서버사이드 Response를 단일 진실 공급원으로 정의하고, layout.tsx prefetch와 page.tsx 데이터 소비 구조를 설계했습니다.\n데이터 변경 후 revalidatePath로 해당 경로를 재검증하고, 서버에서 재조회한 데이터를 TanStack Query에 하이드레이션하여 화면에 반영하는 갱신 흐름을 설계했습니다.\nReact Query Mutation을 감싸는 공통 Wrapper Hook을 개발하여 연속 클릭으로 인한 중복 API 호출을 일괄적으로 방지했습니다.\n개발 환경에서 확인이 어려운 서버 사이드 API 호출을 가시화하기 위해, 개발 환경 전용 API 로그 시각화 툴을 구현하여 백엔드 개발자와의 디버깅 효율을 향상시켰습니다."
+        },
+        {
+          "id": "3136:61",
+          "text": "업클래스 / 업클래스 주니어 백오피스 두나무의 디지털 자산 교육 프로그램 업클래스와 업클래스 주니어의 관리를 지원하는 백오피스\nNextJS, Typescript, TailwindCSS, TanStack Query, Zustand"
+        },
+        {
+          "id": "3136:62",
+          "text": "WebSocket 기반 세션 관리 로직을 구현하여 중복 로그인 방지 기능을 개발했습니다.\n사용자 입력값에 sanitize-html을 적용하여 스크립트 삽입(XSS) 보안 처리를 구현했습니다.\nServer Component에서 cookies() 기반 인증 쿠키를 API 요청에 수동 주입하고, Middleware와 Axios Interceptor의 역할을 분리해 쿠키 기반 인증 흐름을 표준화했습니다.\nBaseAPI 클래스를 도입해 서버/클라이언트 실행 환경에 따라 Axios 인스턴스를 자동 선택하고, HTTP 메서드 호출 패턴을 표준화했습니다.\n프록시·로컬 HTTPS 인증서·hosts 설정으로 도메인 환경을 구성하고, 개발 중 발생하던 CORS 및 Secure 쿠키 문제를 해결하여 운영 환경의 쿠키 기반 인증 흐름을 검증할 수 있도록 했습니다.\nOpenAPI 스키마를 기반으로 openapi-typescript + Codegen 스크립트를 구성하여 TypeScript 타입, API 래퍼, TanStack Query 훅을 자동 생성하는 개발 환경을 구축했습니다."
+        }
+      ]
+    },
+    {
+      "id": "104:8",
+      "name": "Page 3",
+      "texts": [
+        {
+          "id": "3106:49",
+          "text": "두나무 전사 통합 그룹웨어 두나무 전사 조직의 근태, 결재, 인사, 커뮤니케이션을 지원하는 통합 그룹웨어 백오피스\nNextJS, Vue, Typescript, Styled-Components, TanStack Query, Zustand"
+        },
+        {
+          "id": "3106:50",
+          "text": "Module Federation으로 기존 Vue 앱을 Next.js에 통합하고, Catch-all Segment와 개별 페이지의 매칭 우선순위를 활용하여 서비스 중단 없이 페이지 단위로 점진 이전했습니다.\n페이지 및 기능별 권한을 서버사이드에서 사전 처리하여, 클라이언트에서 불필요한 깜빡임이나 화면 전환 없이 즉시 접근 제어 UI를 제공했습니다."
+        },
+        {
+          "id": "3123:30",
+          "text": "두나무 채용 시스템 두나무와 자회사들의 맞춤 채용 관리 시스템으로, 빠르고 손쉬운 채용을 지원하는 백오피스\nNextJS, Typescript, Vanila-Extract, TanStack Query, Zustand"
+        },
+        {
+          "id": "3123:31",
+          "text": "프로젝트 초기 설계 단계에 참여하여 컨벤션 정의, 기술 선정, 브랜치 전략을 수립했습니다.\nopenapi-typescript를 활용해 API의 Request/Response 타입을 자동 생성했습니다.\nKubb, MSW, Faker.js를 사용해 Mock API 및 더미 데이터 자동 생성 환경을 구성했습니다.\nTanStack Query의 select에 데이터 변환 계층을 두어, 선행 개발한 프론트엔드 모델과 API 응답 간의 속성명 차이를 해소하고 기존 UI와 로직의 변경을 최소화했습니다."
+        },
+        {
+          "id": "3164:4",
+          "text": "Wizard 디자인 시스템 웹과 모바일 앱에서 일관된 UI와 개발 경험을 제공하기 위한 React·React Native 기반 디자인 시스템\nReact, React-Native, TypeScript, Tailwind CSS, NativeWind, Storybook"
+        },
+        {
+          "id": "3164:5",
+          "text": "React 기반 웹 컴포넌트를 개발하고 React-Native로 확장하여, 웹과 모바일에서 일관된 디자인 토큰과 약 30개의 컴포넌트를 사용할 수 있도록 설계했습니다.\nTailwind CSS와 NativeWind를 기반으로 색상·크기·상태별 스타일을 표준화했습니다.\nStorybook에 사용 예제와 API 문서를 구성하고, 네이티브 컴포넌트의 TypeScript 타입과 예제 소스에서 문서를 자동 생성하여 유지보수성을 높였습니다.\n웹·모바일 라이브러리를 각각 패키지화하고, 컴포넌트 테스트와 배포 패키지 검증 환경을 구성하여 프로젝트 간 재사용과 안정적인 도입을 지원했습니다."
+        }
+      ]
+    },
+    {
+      "id": "3086:2",
+      "name": "Page 4",
+      "texts": [
+        {
+          "id": "3086:53",
+          "text": "2023.07 - 2024.07"
+        },
+        {
+          "id": "3086:55",
+          "text": "(주)호두랩스\n게임 데이터와 Open AI, 음성인식 및 분석 기술을 활용하여 영어 학습 서비스를 제공하는 에듀테크 스타트업"
+        },
+        {
+          "id": "3086:56",
+          "text": "주요업무\n자사 신규 어드민 및 고객 서비스 개발, 기존 서비스의 레거시 코드 개선\n디자인 시스템 구축 및 신규 컴포넌트 개발로 휴먼 에러 방지와 개발 속도 개선\n모바일, 태블릿을 고려한 반응형 웹 개발, Open AI를 이용한 영어 학습 게이미피케이션 앱 개발\n프론트엔드 팀을 리딩하며 컨벤션 정의, 일정 수립, 업무 분배, 기술 선택 및 교육 담당\n다국어 개발을 통해 글로벌 사용자 대응력을 높여 해외 시장 진출 지원"
+        },
+        {
+          "id": "3086:11",
+          "text": "TALK TREE Open AI와 학습자가 영어로 대화하며 학습을 진행하는 영어 학습 게이미피케이션 앱\nReact-Native, Typescript, Styled-Components, TanStack Query, Zustand"
+        },
+        {
+          "id": "3086:12",
+          "text": "UI 전반을 주도적으로 개발하였으며, 약 3,000명 규모의 CBT를 성공적으로 런칭했습니다.\nFirebase와 TanStack Query를 결합하여 핸들링 코드를 최소화하고, 효율성을 개선했습니다.\n게임성 향상을 위해 Lottie 사용을 제안하고, 디자이너와 협업, 외주 계약을 진행했습니다.\niOS, Android, 태블릿 기기까지 대응하는 크로스 플랫폼 애플리케이션을 개발하여 다양한 환경에서도 일관된 사용자 경험을 제공했습니다."
+        },
+        {
+          "id": "3086:15",
+          "text": "호두 클래스 학습자 간의 원격 영어 수업을 지원하는 Agora SDK 기반 화상 수업 서비스\nReact, Typescript, CSS Module, TanStack Query, ContextAPI, Agora SDK"
+        },
+        {
+          "id": "3086:16",
+          "text": "Agora RTM으로 교재 삽입 기능과 학생–선생님 간 이벤트 동기화를 구현했습니다.\npostMessage API로 다른 도메인 간 이벤트를 안전하게 주고받는 인터페이스를 구현했습니다.\nSDK 빌드를 자동화하고 CI/CD 과정을 통해 배포 과정을 개선했습니다. 생성된 SDK는 S3 버킷에 업로드되고 CDN 주소로 참조되도록 설정했습니다.\n전역 상태 관리를 최소화하고, 불필요한 상태 및 사이드 이펙트를 제거하여 렌더링 성능을 최적화하고 코드 추적성을 높였습니다."
+        },
+        {
+          "id": "3086:19",
+          "text": "베티아 잉글리시 LMS 베티아 잉글리시 서비스를 학교와 학원에서 효율적으로 관리할 수 있도록 지원하는 LMS\nNextJS, Typescript, Styled-Components, React Query, Redux-toolkit"
+        },
+        {
+          "id": "3086:20",
+          "text": "React Spreadsheet를 활용해 엑셀 업로드 및 웹 기반 Excel 스크립트 기능을 구현했습니다.\nAPI 응답을 화면에서 사용하는 데이터 모델로 변환하는 계층을 구성하여, API 변경이 UI에 미치는 영향을 줄였습니다.\ni18next 기반의 다국어 지원 기능을 개발하고, 베트남 및 일본 시장 대응을 위한 UI/콘텐츠 현지화를 지원했습니다."
+        }
+      ]
+    },
+    {
+      "id": "2922:4",
+      "name": "Page 5",
+      "texts": [
+        {
+          "id": "3086:23",
+          "text": "WALNUT 호두랩스 전체 서비스의 통계와 정산, 관리를 지원하는 백오피스\nNextJS, Typescript, TailwindCSS, React Query, Zustand"
+        },
+        {
+          "id": "3086:24",
+          "text": "사내 디자인 시스템 Hodoo Design을 사용하여, 휴먼 에러를 줄이고 개발 시간을 단축했습니다.\njsPDF를 활용해 페이지 및 컴포넌트를 PDF로 출력하는 기능을 구현하여, 사용자 보고서 및 결과물을 파일로 저장할 수 있도록 지원했습니다."
+        },
+        {
+          "id": "2953:124",
+          "text": "Hodoo Design 호두랩스의 어드민 및 고객 서비스 개발에 사용되는 TailwindCSS 기반 사내 디자인 시스템\nReact, NextJS, TailwindCSS"
+        },
+        {
+          "id": "2953:125",
+          "text": "React 환경에서 사용 가능한 약 25개의 UI 컴포넌트를 개발했습니다.\nclass-variance-authority를 도입하여 스타일 우선순위를 체계적으로 관리하고, 코드 가독성과 유지보수성을 향상시켰습니다.\n멀티 레포지토리(Multi-Repo) 환경에 대응하기 위해 npm 패키지화를 제안하고 직접 배포하여 재사용성과 배포 효율을 높였습니다.\nType, Style, Theme 커스터마이징하여 유연하고 확장 가능한 디자인 시스템을 구축했습니다.\n디자인 QA 프로세스를 간소화하고 개발 시간을 단축, 휴먼 에러를 줄이는 데 기여했습니다."
+        },
+        {
+          "id": "2953:167",
+          "text": "2023.04 - 2023.07"
+        },
+        {
+          "id": "2953:169",
+          "text": "(주)포바이포\nAI 화질 개선 솔루션 PIXELL을 기반으로 초고화질 영상 및 이미지를 제공하는 콘텐츠 AI 솔루션 기업"
+        },
+        {
+          "id": "2953:170",
+          "text": "주요업무\n자사 신규 고객 서비스 개발, 기존 서비스의 레거시 코드 개선 및 리뉴얼\n다국어 개발을 통해 글로벌 사용자 대응력을 높여 해외 시장 진출 지원\nReact 기반의 코드베이스를 NextJS 13으로 리뉴얼 및 페이지 이전\nUX/UI 컨설턴트로 참여하여 서비스와 디자인 기획 전반에 관여, 사용자 경험을 개선"
+        },
+        {
+          "id": "2953:176",
+          "text": "KEYCUT stock 다양한 초고화질 영상 및 이미지를 전문적으로 제공하는 프리미엄 스톡 플랫폼 웹 서비스\nNextJS, Typescript, Emotion,  React Query, Redux-toolkit"
+        },
+        {
+          "id": "2953:177",
+          "text": "UX/UI 컨설턴트로 참여하여 서비스와 디자인 기획 전반에 관여, 사용자 경험을 개선했습니다.\nJavascript, React 기반의 코드베이스를 Typescript, NextJS 13으로 리뉴얼했습니다.\nprefetchQuery를 사용해 테이블 페이지네이션 UX를 개선, 사용자의 대기 시간을 줄였습니다.\ni18next 기반 다국어 지원을 개발하고, 식별자로 한글 키를 사용해 코드 가독성을 높였습니다.\n서버사이드 렌더링과 스켈레톤 로딩을 적용해 초기 페이지 로드 시 발생하던 레이아웃 시프트를 최소화하고 콘텐츠 노출 속도를 개선했습니다."
+        }
+      ]
+    },
+    {
+      "id": "2940:2",
+      "name": "Page 6",
+      "texts": [
+        {
+          "id": "2953:180",
+          "text": "2021.12 - 2023.03"
+        },
+        {
+          "id": "2953:182",
+          "text": "(주)빅케어\n기업 임직원의 건강검진, 심리상담, 건강 챌린지 등 포괄적인 건강 관리 서비스를 제공하는 헬스케어 스타트업"
+        },
+        {
+          "id": "2953:183",
+          "text": "주요업무\n자사 신규 어드민 및 고객 서비스 개발, 기존 서비스의 레거시 코드 개선\n조선일보의 iOS, Android 개발자와 협업하여 WebView 기반 하이브리드 앱 개발\n자사 어드민 사용자들의 요구사항을 정리하고, 이를 바탕으로 스프린트별 일정 및 목표를 수립\n기획부터 개발까지 전 단계에 참여하며, 요구사항 분석 및 기능 기획에 기여"
+        },
+        {
+          "id": "2960:5",
+          "text": "조선일보 건강 챌린지 SNS를 통해 인증 사진을 공유할 수 있는 조선일보 건강 챌린지 앱 서비스\nReact, Typescript, Styled-Components, React Query, Redux-toolkit"
+        },
+        {
+          "id": "2960:6",
+          "text": "쿼리 수동 업데이트 기반의 낙관적 UI 업데이트를 구현하고, 빠른 피드백을 제공했습니다.\n네이티브 앱 내 WebView로 페이지를 구현하고, iOS/Android 환경에 맞는 Bridge 통신 로직을 개발하여 카메라, 앨범 등 네이티브 내장 기능을 호출했습니다\n앱과 유사한 UX를 제공하기 위해 페이지 전환 애니메이션을 커스터마이징하여 구현하고, 전환 시 끊김 없는 경험을 위해 이미지 프리로딩 기법을 적용했습니다.\nsafe-area-inset을 활용해 iOS Notch와 홈 바 영역을 고려한 반응형 UI를 구성하여 기기별 디자인 일관성을 확보했습니다."
+        },
+        {
+          "id": "3098:15",
+          "text": "CHECKUP 기업과 병원을 연결해 임직원들의 건강검진 예약을 도와주는 기업검진 백오피스\nReact, Typescript, Styled-Components, React Query, Redux-toolkit"
+        },
+        {
+          "id": "3098:16",
+          "text": "Apache ECharts 라이브러리를 활용하여 데이터를 직관적으로 시각화했습니다.\nprefetchQuery를 사용해 테이블 페이지네이션 UX를 개선, 사용자의 대기 시간을 줄였습니다.\n비제어 컴포넌트를 사용해 Form을 구현하여 상태 관리를 최소화하고 렌더링 부담을 줄였습니다.\n해시맵 구조의 컴포넌트 관리로 화면별 맞춤형 통계 관리 시스템을 효율적으로 개발했습니다.\nJWT 기반 인증 방식으로 설계하고, Axios Interceptor를 통해 토큰 갱신 흐름을 구현했습니다"
+        },
+        {
+          "id": "3135:55",
+          "text": "빅케어 사내 백오피스 빅케어의 전체 서비스의 통계, 관리를 지원하는 백오피스\nReact, Typescript, Styled-Components, React Query, Redux-toolkit"
+        },
+        {
+          "id": "3135:56",
+          "text": "기획부터 개발까지 전 단계에 참여하며, 요구사항 분석 및 기능 기획에 기여했습니다.\nApache ECharts 라이브러리를 활용하여 데이터를 직관적으로 시각화했습니다.\nESLint, Prettier, Husky, lint-staged 기반 커밋 전 코드 품질 검증 환경을 구성했습니다.\n백오피스 운영자들이 반복적으로 수행하는 작업을 분석해, 단일 액션으로 처리 가능한 매크로 기능을 설계·구현했습니다."
+        }
+      ]
+    },
+    {
+      "id": "2961:45",
+      "name": "Page 7",
+      "texts": [
+        {
+          "id": "3148:5",
+          "text": "\n2018.05 - 2021.09"
+        },
+        {
+          "id": "3148:7",
+          "text": "(주)피플아이\n주식에 관련된 다양한 이슈를 수집하여 고객에게 실시간으로 제공하는 데이터 테크 스타트업"
+        },
+        {
+          "id": "3148:8",
+          "text": "주요업무\n자사 신규 어드민 및 고객 서비스 개발, 기존 서비스의 레거시 코드 개선\n약 40여 개의 이벤트 페이지 및 4개의 브라우저 게임을 반응형 웹으로 개발\nPython으로 구현된 크롤러로 DB에 데이터를 수집하고, 이를 프론트엔드에서 시각화\nFlask로 프론트엔드와 백엔드를 모두 개발하는 풀스택 웹 애플리케이션 개발"
+        },
+        {
+          "id": "3148:12",
+          "text": "피플아이 백오피스 피플아이 전체 서비스의 예약과 결제, 회원 관리를 지원하는 백오피스\nReact, Javascript, Flask, Python, CSS Module, Redux  "
+        },
+        {
+          "id": "3148:13",
+          "text": "React로 프론트엔드 전반을 신규 개발, Flask로 백엔드 환경을 구축했습니다.\n로그인, 회원가입 등 인증 및 권한 관리 관련 화면과 API를 개발했습니다.\nPython-SocketIO를 사용해 실시간 채팅 및 메시지 전송 기능을 구현했습니다.\n사용자가 컴포넌트의 위치를 자유롭게 구성할 수 있도록 Draggable Layout 기능을 구현하여 UI 커스터마이징 경험을 향상시켰습니다."
+        },
+        {
+          "id": "3148:16",
+          "text": "CATCH ON AI 주식의 이슈 및 관련 뉴스를 실시간으로 제공하는 텔레그램 연동 웹 서비스\nJQuery, Javascript, Flask, Python"
+        },
+        {
+          "id": "3148:17",
+          "text": "Flask로 프론트엔드 전반을 신규 개발, 백엔드 환경을 구축했습니다.\n로그인, 회원가입 등 인증 및 권한 관리 관련 화면과 API를 개발했습니다.\npython-telegram-bot 라이브러리를 사용하여 텔레그램 실시간 알림 서비스를 개발했습니다.\nSelenium과 requests를 이용해 웹 데이터를 크롤링하고 전처리하여 서비스에 활용했습니다.\nD3.js를 활용해 차트 및 워드클라우드 등 다양한 형태의 데이터 시각화 기능을 구현하여 사용자에게 인사이트를 직관적으로 제공했습니다."
+        },
+        {
+          "id": "3148:20",
+          "text": "알림몬 알리고 문자 API 기반, 낮은 가격으로 대량의 문자 메시지를 보낼 수 있는 문자 웹 서비스\nJQuery, Javascript, Flask, Python"
+        },
+        {
+          "id": "3148:21",
+          "text": "Flask로 프론트엔드 전반을 신규 개발, 백엔드 환경을 구축했습니다.\n로그인, 회원가입 등 인증 및 권한 관리 관련 화면과 API를 개발했습니다."
+        }
+      ]
+    }
+  ]
+}

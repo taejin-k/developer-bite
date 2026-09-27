@@ -1,4 +1,7 @@
+import { createResumeView } from "./resume.js?v=20260928-resume-v1";
+
 const DATA_URL = "/notion_technical_questions_final.txt?v=20260921-study-only-v1";
+let resumeView;
 const STORAGE_KEY = "interview-bite-state-v1";
 const SYNC_ID_KEY = "interview-bite-sync-id-v1";
 const SYNC_CLIENT_ID_KEY = "interview-bite-sync-client-id-v1";
@@ -491,6 +494,7 @@ function mergeRecords(remoteState) {
 
 function renderAllState() {
   renderStudy();
+  resumeView?.render();
 }
 
 function formatSyncedAt(value) {
@@ -794,7 +798,7 @@ function renderStudy() {
 
 function updateProgress() {
   const total = state.questions.length;
-  const completed = state.completed.size;
+  const completed = state.questions.filter((question) => state.completed.has(question.id)).length;
   const percent = total ? Math.round((completed / total) * 100) : 0;
   $("#progress-percent").textContent = `${percent}%`;
   $("#progress-bar").style.width = `${percent}%`;
@@ -886,6 +890,32 @@ function bindEvents() {
 async function init() {
   loadState();
   bindEvents();
+  resumeView = createResumeView({ state, setTrackedValue, toggleTrackedValue, saveState, renderParagraphs, updateCardState });
+  resumeView.load();
+  const tabs = $$(".main-tab");
+  const activateTab = () => {
+    const active = location.hash.startsWith("#resume") ? "resume" : "study";
+    tabs.forEach((tab) => {
+      const selected = tab.dataset.view === active;
+      tab.setAttribute("aria-selected", String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+      const panel = $(`#${tab.dataset.view}-view`);
+      panel.hidden = !selected;
+      panel.classList.toggle("is-active", selected);
+    });
+  };
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => { location.hash = tab.dataset.view; });
+    tab.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (index + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+      tabs[next].focus();
+      location.hash = tabs[next].dataset.view;
+    });
+  });
+  window.addEventListener("hashchange", activateTab);
+  activateTab();
   try {
     const questionResponse = await fetch(DATA_URL);
     if (!questionResponse.ok) {
@@ -903,9 +933,9 @@ async function init() {
   }
 
   if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () =>
-      navigator.serviceWorker.register("/sw.js").catch(() => {}),
-    );
+    const registerWorker = () => navigator.serviceWorker.register("/sw.js").catch(() => {});
+    if (document.readyState === "complete") registerWorker();
+    else window.addEventListener("load", registerWorker, { once: true });
   }
 }
 

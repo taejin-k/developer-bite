@@ -991,3 +991,74 @@ h1 em {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Resume practice shares the learning cards, with its own navigation and filters. */
+.main-tabs {
+  display: flex;
+  gap: 28px;
+  margin-top: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.main-tab {
+  position: relative;
+  min-width: 58px;
+  padding: 14px 6px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+}
+.main-tab[aria-selected="true"] { color: var(--green); }
+.main-tab[aria-selected="true"]::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 3px;
+  background: var(--green);
+  content: "";
+}
+.view[hidden] { display: none; }
+#resume-view { overflow-anchor: none; }
+#resume-view h1 { font-size: clamp(36px, 4.3vw, 59px); line-height: 1.2; }
+.resume-guide { margin: 0 0 24px; color: var(--muted); font-size: 13px; line-height: 1.8; word-break: keep-all; }
+.resume-selectors { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.resume-selectors label { flex-shrink: 0; font-size: 12px; font-weight: 600; color: var(--muted); }
+.resume-selectors select { min-width: 0; width: min(100%, 400px); padding: 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); color: var(--ink); background: var(--white); font-size: 13px; }
+#resume-view .question-content small { letter-spacing: 0.02em; font-size: 10px; line-height: 1.6; }
+#resume-view .section-heading { gap: 12px; }
+#resume-view .section-heading > div { grid-template-rows: auto auto; min-width: 0; gap: 8px; }
+#resume-view .section-heading h2 { font-size: clamp(20px, 3vw, 30px); overflow-wrap: anywhere; }
+#resume-view .bulk-complete-button { flex-shrink: 0; }
+.resume-source { margin: 0 0 20px; padding-left: 14px; border-left: 2px solid var(--line); color: var(--muted); font-size: 13px; line-height: 1.8; }
+.resume-source span, .resume-answer-label, .resume-note strong { display: block; font-size: 11px; font-weight: 700; color: var(--green); }
+.resume-source p { margin: 6px 0 0; overflow-wrap: anywhere; }
+.resume-answer-label { margin: 0 0 8px; }
+.resume-note { margin-top: 16px; padding: 16px 18px; border-radius: var(--radius-sm); background: var(--green-soft); font-size: 13px; line-height: 1.8; color: #3f4943; }
+.resume-note p { margin: 6px 0 0; }
+.resume-references { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 16px; }
+.resume-references a { color: var(--green); text-underline-offset: 3px; font-size: 12px; line-height: 1.8; }
+#resume-view .search-box { min-width: 0; }
+#resume-view .filter-button { flex-shrink: 0; }
+#resume-view .answer-body { overflow-wrap: anywhere; }
+.main-tab:focus-visible, #resume-view button:focus-visible, #resume-view select:focus-visible, #resume-view a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+@media (max-width: 620px) {
+  .main-tabs { margin-top: 8px; gap: 20px; }
+  #resume-view h1 { font-size: clamp(30px, 8vw, 44px); }
+  .resume-selectors { align-items: stretch; flex-direction: column; gap: 8px; }
+  .resume-selectors select { width: 100%; }
+  #resume-view .search-box { padding: 0 12px; gap: 8px; }
+  #resume-view .search-box input { font-size: 12px; min-width: 0; }
+  #resume-view .filter-button { padding: 0; }
+  #resume-view .question-header { grid-template-columns: minmax(0, 1fr); }
+  #resume-view .question-main { padding: 18px 16px 8px; grid-template-columns: 26px minmax(0, 1fr); }
+  #resume-view .question-actions { padding: 0 16px 12px; }
+  #resume-view .question-card { scroll-margin-top: 140px; }
+  #resume-view .section-heading .eyebrow { font-size: 10px; letter-spacing: 0.06em; }
+  .resume-source { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #resume-view *, .main-tab { transition: none; }
+}

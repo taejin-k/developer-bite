@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="프론트엔드, 백엔드, 클라우드 개발 지식을 읽고 복습하는 학습 앱"
+      content="개발 지식을 학습하고 이력서 기반 면접 질문을 준비하는 앱"
     />
     <meta name="theme-color" content="#f4f0e8" />
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -16,7 +16,7 @@
       as="fetch"
       crossorigin
     />
-    <link rel="stylesheet" href="/styles.css?v=20260921-study-only-v1" />
+    <link rel="stylesheet" href="/styles.css?v=20260928-resume-v1" />
     <title>개발한입</title>
   </head>
   <body>
@@ -40,7 +40,11 @@
       </header>
 
       <main>
-        <section class="view is-active" id="study-view">
+        <nav class="main-tabs" role="tablist" aria-label="콘텐츠 선택">
+          <button id="study-tab" class="main-tab" role="tab" aria-selected="true" aria-controls="study-view" data-view="study" type="button">학습</button>
+          <button id="resume-tab" class="main-tab" role="tab" aria-selected="false" aria-controls="resume-view" data-view="resume" tabindex="-1" type="button">이력서</button>
+        </nav>
+        <section class="view is-active" id="study-view" role="tabpanel" aria-labelledby="study-tab">
           <div class="hero">
             <div class="hero-copy">
               <p class="eyebrow">오늘도 하나씩, 확실하게</p>
@@ -116,6 +120,37 @@
           </div>
         </section>
 
+        <section class="view" id="resume-view" role="tabpanel" aria-labelledby="resume-tab" hidden>
+          <div class="hero">
+            <div class="hero-copy">
+              <p class="eyebrow">내 경험에서 시작하는 면접</p>
+              <h1>이력서 한 줄을<br /><em>깊이 있는 답변</em>으로</h1>
+              <p class="hero-description">무엇을 했는지부터, 왜 그렇게 했는지까지.</p>
+            </div>
+            <div class="progress-card">
+              <div class="progress-card-head"><span>이력서 준비율</span><strong id="resume-progress-percent">0%</strong></div>
+              <div class="progress-track"><span id="resume-progress-bar"></span></div>
+              <div class="progress-meta"><span><b id="resume-completed-count">0</b>개 완료</span><span>전체 <b id="resume-total-count">0</b>개</span></div>
+            </div>
+          </div>
+          <p class="resume-guide">답변 예시는 이력서와 기술 원리를 바탕으로 작성했습니다. ‘내 경험 보완’ 항목은 실제 사례와 수치로 채워 말해보세요.</p>
+          <div class="study-toolbar">
+            <label class="search-box"><span class="search-icon" aria-hidden="true"></span><input id="resume-search" type="search" aria-label="이력서 질문 검색" placeholder="프로젝트, 질문, 이력서 문장 검색" autocomplete="off" /></label>
+            <button class="filter-button" id="resume-bookmark-filter" type="button" aria-pressed="false" aria-label="이력서 북마크만 보기">
+              <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.9c.4 0 .8.3 1 .7l2.3 4.7 5.2.8c1 .1 1.4 1.4.7 2.1l-3.8 3.7.9 5.2c.2 1-.9 1.8-1.8 1.3L12 19l-4.6 2.4c-.9.5-2-.3-1.8-1.3l.9-5.2-3.8-3.7c-.7-.7-.3-2 .7-2.1l5.2-.8 2.3-4.7c.3-.4.7-.7 1.1-.7Z" /></svg>
+              <span>북마크</span>
+            </button>
+          </div>
+          <div class="resume-selectors">
+            <label for="resume-project">경험·프로젝트</label>
+            <select id="resume-project"><option value="all">전체 프로젝트</option></select>
+          </div>
+          <div class="category-tabs" id="resume-kinds" aria-label="질문 유형"></div>
+          <div class="section-heading"><div><p class="eyebrow" id="resume-result-count" role="status" aria-live="polite">질문을 불러오는 중</p><h2 id="resume-result-title">전체 질문</h2></div><button class="bulk-complete-button" id="resume-bulk-complete" type="button" disabled>모두 완료</button></div>
+          <div class="question-list is-loading" id="resume-question-list"><div class="question-skeleton"></div><div class="question-skeleton"></div></div>
+          <div class="empty-state is-hidden" id="resume-empty"><strong>조건에 맞는 질문이 없습니다.</strong><p>검색어나 필터를 변경해보세요.</p></div>
+          <div class="empty-state is-hidden" id="resume-error" role="alert"><strong>이력서 질문을 불러오지 못했습니다.</strong><p>연결을 확인한 뒤 다시 시도해주세요.</p><button class="secondary-button" id="resume-retry" type="button">다시 불러오기</button></div>
+        </section>
       </main>
 
       <div class="sync-modal is-hidden" id="sync-modal" role="dialog" aria-modal="true" aria-labelledby="sync-title">
@@ -124,7 +159,7 @@
           <p class="eyebrow">SYNC</p>
           <h2 id="sync-title">기기 동기화</h2>
           <p class="sync-description">
-            같은 동기화 ID를 노트북, 데스크톱, 휴대폰에 입력하면 학습 완료와 북마크을 함께 사용합니다.
+            같은 동기화 ID를 노트북, 데스크톱, 휴대폰에 입력하면 학습·이력서의 완료 기록과 북마크를 함께 사용합니다.
           </p>
           <label class="sync-field">
             <span>동기화 ID</span>
@@ -177,6 +212,6 @@
       </article>
     </template>
 
-    <script type="module" src="/app.js?v=20260921-study-only-v1"></script>
+    <script type="module" src="/app.js?v=20260928-resume-v1"></script>
   </body>
 </html>
