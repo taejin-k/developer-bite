@@ -1,6 +1,6 @@
 import { createResumeView } from "./resume.js?v=20261006-resume-v3";
 
-const DATA_URL = "/notion_technical_questions_final.txt?v=20260921-study-only-v1";
+const DATA_URL = "/notion_technical_questions_final.txt?v=20261006-http-quic-v1";
 let resumeView;
 const STORAGE_KEY = "interview-bite-state-v1";
 const SYNC_ID_KEY = "interview-bite-sync-id-v1";
@@ -308,11 +308,13 @@ function parseQuestions(raw) {
   }
   if (current?.answer.length) parsed.push(current);
 
+  let legacyQuestionIndex = 0;
   return parsed
     .filter((item) => item.answer.join(" ").length > 10)
     .map((item, index) => {
       const answer = item.answer.join("\n");
-      const id = `q-${index + 1}`;
+      // Existing progress uses positional IDs, so the inserted question gets a new ID.
+      const id = item.title === "QUIC란?" ? "q-158" : `q-${++legacyQuestionIndex}`;
       const category = detectCategory(item.title, answer);
       return {
         id,

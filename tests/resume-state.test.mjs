@@ -43,6 +43,19 @@ test('legacy learning records survive resume progress, reload and remote updates
   assert.equal(reloaded.run('state.bookmarks.has("resume-groupware-federation")'), true);
 });
 
+test('inserted QUIC lesson keeps existing learning progress IDs', async () => {
+  const app = await client({ completed: ['q-29'], bookmarks: ['q-157'], updatedAt: 10 });
+  const source = await readFile(new URL('../notion_technical_questions_final.txt', import.meta.url), 'utf8');
+  const questions = app.run(`parseQuestions(${JSON.stringify(source)}).map(({id, title, answer}) => ({id, title, answer}))`);
+  assert.equal(questions.length, 158);
+  assert.equal(questions.find(({title}) => title === 'QUIC란?').id, 'q-158');
+  assert.equal(questions.find(({title}) => title === 'HTTP와 HTTPS의 차이란?').id, 'q-29');
+  assert.equal(questions.at(-1).id, 'q-157');
+  assert.equal(app.run('state.completed.has("q-29")'), true);
+  assert.equal(app.run('state.bookmarks.has("q-157")'), true);
+  assert.equal(questions.find(({title}) => title.startsWith('HTTP/1.0과')).answer.split('\n').length, 6);
+});
+
 test('sync API round-trips both namespaces and keeps newer deletion records', async (t) => {
   const originalUrl = process.env.UPSTASH_REDIS_REST_URL;
   const originalToken = process.env.UPSTASH_REDIS_REST_TOKEN;
