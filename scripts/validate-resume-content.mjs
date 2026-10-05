@@ -18,6 +18,7 @@ for (const q of content.questions) {
   assert.ok(content.kinds[q.kind], `${q.id}: unknown kind`);
   assert.match(q.title, /[?.]$/, `${q.id}: incomplete question`);
   assert.ok(q.answer.length >= 160 && q.answer.split('\n').length >= 2, `${q.id}: incomplete answer`);
+  assert.ok(!('note' in q), `${q.id}: personal preparation notes are no longer part of answers`);
   for (const key of q.refs || []) assert.ok(content.references[key], `${q.id}: unknown reference ${key}`);
 }
 for (const group of groups) assert.ok(content.questions.some((q) => q.group === group), `Empty group ${group}`);

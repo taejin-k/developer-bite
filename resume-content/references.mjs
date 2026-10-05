@@ -1,6 +1,6 @@
 export default {
   'query-ssr': ['TanStack Query · 서버 렌더링', 'https://tanstack.com/query/latest/docs/framework/react/guides/advanced-ssr'],
-  'query-api': ['TanStack Query · useQuery', 'https://tanstack.com/query/latest/docs/framework/react/reference/useQuery'],
+  'query-api': ['TanStack Query · useQuery', 'https://tanstack.com/query/latest/docs/framework/react/reference/functions/useQuery'],
   'query-invalidation': ['TanStack Query · 캐시 무효화', 'https://tanstack.com/query/latest/docs/framework/react/guides/query-invalidation'],
   'query-optimistic': ['TanStack Query · 낙관적 업데이트', 'https://tanstack.com/query/latest/docs/framework/react/guides/optimistic-updates'],
   'query-prefetch': ['TanStack Query · 프리패칭', 'https://tanstack.com/query/latest/docs/framework/react/guides/prefetching'],

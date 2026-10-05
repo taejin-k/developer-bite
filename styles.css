@@ -1030,11 +1030,9 @@ h1 em {
 #resume-view .section-heading h2 { font-size: clamp(20px, 3vw, 30px); overflow-wrap: anywhere; }
 #resume-view .bulk-complete-button { flex-shrink: 0; }
 .resume-source { margin: 0 0 20px; padding-left: 14px; border-left: 2px solid var(--line); color: var(--muted); font-size: 13px; line-height: 1.8; }
-.resume-source span, .resume-answer-label, .resume-note strong { display: block; font-size: 11px; font-weight: 700; color: var(--green); }
+.resume-source span, .resume-answer-label { display: block; font-size: 11px; font-weight: 700; color: var(--green); }
 .resume-source p { margin: 6px 0 0; overflow-wrap: anywhere; }
 .resume-answer-label { margin: 0 0 8px; }
-.resume-note { margin-top: 16px; padding: 16px 18px; border-radius: var(--radius-sm); background: var(--green-soft); font-size: 13px; line-height: 1.8; color: #3f4943; }
-.resume-note p { margin: 6px 0 0; }
 .resume-references { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 16px; }
 .resume-references a { color: var(--green); text-underline-offset: 3px; font-size: 12px; line-height: 1.8; }
 #resume-view .search-box { min-width: 0; }

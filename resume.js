@@ -1,4 +1,4 @@
-const CONTENT_URL = "/resume-content.json?v=20260928-resume-v2";
+const CONTENT_URL = "/resume-content.json?v=20261006-resume-v3";
 const $ = (selector, root = document) => root.querySelector(selector);
 
 export function createResumeView({ state, setTrackedValue, toggleTrackedValue, saveState, renderParagraphs, updateCardState }) {
@@ -17,7 +17,7 @@ export function createResumeView({ state, setTrackedValue, toggleTrackedValue, s
       const project = content.groups.find((g) => g.id === q.group);
       const source = content.statements.find((s) => s.id === q.source);
       return (!bookmarkOnly || state.bookmarks.has(q.id)) &&
-        (!query || [q.title, q.answer, q.note || "", project.label, project.company, source.text].join(" ").toLocaleLowerCase().includes(query));
+        (!query || [q.title, q.answer, project.label, project.company, source.text].join(" ").toLocaleLowerCase().includes(query));
     });
   }
 
@@ -51,16 +51,6 @@ export function createResumeView({ state, setTrackedValue, toggleTrackedValue, s
     answerLabel.className = "resume-answer-label";
     answerLabel.textContent = "답변 예시";
     body.before(answerLabel);
-    if (q.note) {
-      const note = document.createElement("aside");
-      note.className = "resume-note";
-      const title = document.createElement("strong");
-      title.textContent = "내 경험 보완";
-      const text = document.createElement("p");
-      text.textContent = q.note;
-      note.append(title, text);
-      body.after(note);
-    }
     if (q.refs?.length) {
       const refs = document.createElement("div");
       refs.className = "resume-references";

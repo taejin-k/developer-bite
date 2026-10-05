@@ -10,13 +10,13 @@ export async function assembleResumeContent() {
   const statements = new Map();
   const questions = [];
   for (const group of groups) {
-    for (const [slug, nodeId, line, kind, title, answer, note, refs] of group.questions) {
+    for (const [slug, nodeId, line, kind, title, answer, refs] of group.questions) {
       const node = nodes.get(nodeId);
       const text = node?.text.split('\n')[line]?.replace(/\u2028/g, ' ').trim();
       if (!text) throw new Error(`Missing resume source: ${group.id}/${slug} → ${nodeId}:${line}`);
       const source = `source-${nodeId.replaceAll(':', '-')}-${line}`;
       statements.set(source, { id: source, text, nodeId, line, page: node.page });
-      questions.push({ id: `resume-${group.id}-${slug}`, group: group.id, source, kind, title, answer, ...(note ? { note } : {}), ...(refs?.length ? { refs } : {}) });
+      questions.push({ id: `resume-${group.id}-${slug}`, group: group.id, source, kind, title, answer, ...(refs?.length ? { refs } : {}) });
     }
   }
   return {
