@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-10-18T15:35:03.227Z",
+  "approvedAt": "2026-10-18T15:39:09.838Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "도메인이란?": "47ca31ab47b7710fe1f48e90749d904e43ae1dfcb28c674e46cf67f7cf13046f",
     "Origin이란?": "bb0b62d16c6d8bab455b4f411b41bceab4fde1f69db55433054bce9887e77958",
-    "CORS란?": "59f785ba6d4b4bcdf83e9b2266520bb76ec986751c57b2998dce12b6ac085870",
+    "CORS란?": "c71ff87893523fb89c5e095dd3d0df03a74691f6a54a873065b9b91bd79e7d46",
     "SameSite란?": "946c28a4d81555e4df4395fd322fb7acebc382cd6b99dc025301cfb02bb5b61c",
     "CSRF란?": "c57390a623d6c2ccb19b584fc5414c84d6bafcb30196f51463aa6524b39ce56c",
     "Secure란?": "35e09943ea064b5d67dfd3a797f9f3061feab4ea145cbca2800b4d329a213ed0",
