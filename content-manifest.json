@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-10-18T15:49:14.115Z",
+  "approvedAt": "2026-10-25T15:15:59.623Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "도메인이란?": "47ca31ab47b7710fe1f48e90749d904e43ae1dfcb28c674e46cf67f7cf13046f",
@@ -11,7 +11,7 @@
     "Secure란?": "35e09943ea064b5d67dfd3a797f9f3061feab4ea145cbca2800b4d329a213ed0",
     "HttpOnly란?": "deeab5673c46e9ca0fe79e4c3659fe0bc0273728a8a832fd8740ddf03c44f24a",
     "XSS란?": "67d860b02774b773a7f07ade27b72fe9ed6e47d5eb27b30785d1fc3b14502068",
-    "이스케이프 처리란?": "3a93153316b00cb6b0aabc209dfd6bcbb48a788dd6cb5d97f5bce0ce3a8914be",
+    "이스케이프 처리란?": "47422e0ebfc99b2d646e3cdc0acfb2f3eaf04818c190ecd5cf2eb61cddeadaf9",
     "HTML 엔티티란?": "c2833025d4445a1e90969eb9a84a99e7f78d2d7b1c483b630acea52534555639",
     "JSX란?": "1afb959371fd1e5b3ff11c697ba1542df8850d3067f0acc5b2fc5cf39338dcf6",
     "트랜스파일러란?": "e6e62b7ef432346efefdc472296fcaf1f47107a72943f22d6958dac6e7cb369a",
