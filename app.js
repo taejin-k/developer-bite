@@ -320,7 +320,9 @@ function parseQuestions(raw) {
           ? "q-159"
           : item.title === "Path란?"
             ? "q-160"
-            : `q-${++legacyQuestionIndex}`;
+            : item.title === "Access token과 Refresh Token의 역할은?"
+              ? "q-161"
+              : `q-${++legacyQuestionIndex}`;
       const category = detectCategory(item.title, answer);
       return {
         id,

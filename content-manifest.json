@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-10-31T16:12:28.146Z",
+  "approvedAt": "2026-10-31T16:14:51.007Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "도메인이란?": "47ca31ab47b7710fe1f48e90749d904e43ae1dfcb28c674e46cf67f7cf13046f",
@@ -22,6 +22,7 @@
     "세션 기반 인증 방식이란?": "c7a995b9ea3c094eab2f75ecfe2598a698bd4ef3a820f9593538a0c314d11b96",
     "JWT 기반 인증 방식이란?": "b3a171325f5470ecf90ab7004a03f412a8b6f1e2ecdca0b3952bc9a4c337af77",
     "Base64URL이란?": "682751365677a061cf83ec84c6ef27d58b910a67eca9f4d048bf2f83c2216021",
+    "Access token과 Refresh Token의 역할은?": "0afb1172ae9768cb88bfa5ce1992dcf60ae8d43fc8a5f793603af22cced327f1",
     "인증 값을 서버에 보내는 방식이란?": "539f3149b2ab3d883853df73d4d5685b28223b816fe6081d31ef1f97837382f0",
     "SSO란?": "290430d326201952649e131def13bc9c79bec75d611952c7612f4ee46f01a221",
     "DNS란?": "64f961072dede6a4b47eb639501bbf794f2e29369206008bd1096d32e1b27e05",

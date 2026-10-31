@@ -47,10 +47,11 @@ test('inserted lessons keep existing learning progress IDs', async () => {
   const app = await client({ completed: ['q-29'], bookmarks: ['q-157'], updatedAt: 10 });
   const source = await readFile(new URL('../notion_technical_questions_final.txt', import.meta.url), 'utf8');
   const questions = app.run(`parseQuestions(${JSON.stringify(source)}).map(({id, title, answer}) => ({id, title, answer}))`);
-  assert.equal(questions.length, 160);
+  assert.equal(questions.length, 161);
   assert.equal(questions.find(({title}) => title === 'QUIC란?').id, 'q-158');
   assert.equal(questions.find(({title}) => title === 'Base64URL이란?').id, 'q-159');
   assert.equal(questions.find(({title}) => title === 'Path란?').id, 'q-160');
+  assert.equal(questions.find(({title}) => title === 'Access token과 Refresh Token의 역할은?').id, 'q-161');
   assert.equal(questions.find(({title}) => title === 'HTTP와 HTTPS의 차이란?').id, 'q-29');
   assert.equal(questions.at(-1).id, 'q-157');
   assert.equal(app.run('state.completed.has("q-29")'), true);
