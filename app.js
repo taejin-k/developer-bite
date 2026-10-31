@@ -313,8 +313,12 @@ function parseQuestions(raw) {
     .filter((item) => item.answer.join(" ").length > 10)
     .map((item, index) => {
       const answer = item.answer.join("\n");
-      // Existing progress uses positional IDs, so the inserted question gets a new ID.
-      const id = item.title === "QUIC란?" ? "q-158" : `q-${++legacyQuestionIndex}`;
+      // Keep IDs for existing lessons stable when adding lessons in the middle.
+      const id = item.title === "QUIC란?"
+        ? "q-158"
+        : item.title === "Base64URL이란?"
+          ? "q-159"
+          : `q-${++legacyQuestionIndex}`;
       const category = detectCategory(item.title, answer);
       return {
         id,
