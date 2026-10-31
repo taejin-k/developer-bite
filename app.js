@@ -318,7 +318,9 @@ function parseQuestions(raw) {
         ? "q-158"
         : item.title === "Base64URL이란?"
           ? "q-159"
-          : `q-${++legacyQuestionIndex}`;
+          : item.title === "Path란?"
+            ? "q-160"
+            : `q-${++legacyQuestionIndex}`;
       const category = detectCategory(item.title, answer);
       return {
         id,

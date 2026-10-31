@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-10-31T15:59:07.570Z",
+  "approvedAt": "2026-10-31T16:12:28.146Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "도메인이란?": "47ca31ab47b7710fe1f48e90749d904e43ae1dfcb28c674e46cf67f7cf13046f",
@@ -10,6 +10,7 @@
     "CSRF란?": "c57390a623d6c2ccb19b584fc5414c84d6bafcb30196f51463aa6524b39ce56c",
     "Secure란?": "35e09943ea064b5d67dfd3a797f9f3061feab4ea145cbca2800b4d329a213ed0",
     "HttpOnly란?": "deeab5673c46e9ca0fe79e4c3659fe0bc0273728a8a832fd8740ddf03c44f24a",
+    "Path란?": "06ca411286968c8c763c193089e1e016e1ee3eaae385c21aa30005aba58a5cd0",
     "XSS란?": "67d860b02774b773a7f07ade27b72fe9ed6e47d5eb27b30785d1fc3b14502068",
     "이스케이프 처리란?": "47422e0ebfc99b2d646e3cdc0acfb2f3eaf04818c190ecd5cf2eb61cddeadaf9",
     "HTML 엔티티란?": "c2833025d4445a1e90969eb9a84a99e7f78d2d7b1c483b630acea52534555639",
