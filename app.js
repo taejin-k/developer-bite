@@ -1,6 +1,6 @@
 import { createResumeView } from "./resume.js?v=20261006-resume-v3";
 
-const DATA_URL = "/notion_technical_questions_final.txt?v=20261102-jwt-base64-v3";
+const DATA_URL = "/notion_technical_questions_final.txt?v=20261102-token-case-v1";
 let resumeView;
 const STORAGE_KEY = "interview-bite-state-v1";
 const SYNC_ID_KEY = "interview-bite-sync-id-v1";
@@ -320,7 +320,7 @@ function parseQuestions(raw) {
           ? "q-159"
           : item.title === "Path란?"
             ? "q-160"
-            : item.title === "Access token과 Refresh Token의 역할은?"
+            : item.title === "Access Token과 Refresh Token의 역할은?"
               ? "q-161"
               : `q-${++legacyQuestionIndex}`;
       const category = detectCategory(item.title, answer);
