@@ -1,6 +1,6 @@
 import { createResumeView } from "./resume.js?v=20261006-resume-v3";
 
-const DATA_URL = "/notion_technical_questions_final.txt?v=20261102-data-url-trim-v2";
+const DATA_URL = "/notion_technical_questions_final.txt?v=20261102-bit-byte-v1";
 let resumeView;
 const STORAGE_KEY = "interview-bite-state-v1";
 const SYNC_ID_KEY = "interview-bite-sync-id-v1";
@@ -314,7 +314,11 @@ function parseQuestions(raw) {
     .map((item, index) => {
       const answer = item.answer.join("\n");
       // Keep IDs for existing lessons stable when adding lessons in the middle.
-      const id = item.title === "Binary 데이터란?"
+      const id = item.title === "비트란?"
+        ? "q-163"
+        : item.title === "바이트란?"
+          ? "q-164"
+          : item.title === "Binary 데이터란?"
         ? "q-162"
         : item.title === "QUIC란?"
         ? "q-158"
