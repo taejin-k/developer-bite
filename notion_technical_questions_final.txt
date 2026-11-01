@@ -91,7 +91,7 @@ Binary 데이터란?
 Binary 데이터는 0과 1로 표현되는 데이터입니다. 이미지, 동영상, 오디오 파일도 내부적으로는 바이트들의 묶음으로 저장되며, 각 파일 형식에 맞게 해석해야 합니다. 예를 들어 PNG 이미지 파일은 텍스트로 읽는 대신 이미지 형식에 맞게 해석해야 화면에 표시할 수 있습니다.
 Base64는 이런 Binary 데이터를 문자열로 표현하는 인코딩 방식입니다. 이미지 데이터를 Base64로 인코딩하면 `iVBORw0KGgo...` 같은 문자열이 되고, 디코딩하면 원래 이미지 데이터로 복원할 수 있습니다.
 문자열도 컴퓨터 내부에서는 0과 1로 저장됩니다. 다만 실무에서 Binary 데이터라고 할 때는 보통 이미지나 파일처럼 텍스트로 직접 읽고 다루지 않는 데이터를 가리킵니다.
-Access Token과 Refresh Token의 역할은?
+Access Token / Refresh Token이란?
 Access Token은 보호된 API를 호출할 때 사용하며, 탈취되더라도 사용할 수 있는 시간을 줄이기 위해 만료 시간을 짧게 설정합니다. Refresh Token은 Access Token이 만료되었을 때 새 Access Token을 발급받는 데 사용하며, 일반 API 요청에는 보낼 필요가 없습니다. 두 토큰의 역할은 JWT인지 여부와는 별개입니다.
 로그인 후 클라이언트는 Access Token으로 API를 호출합니다. Access Token이 만료되면 재발급 API에 Refresh Token을 보내고, 서버가 이를 검증해 새 Access Token을 발급합니다. 이때 Refresh Token을 교체하고 이전 토큰을 무효화할 수도 있습니다. 재발급 API가 반드시 만료된 Access Token까지 요구하는 것은 아닙니다. Refresh Token을 쿠키에 보관하는 경우, 쿠키의 Path를 재발급 API 경로로 제한하면 일반 API 요청에는 보내지 않도록 할 수 있습니다.
 다만 Access Token이 탈취되면 만료 전까지 악용될 수 있고, Refresh Token이 탈취되면 새 Access Token을 발급받는 데 악용될 수 있습니다. 따라서 만료 시간, Refresh Token 교체 및 무효화, 쿠키 보호를 함께 고려해야 합니다.
