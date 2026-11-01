@@ -85,6 +85,7 @@ signature는 서버가 header와 payload를 사용해 비밀키 또는 개인키
 Base64URL이란?
 Base64URL은 문자나 바이너리 데이터를 URL에 넣기 쉬운 영문자, 숫자, `-`, `_` 등으로 표현하는 인코딩 방식입니다. 일반 Base64에서 사용하는 `+`와 `/`를 각각 `-`와 `_`로 바꾸고, 끝의 `=`는 보통 생략합니다.
 예를 들어 이모지 `😀`는 일반 Base64로 인코딩하면 `8J+YgA==`이지만 Base64URL로는 `8J-YgA`가 됩니다. 이 값은 다시 원래의 이모지로 복원할 수 있습니다. 인코딩은 암호화가 아니므로 내용을 숨기는 용도로 사용할 수 없습니다.
+이미지 주소에서 볼 수 있는 `data:image/png;base64,iVBORw0KGgo...`는 Data URL의 예시입니다. `data:`는 데이터를 주소에 직접 담는다는 뜻이고, `image/png`는 이미지 형식, `base64,` 뒤의 긴 문자열은 일반 Base64로 인코딩한 이미지 데이터입니다. 서버의 이미지 파일 위치를 가리키는 대신 주소 자체에 이미지 데이터를 담으며, 디코딩하면 이미지로 복원할 수 있습니다. 이때 사용하는 것은 Base64URL이 아니라 일반 Base64입니다.
 Access Token과 Refresh Token의 역할은?
 Access Token은 보호된 API를 호출할 때 사용하며, 탈취되더라도 사용할 수 있는 시간을 줄이기 위해 만료 시간을 짧게 설정합니다. Refresh Token은 Access Token이 만료되었을 때 새 Access Token을 발급받는 데 사용하며, 일반 API 요청에는 보낼 필요가 없습니다. 두 토큰의 역할은 JWT인지 여부와는 별개입니다.
 로그인 후 클라이언트는 Access Token으로 API를 호출합니다. Access Token이 만료되면 재발급 API에 Refresh Token을 보내고, 서버가 이를 검증해 새 Access Token을 발급합니다. 이때 Refresh Token을 교체하고 이전 토큰을 무효화할 수도 있습니다. 재발급 API가 반드시 만료된 Access Token까지 요구하는 것은 아닙니다. Refresh Token을 쿠키에 보관하는 경우, 쿠키의 Path를 재발급 API 경로로 제한하면 일반 API 요청에는 보내지 않도록 할 수 있습니다.
