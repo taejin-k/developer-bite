@@ -1,6 +1,6 @@
 import { createResumeView } from "./resume.js?v=20261006-resume-v3";
 
-const DATA_URL = "/notion_technical_questions_final.txt?v=20261102-binary-v1";
+const DATA_URL = "/notion_technical_questions_final.txt?v=20261102-base64-compare-v1";
 let resumeView;
 const STORAGE_KEY = "interview-bite-state-v1";
 const SYNC_ID_KEY = "interview-bite-sync-id-v1";
@@ -318,7 +318,7 @@ function parseQuestions(raw) {
         ? "q-162"
         : item.title === "QUIC란?"
         ? "q-158"
-        : item.title === "Base64URL이란?"
+        : item.title === "Base64URL / Base64란?"
           ? "q-159"
           : item.title === "Path란?"
             ? "q-160"
