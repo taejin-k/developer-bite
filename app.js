@@ -314,7 +314,9 @@ function parseQuestions(raw) {
     .map((item, index) => {
       const answer = item.answer.join("\n");
       // Keep IDs for existing lessons stable when adding lessons in the middle.
-      const id = item.title === "Unicode란?"
+      const id = item.title === "진수란?"
+        ? "q-167"
+        : item.title === "Unicode란?"
         ? "q-166"
         : item.title === "UTF란?"
         ? "q-165"
