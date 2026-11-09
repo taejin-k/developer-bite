@@ -86,7 +86,7 @@ Base64 / Base64URL이란?
 Base64와 Base64URL은 Binary 데이터를 문자열로 표현하는 인코딩 방식입니다. Binary 데이터를 텍스트만 처리하는 환경에서 그대로 전달하면 데이터가 손상될 수 있어, 안전하게 전달할 수 있는 문자열로 변환합니다.
 Base64는 영문자, 숫자, `+`, `/`를 사용하고, 필요하면 끝에 패딩 문자 `=`를 붙입니다. Base64URL은 Base64의 `+`와 `/`를 각각 `-`와 `_`로 바꿔 URL에서 다루기 편하게 만든 변형입니다. 패딩은 사용하는 규칙에 따라 생략할 수 있으며, JWT에서는 생략합니다.
 예를 들어 이모지 `😀`는 Base64로 인코딩하면 `8J+YgA==`, 패딩을 생략한 Base64URL로 인코딩하면 `8J-YgA`가 됩니다. 둘 다 디코딩하면 원래 이모지로 복원할 수 있습니다. 두 방식 모두 암호화나 해시가 아니므로 내용을 숨기는 용도로 사용할 수 없습니다.
-JWT는 header, payload, signature를 각각 Base64URL로 인코딩합니다. header와 payload는 `JSON 문자열 → UTF-8 바이트 → Base64URL 문자열` 순서로 변환하고, signature는 서명 결과 바이트를 Base64URL 문자열로 변환합니다. 이미지 주소에서 볼 수 있는 `data:image/png;base64,iVBORw0KGgo...`는 일반 Base64로 인코딩한 이미지 데이터를 담은 Data URL입니다.
+JWT는 header, payload, signature를 각각 Base64URL로 인코딩합니다. header와 payload는 `JSON 문자열 → UTF-8 Byte → Base64URL 문자열` 순서로 변환하고, signature는 서명 결과 Byte를 Base64URL 문자열로 변환합니다. 이미지 주소에서 볼 수 있는 `data:image/png;base64,iVBORw0KGgo...`는 일반 Base64로 인코딩한 이미지 데이터를 담은 Data URL입니다.
 Binary 데이터란?
 Binary 데이터는 0과 1로 표현되는 데이터입니다. 이미지, 동영상, 오디오 파일도 내부적으로는 Byte들의 묶음으로 저장되며, 각 파일 형식에 맞게 해석해야 합니다. 예를 들어 PNG 이미지 파일은 텍스트로 읽는 대신 이미지 형식에 맞게 해석해야 화면에 표시할 수 있습니다.
 Base64는 이런 Binary 데이터를 문자열로 표현하는 인코딩 방식입니다. 이미지 데이터를 Base64로 인코딩하면 `iVBORw0KGgo...` 같은 문자열이 되고, 디코딩하면 원래 이미지 데이터로 복원할 수 있습니다.
