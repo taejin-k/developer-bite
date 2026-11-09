@@ -47,7 +47,8 @@ test('inserted lessons keep existing learning progress IDs', async () => {
   const app = await client({ completed: ['q-29'], bookmarks: ['q-157'], updatedAt: 10 });
   const source = await readFile(new URL('../notion_technical_questions_final.txt', import.meta.url), 'utf8');
   const questions = app.run(`parseQuestions(${JSON.stringify(source)}).map(({id, title, answer}) => ({id, title, answer}))`);
-  assert.equal(questions.length, 168);
+  assert.equal(questions.length, 169);
+  assert.equal(questions.find(({title}) => title === '빌드란?').id, 'q-169');
   assert.equal(questions.find(({title}) => title === 'JS 번들이란?').id, 'q-168');
   assert.equal(questions.find(({title}) => title === '진수란?').id, 'q-167');
   assert.equal(questions.find(({title}) => title === 'UTF란?').id, 'q-165');
