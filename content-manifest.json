@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-11-09T12:17:33.610Z",
+  "approvedAt": "2026-11-09T12:21:24.918Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "도메인이란?": "47ca31ab47b7710fe1f48e90749d904e43ae1dfcb28c674e46cf67f7cf13046f",
@@ -26,7 +26,7 @@
     "Bit란?": "6991af99a67619e6f2df44d51266b9025d0c0b7aec18be0fd76cb0d52838d69a",
     "Byte란?": "3c4f1ead4fecfc9b22977db339d43efe20dbbde7963993bb82da190c2cbb0320",
     "UTF란?": "35ec9080443b4fd0336b8c7c0a4a06b48802d44cd3eaffba5631ed62ff2d888e",
-    "Unicode란?": "a1fd9d8e5314a500517596c58bf9e5b9888dce9b96dac27d71742666dbd72b96",
+    "Unicode란?": "31b43a069793f49a3d3edcc06f70ffaa2b6f57c596acfa550091adcba927a70e",
     "진수란?": "ecfd3c819e44f11b6401b12d34eb51a3ff942888552e8d77816e2216036c08bb",
     "Access Token / Refresh Token이란?": "03fe75de98ee6bdb86d0515875a70ef57aa612b33e8434279a5c57c10c1a4ef7",
     "인증 값을 서버에 보내는 방식이란?": "3eff7c4e24f2127618041e228a4df274e758ea2613bc5bf4e4bfaeb2c9bb9f55",
