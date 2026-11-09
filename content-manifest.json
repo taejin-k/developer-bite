@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-11-09T14:03:41.325Z",
+  "approvedAt": "2026-11-09T14:06:01.398Z",
   "questions": {
     "호스트란?": "4fb0a4e8241324c00933655672146fcc9c5b8c80d702c9ef5baf3d3154551690",
     "도메인이란?": "40b3b73b56da657cd0f893ffb05f9ae224e4fe41e332860256700a7c2feeac60",
@@ -30,8 +30,8 @@
     "UTF란?": "fca5b9ecbf25ce05b413c370db101a29d619e973bb4b2ed287de427662f2bf20",
     "Unicode란?": "b7c7dd5d0b8334a33d70cd6875aee0cd123c8b4bf7b35c9051a491c75f6acf1c",
     "진수란?": "07064c03eb1951cba1a79764e0edd71238aa42cc8e8da04aa0a9a9d3b3bd1572",
+    "JS 번들이란?": "c77412b211e38e29bcab0c80ed61e69e357da1dc12978164479947b80657432a",
     "빌드란?": "668d8e611ec1733d4354c7b457d7d6dbcea451bc7a2934b3956fd80738e8a4ca",
-    "JS 번들이란?": "c573c43c0f4e499267938f6c5811f9aa28ebcad3323e022e1941df4cc3379a7f",
     "SSO란?": "290430d326201952649e131def13bc9c79bec75d611952c7612f4ee46f01a221",
     "DNS란?": "1d056396dba14c21cc33bda031985aebf53330359f2a04f6bd4b38e8e097b4e1",
     "브라우저의 작동 방식이란?": "cd6c09915ea35e1c6c95937beb77c731f11d2482ab7d2ff3e9cca3dc4f0fe0cc",
