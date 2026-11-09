@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-11-09T12:28:41.077Z",
+  "approvedAt": "2026-11-09T12:31:58.316Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "도메인이란?": "47ca31ab47b7710fe1f48e90749d904e43ae1dfcb28c674e46cf67f7cf13046f",
@@ -25,7 +25,7 @@
     "Binary 데이터란?": "2f5fa979257d06ebd80e1d296e6b34e6d91b82cff676cfe0374ebe1ea6261a04",
     "Bit란?": "6991af99a67619e6f2df44d51266b9025d0c0b7aec18be0fd76cb0d52838d69a",
     "Byte란?": "3c4f1ead4fecfc9b22977db339d43efe20dbbde7963993bb82da190c2cbb0320",
-    "UTF란?": "35ec9080443b4fd0336b8c7c0a4a06b48802d44cd3eaffba5631ed62ff2d888e",
+    "UTF란?": "aa6515737c858d26a99ed8e26fee59810c9575a247dcfb8d5faef0816e465c58",
     "Unicode란?": "78381ca9212814f66ef3947ac230837cd2ca8ebd75b44862d94b72abd6c1996d",
     "진수란?": "ecfd3c819e44f11b6401b12d34eb51a3ff942888552e8d77816e2216036c08bb",
     "Access Token / Refresh Token이란?": "03fe75de98ee6bdb86d0515875a70ef57aa612b33e8434279a5c57c10c1a4ef7",
