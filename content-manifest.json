@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-11-09T13:32:21.073Z",
+  "approvedAt": "2026-11-09T13:34:55.365Z",
   "questions": {
     "호스트란?": "4fb0a4e8241324c00933655672146fcc9c5b8c80d702c9ef5baf3d3154551690",
     "도메인이란?": "40b3b73b56da657cd0f893ffb05f9ae224e4fe41e332860256700a7c2feeac60",
@@ -28,6 +28,7 @@
     "UTF란?": "23860ff92ed924e13aa960c1351829033a3a4a0ddce341e18b9c8869bb18a896",
     "Unicode란?": "584bd51494a28de38919dc5feffb7783d239603bf260cdaf271dfee84cc95ba6",
     "진수란?": "07064c03eb1951cba1a79764e0edd71238aa42cc8e8da04aa0a9a9d3b3bd1572",
+    "JS 번들이란?": "f91a38b540aee0315a0c1218e358665c64b119cfa538f11e7a139a03cc0b83b9",
     "Access Token / Refresh Token이란?": "03fe75de98ee6bdb86d0515875a70ef57aa612b33e8434279a5c57c10c1a4ef7",
     "인증 값을 서버에 보내는 방식이란?": "3eff7c4e24f2127618041e228a4df274e758ea2613bc5bf4e4bfaeb2c9bb9f55",
     "SSO란?": "290430d326201952649e131def13bc9c79bec75d611952c7612f4ee46f01a221",
