@@ -314,7 +314,9 @@ function parseQuestions(raw) {
     .map((item, index) => {
       const answer = item.answer.join("\n");
       // Keep IDs for existing lessons stable when adding lessons in the middle.
-      const id = item.title === "빌드란?"
+      const movedIds = { "CJS / ESM이란?": "q-80", "모듈 번들러란?": "q-81", "Tree Shaking이란?": "q-82", "Code Splitting이란?": "q-83" };
+      if (legacyQuestionIndex === 79 && !movedIds[item.title]) legacyQuestionIndex = 83;
+      const id = movedIds[item.title] || (item.title === "빌드란?"
         ? "q-169"
         : item.title === "JS 번들이란?"
         ? "q-168"
@@ -338,7 +340,7 @@ function parseQuestions(raw) {
             ? "q-160"
             : item.title === "Access Token / Refresh Token이란?"
               ? "q-161"
-              : `q-${++legacyQuestionIndex}`;
+              : `q-${++legacyQuestionIndex}`);
       const category = detectCategory(item.title, answer);
       return {
         id,
