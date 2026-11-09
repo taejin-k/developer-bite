@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-11-09T13:41:47.900Z",
+  "approvedAt": "2026-11-09T13:42:59.942Z",
   "questions": {
     "호스트란?": "4fb0a4e8241324c00933655672146fcc9c5b8c80d702c9ef5baf3d3154551690",
     "도메인이란?": "40b3b73b56da657cd0f893ffb05f9ae224e4fe41e332860256700a7c2feeac60",
@@ -24,9 +24,9 @@
     "Base64 / Base64URL이란?": "ba7a97949c27e37a25569d66ae2ad82e1733ee8b8bbb6053cff889019b521625",
     "Binary 데이터란?": "2c505b972a0a3f929eb180c29058db95062f215b358f152bb0162041c9b6271a",
     "Bit란?": "01af958b7b17845e6a7e691d90f20342b77ef2dd25f5b807c4fa5b5cb31225ef",
-    "Byte란?": "9c569d1d21874c0e9a604d9511915f4141a18d157b1c6b757ba560d796069fc3",
+    "Byte란?": "8c5650d7e7c4aba6c9ad0ee4d30d7f17172ca91ec6ea6880aaf76ccd75478d83",
     "UTF란?": "addd8bd82a9e9509626f82661415b988b63507fc38eae8fb477639f0c202cc56",
-    "Unicode란?": "584bd51494a28de38919dc5feffb7783d239603bf260cdaf271dfee84cc95ba6",
+    "Unicode란?": "b7c7dd5d0b8334a33d70cd6875aee0cd123c8b4bf7b35c9051a491c75f6acf1c",
     "진수란?": "07064c03eb1951cba1a79764e0edd71238aa42cc8e8da04aa0a9a9d3b3bd1572",
     "JS 번들이란?": "f91a38b540aee0315a0c1218e358665c64b119cfa538f11e7a139a03cc0b83b9",
     "Access Token / Refresh Token이란?": "03fe75de98ee6bdb86d0515875a70ef57aa612b33e8434279a5c57c10c1a4ef7",
