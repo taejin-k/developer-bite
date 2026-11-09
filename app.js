@@ -328,7 +328,7 @@ function parseQuestions(raw) {
         ? "q-162"
         : item.title === "QUIC란?"
         ? "q-158"
-        : item.title === "Base64URL / Base64란?"
+        : item.title === "Base64 / Base64URL이란?"
           ? "q-159"
           : item.title === "Path란?"
             ? "q-160"

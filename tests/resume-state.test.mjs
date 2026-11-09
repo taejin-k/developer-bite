@@ -55,7 +55,7 @@ test('inserted lessons keep existing learning progress IDs', async () => {
   assert.equal(questions.find(({title}) => title === 'Bit란?').id, 'q-163');
   assert.equal(questions.find(({title}) => title === 'Byte란?').id, 'q-164');
   assert.equal(questions.find(({title}) => title === 'QUIC란?').id, 'q-158');
-  assert.equal(questions.find(({title}) => title === 'Base64URL / Base64란?').id, 'q-159');
+  assert.equal(questions.find(({title}) => title === 'Base64 / Base64URL이란?').id, 'q-159');
   assert.equal(questions.find(({title}) => title === 'Path란?').id, 'q-160');
   assert.equal(questions.find(({title}) => title === 'Access Token / Refresh Token이란?').id, 'q-161');
   assert.equal(questions.find(({title}) => title === 'HTTP와 HTTPS의 차이란?').id, 'q-29');
