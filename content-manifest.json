@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-11-09T12:36:02.142Z",
+  "approvedAt": "2026-11-09T12:40:28.087Z",
   "questions": {
     "호스트란?": "b51b9f5a4781676c5d89fc6db3044624b5b918a4c237db45b8a93dd8d508470a",
     "도메인이란?": "47ca31ab47b7710fe1f48e90749d904e43ae1dfcb28c674e46cf67f7cf13046f",
@@ -21,7 +21,7 @@
     "인증 상태를 유지하는 방식이란?": "359490f59b9bd19d2958bfdd4b11f776c1dea77650244a4ae77e0680f2bba7de",
     "세션 기반 인증 방식이란?": "c7a995b9ea3c094eab2f75ecfe2598a698bd4ef3a820f9593538a0c314d11b96",
     "JWT 기반 인증 방식이란?": "5badb790ff75204291ff013ebbc560151b18901aca6d53a654b7b3084709f50d",
-    "Base64URL / Base64란?": "28f44ca8ec2364b1d2216b3e9c3baeb5d42a7760c4672fbfdb10fb08fc11f4fd",
+    "Base64URL / Base64란?": "7fd56a6b554b0b57787406438e2e1d4645f17ca0bcad02ab2b1c26ee805f28b5",
     "Binary 데이터란?": "2f5fa979257d06ebd80e1d296e6b34e6d91b82cff676cfe0374ebe1ea6261a04",
     "Bit란?": "6991af99a67619e6f2df44d51266b9025d0c0b7aec18be0fd76cb0d52838d69a",
     "Byte란?": "3c4f1ead4fecfc9b22977db339d43efe20dbbde7963993bb82da190c2cbb0320",
