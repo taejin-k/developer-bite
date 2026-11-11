@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-11-11T09:37:06.083Z",
+  "approvedAt": "2026-11-11T12:01:37.290Z",
   "questions": {
     "호스트란?": "4fb0a4e8241324c00933655672146fcc9c5b8c80d702c9ef5baf3d3154551690",
     "도메인이란?": "40b3b73b56da657cd0f893ffb05f9ae224e4fe41e332860256700a7c2feeac60",
@@ -24,7 +24,7 @@
     "Access Token / Refresh Token이란?": "03fe75de98ee6bdb86d0515875a70ef57aa612b33e8434279a5c57c10c1a4ef7",
     "인증 값을 서버에 보내는 방식이란?": "8e4140316ebeff94fccb679ba4f221500b1b650707270d1c627e07dd8e8835dc",
     "Base64 / Base64URL이란?": "d3252db3817a27b5644efb5d0619d94f3fe501234ddec15d5f3c3b73e8ff640c",
-    "Binary 데이터란?": "2c505b972a0a3f929eb180c29058db95062f215b358f152bb0162041c9b6271a",
+    "Binary 데이터란?": "bdc62a2539520946a081dabdde9a2c87008e9959cb98a3a3804595632e5244e8",
     "Bit란?": "01af958b7b17845e6a7e691d90f20342b77ef2dd25f5b807c4fa5b5cb31225ef",
     "Byte란?": "8c5650d7e7c4aba6c9ad0ee4d30d7f17172ca91ec6ea6880aaf76ccd75478d83",
     "UTF란?": "3d9d487a9b7a0c594ade4b1c32c32043732c8ab3530e6987a9449b7200af32b5",
