@@ -202,7 +202,7 @@ const categories = [
       "컴파일러",
       "폴리필",
       "코드 스플리팅",
-      "트리 셰이킹",
+      "트리 쉐이킹",
       "cjs",
       "esm",
       "모노레포",
@@ -314,7 +314,7 @@ function parseQuestions(raw) {
     .map((item, index) => {
       const answer = item.answer.join("\n");
       // Keep IDs for existing lessons stable when adding lessons in the middle.
-      const movedIds = { "CJS / ESM이란?": "q-80", "모듈 번들러란?": "q-81", "Tree Shaking이란?": "q-82", "코드 스플리팅과 청크란?": "q-83" };
+      const movedIds = { "CJS / ESM이란?": "q-80", "번들러란?": "q-81", "트리 쉐이킹이란?": "q-82", "코드 스플리팅과 청크란?": "q-83" };
       if (legacyQuestionIndex === 79 && !movedIds[item.title]) legacyQuestionIndex = 83;
       const id = movedIds[item.title] || (item.title === "빌드란?"
         ? "q-169"
