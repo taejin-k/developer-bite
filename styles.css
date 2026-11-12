@@ -4,6 +4,7 @@
   --paper: #f4f0e8;
   --paper-deep: #e9e2d5;
   --ink: #17221d;
+  --answer-ink: #3f4943;
   --muted: #6f756f;
   --line: #d8d1c5;
   --green: #1d4d3a;
@@ -25,6 +26,7 @@
   --paper: #171c1a;
   --paper-deep: #252e29;
   --ink: #e5ebe6;
+  --answer-ink: #e5ebe6;
   --muted: #a6b2a9;
   --line: #3b4840;
   --green: #90c6a8;
@@ -329,6 +331,8 @@ h1 em {
 }
 
 .hero-description {
+  min-height: 76px;
+  margin-bottom: 0;
   max-width: 520px;
   color: var(--muted);
   font-size: 16px;
@@ -747,7 +751,7 @@ h1 em {
   padding: 20px 22px;
   border-left: 2px solid var(--orange);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  color: #3f4943;
+  color: var(--answer-ink);
   background: var(--orange-soft);
   font-size: 14px;
   line-height: 1.85;
@@ -1053,7 +1057,7 @@ h1 em {
 }
 .view[hidden] { display: none; }
 #resume-view { overflow-anchor: none; }
-#resume-view h1 { font-size: clamp(36px, 4.3vw, 59px); line-height: 1.2; }
+.hero h1 { font-size: clamp(36px, 4.3vw, 59px); line-height: 1.2; min-height: 2.4em; }
 .resume-guide { margin: 0 0 24px; color: var(--muted); font-size: 13px; line-height: 1.8; word-break: keep-all; }
 #resume-view .question-content small { letter-spacing: 0.02em; font-size: 10px; line-height: 1.6; }
 #resume-view .section-heading { gap: 12px; }
@@ -1072,7 +1076,7 @@ h1 em {
 .main-tab:focus-visible, #resume-view button:focus-visible, #resume-view select:focus-visible, #resume-view a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 @media (max-width: 620px) {
   .main-tabs { margin-top: 8px; gap: 20px; }
-  #resume-view h1 { font-size: clamp(30px, 8vw, 44px); }
+  .hero h1 { font-size: clamp(30px, 8vw, 44px); }
   #resume-view .search-box { padding: 0 12px; gap: 8px; }
   #resume-view .search-box input { font-size: 12px; min-width: 0; }
   #resume-view .filter-button { padding: 0; }
