@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-11-11T13:21:04.508Z",
+  "approvedAt": "2026-11-12T15:06:36.914Z",
   "questions": {
     "호스트란?": "4fb0a4e8241324c00933655672146fcc9c5b8c80d702c9ef5baf3d3154551690",
     "도메인이란?": "40b3b73b56da657cd0f893ffb05f9ae224e4fe41e332860256700a7c2feeac60",
@@ -31,7 +31,7 @@
     "Unicode란?": "b7c7dd5d0b8334a33d70cd6875aee0cd123c8b4bf7b35c9051a491c75f6acf1c",
     "진수란?": "07064c03eb1951cba1a79764e0edd71238aa42cc8e8da04aa0a9a9d3b3bd1572",
     "JS 번들이란?": "c77412b211e38e29bcab0c80ed61e69e357da1dc12978164479947b80657432a",
-    "번들러란?": "ff5ac0063f0fea33eaaac4ff4a3967826791a12bb9b7ecb9871fd40545a25c0b",
+    "번들러란?": "8e010d0813064e6728ad75026e5d3e872bd9a35638e8ff1e60b106b2f8e050cc",
     "빌드란?": "723eaa939431eb8a912c5f323231cfde81ffc469dd2208e8fb065a3fa09e9e50",
     "코드 스플리팅과 청크란?": "3a384c647ea9e5199af67154810290c70cb7cc06defecff3936d9fb11290f61d",
     "트리 쉐이킹이란?": "d083bd712d970236b1dd74a6470cb3b49a9948782ad297f8e0b03c92eeaa076a",
