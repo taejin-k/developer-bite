@@ -513,6 +513,11 @@ h1 em {
   display: none;
 }
 
+.category-tabs-placeholder {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .tab-skeleton {
   flex: 0 0 86px;
   height: 36px;
