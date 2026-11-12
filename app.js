@@ -835,6 +835,21 @@ function updateProgress() {
 }
 
 function bindEvents() {
+  const themeButton = $("#theme-toggle");
+  const updateThemeButton = () => {
+    const dark = document.documentElement.dataset.theme === "dark";
+    themeButton.setAttribute("aria-pressed", String(dark));
+    themeButton.setAttribute("aria-label", dark ? "라이트 모드로 전환" : "다크 모드로 전환");
+    themeButton.title = dark ? "라이트 모드로 전환" : "다크 모드로 전환";
+  };
+  updateThemeButton();
+  themeButton.addEventListener("click", () => {
+    const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]').content = theme === "dark" ? "#171c1a" : "#f4f0e8";
+    try { localStorage.setItem("developer-bite-theme", theme); } catch {}
+    updateThemeButton();
+  });
   $("#sync-open").addEventListener("click", openSyncModal);
   $("#sync-close").addEventListener("click", closeSyncModal);
   $("#sync-modal").addEventListener("click", (event) => {
