@@ -47,7 +47,10 @@ test('inserted lessons keep existing learning progress IDs', async () => {
   const app = await client({ completed: ['q-29'], bookmarks: ['q-157'], updatedAt: 10 });
   const source = await readFile(new URL('../notion_technical_questions_final.txt', import.meta.url), 'utf8');
   const questions = app.run(`parseQuestions(${JSON.stringify(source)}).map(({id, title, answer}) => ({id, title, answer}))`);
-  assert.equal(questions.length, 172);
+  assert.equal(questions.length, 175);
+  assert.equal(questions.find(({title}) => title === '도커란?').id, 'q-173');
+  assert.equal(questions.find(({title}) => title === '도커 이미지란?').id, 'q-174');
+  assert.equal(questions.find(({title}) => title === '도커 컨테이너란?').id, 'q-175');
   assert.equal(questions.find(({title}) => title === '모듈 시스템이란?').id, 'q-172');
   assert.equal(questions.find(({title}) => title === '쿠버네티스(K8s)란?').id, 'q-171');
   assert.equal(questions.find(({title}) => title === '인그레스란?').id, 'q-170');
