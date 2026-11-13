@@ -316,7 +316,9 @@ function parseQuestions(raw) {
       // Keep IDs for existing lessons stable when adding lessons in the middle.
       const movedIds = { "CJS / ESM이란?": "q-80", "번들러란?": "q-81", "트리 쉐이킹이란?": "q-82", "코드 스플리팅과 청크란?": "q-83" };
       if (legacyQuestionIndex === 79 && !movedIds[item.title]) legacyQuestionIndex = 83;
-      const id = movedIds[item.title] || (item.title === "쿠버네티스(K8s)란?"
+      const id = movedIds[item.title] || (item.title === "모듈 시스템이란?"
+        ? "q-172"
+        : item.title === "쿠버네티스(K8s)란?"
         ? "q-171"
         : item.title === "인그레스란?"
         ? "q-170"
