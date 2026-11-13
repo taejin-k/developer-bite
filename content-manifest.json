@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-11-12T15:32:43.518Z",
+  "approvedAt": "2026-11-13T02:35:01.152Z",
   "questions": {
     "호스트란?": "4fb0a4e8241324c00933655672146fcc9c5b8c80d702c9ef5baf3d3154551690",
     "도메인이란?": "40b3b73b56da657cd0f893ffb05f9ae224e4fe41e332860256700a7c2feeac60",
@@ -53,6 +53,8 @@
     "Proxy Server와 Reverse Proxy의 차이는?": "558e0534ffd2c7d84cf977c624b137c20c22528f39aa3d0720113e24944a26d5",
     "업스트림 / 다운스트림이란?": "10ea7e2b479efb4a7628961b9d19424ca12d7553b3ef4975dd70c211e56e7329",
     "Load Balancing이란?": "10658e646e650992b3438600e6e29c9dc03c4fdc6b0dfe4f92dc8428e4f180a9",
+    "인그레스란?": "3af340e2a177775031ea09d17b9fd6cd194b2bc5aa9839b63ce221afee33ad36",
+    "쿠버네티스(K8s)란?": "515541737140b46251ed4bb55432ac0a216f58b5a7ecd84f166731266120ae72",
     "Cold Start란?": "993fb6b209b862a6ef6be77c22fbe46d9ceece2d2b28037d5c3e0c229a57b6b7",
     "Redis란?": "9014aa16976a8eab73dd0f1724e72631f13e4bb4363e7834a3bbef5c9fa0c994",
     "RESTful API란?": "458761b67196658b8851f5877ab422f165eff84a799dedb4b7045fbae1d2c315",
