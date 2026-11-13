@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-11-13T12:53:30.152Z",
+  "approvedAt": "2026-11-13T13:22:51.946Z",
   "questions": {
     "호스트란?": "4fb0a4e8241324c00933655672146fcc9c5b8c80d702c9ef5baf3d3154551690",
     "도메인이란?": "40b3b73b56da657cd0f893ffb05f9ae224e4fe41e332860256700a7c2feeac60",
@@ -37,7 +37,7 @@
     "트리 쉐이킹이란?": "9efffc117c0d19cb3ca6bcdc780fe46d70c6a83434e3fd21d5c385b9ea535ce7",
     "모듈 시스템이란?": "d021efdcff712ac1f1735fab0e2e195979ab0a708a2431b55f3946b27a9372e8",
     "CJS / ESM이란?": "d1a668709ce7114fcfd8b354fe4c6828e72790a298e423608f46aa0544f2a232",
-    "도커란?": "cc47ca53bf713f9f61701f0ea1dc3464d892a229502c30c218bdc278aed4f8d5",
+    "도커란?": "f1faa40c37ee393d710fa2fe78593616f6bd49f74c510757535f1a0247d5ffcc",
     "도커 이미지란?": "df6404fe5f38aca171f3b59fb741b69dd8e2e71aef25b6ed67972a4a88a78d07",
     "도커 컨테이너란?": "8e238f88e3522d55ed406bfcbad3d1a61d79ce5d1843111e3b174bd131fe2edd",
     "쿠버네티스(K8s)란?": "515541737140b46251ed4bb55432ac0a216f58b5a7ecd84f166731266120ae72",
