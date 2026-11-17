@@ -73,6 +73,23 @@ test('inserted lessons keep existing learning progress IDs', async () => {
   assert.equal(questions.find(({title}) => title.startsWith('HTTP/1.0과')).answer.split('\n').length, 6);
 });
 
+test('learning categories reflect topics rather than incidental examples', async () => {
+  const app = await client({});
+  const expected = {
+    '도커란?': 'infra', '도커 이미지란?': 'infra', '도커 컨테이너란?': 'infra',
+    '쿠버네티스(K8s)란?': 'infra', '인그레스란?': 'infra', '빌드란?': 'build',
+    'Byte란?': 'fundamentals', 'UTF란?': 'fundamentals',
+    'useEffect의 클린업 함수란?': 'react', 'useLayoutEffect이란?': 'react',
+    'Git Hooks / GitHub Actions이란?': 'tooling', 'Git Cherry-pick이란?': 'tooling',
+    '웹 최적화란?': 'browser', 'Tailwind의 장점 및 단점은?': 'css',
+  };
+  for (const [title, category] of Object.entries(expected)) {
+    assert.equal(app.run(`detectCategory(${JSON.stringify(title)}, "Next.js React TypeScript JWT")`), category, title);
+  }
+  const source = await readFile(new URL('../notion_technical_questions_final.txt', import.meta.url), 'utf8');
+  assert.equal(app.run(`parseQuestions(${JSON.stringify(source)}).every(q => categories.some(c => c.id === q.category))`), true);
+});
+
 test('sync API round-trips both namespaces and keeps newer deletion records', async (t) => {
   const originalUrl = process.env.UPSTASH_REDIS_REST_URL;
   const originalToken = process.env.UPSTASH_REDIS_REST_TOKEN;

@@ -10,6 +10,10 @@ const SYNC_POLL_MS = 60_000;
 const SYNC_COLLECTIONS = ["completed", "bookmarks"];
 
 const categories = [
+  { id: "fundamentals", label: "컴퓨터·데이터 기초", keywords: ["binary", "bit", "byte", "unicode", "utf", "진수", "프로세스", "스레드", "경쟁 상태"] },
+  { id: "infra", label: "인프라·컨테이너", keywords: ["도커", "docker", "쿠버네티스", "k8s", "인그레스", "load balancing", "cold start", "redis"] },
+  { id: "build", label: "모듈·빌드", keywords: ["번들", "빌드", "트리 쉐이킹", "코드 스플리팅", "모듈 시스템", "cjs", "esm", "컴파일러", "트랜스파일러", "폴리필"] },
+  { id: "css", label: "CSS·스타일링", keywords: ["px, em, rem", "tailwind", "css-in-js", "zero runtime", "fouc"] },
   {
     id: "security",
     label: "보안·인증",
@@ -360,12 +364,27 @@ function parseQuestions(raw) {
 }
 
 function detectCategory(title, answer) {
+  const topicGroups = {
+    fundamentals: ["Base64 / Base64URL이란?", "Binary 데이터란?", "Bit란?", "Byte란?", "UTF란?", "Unicode란?", "진수란?", "프로세스란?", "스레드란?", "멀티 스레드 / 싱글 스레드란?", "경쟁 상태(Race Condition) 관리란?"],
+    infra: ["도커란?", "도커 이미지란?", "도커 컨테이너란?", "쿠버네티스(K8s)란?", "인그레스란?", "Load Balancing이란?", "Cold Start란?", "Redis란?"],
+    build: ["JS 번들이란?", "번들러란?", "빌드란?", "코드 스플리팅과 청크란?", "트리 쉐이킹이란?", "모듈 시스템이란?", "CJS / ESM이란?", "트랜스파일러란?", "컴파일러란?", "폴리필이란?"],
+    css: ["px, em, rem의 차이란?", "Tailwind의 장점 및 단점은?", "CSS-in-JS의 장점 및 단점은?", "Zero Runtime이란?", "FOUC란?"],
+    network: ["호스트란?", "도메인이란?", "Origin이란?", "HTTP와 HTTPS의 차이란?"],
+    browser: ["script의 defer와 async란?", "웹 최적화란?", "Open Graph / Twitter 카드란?", "스트리밍 렌더링이란?"],
+    javascript: ["debounce란?", "throttle란?"],
+    react: ["useEffect의 클린업 함수란?", "useLayoutEffect이란?", "동시성 렌더링이란?", "staleTime / gcTime이란?"],
+    tooling: ["Git Hooks / GitHub Actions이란?", "Git Cherry-pick이란?"],
+  };
+  for (const [category, titles] of Object.entries(topicGroups)) {
+    if (titles.includes(title)) return category;
+  }
   const titleValue = title.toLowerCase();
   const answerValue = answer.toLowerCase();
   let best = categories[0];
   let bestScore = 0;
 
-  for (const category of categories) {
+  const titleMatches = categories.filter(category => category.keywords.some(keyword => titleValue.includes(keyword.toLowerCase())));
+  for (const category of titleMatches.length ? titleMatches : categories) {
     const score = category.keywords.reduce(
       (total, keyword) =>
         total +
