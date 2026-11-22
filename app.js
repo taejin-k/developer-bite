@@ -320,7 +320,8 @@ function parseQuestions(raw) {
       // Keep IDs for existing lessons stable when adding lessons in the middle.
       const movedIds = { "CJS / ESM이란?": "q-80", "번들러란?": "q-81", "트리 쉐이킹이란?": "q-82", "코드 스플리팅과 청크란?": "q-83" };
       Object.assign(movedIds, { "DNS란?": "q-21", "로드 밸런서란?": "q-35", "Nginx란?": "q-177" });
-      while ([20, 34, 79, 80, 81, 82].includes(legacyQuestionIndex)) legacyQuestionIndex++;
+      Object.assign(movedIds, { "TCP/UDP란?": "q-23", "3-Way Handshake / 4-Way Handshake란?": "q-24", "대칭키와 비대칭키란?": "q-25", "하이브리드 암호화란?": "q-26", "HTTP Keep-Alive란?": "q-27", "HTTP/1.0과 HTTP/1.1, HTTP/2, HTTP/3의 차이는?": "q-28", "HTTP와 HTTPS의 차이란?": "q-29", "SSL과 TLS란?": "q-30" });
+      while ([20, 22, 23, 24, 25, 26, 27, 28, 29, 34, 79, 80, 81, 82].includes(legacyQuestionIndex)) legacyQuestionIndex++;
       const dockerIds = { "도커란?": "q-173", "도커 이미지란?": "q-174", "도커 컨테이너란?": "q-175", "도메인으로 서비스에 접속하기 위한 설정 과정은?": "q-176" };
       const id = dockerIds[item.title] || movedIds[item.title] || (item.title === "모듈 시스템이란?"
         ? "q-172"
