@@ -319,7 +319,8 @@ function parseQuestions(raw) {
       const answer = item.answer.join("\n");
       // Keep IDs for existing lessons stable when adding lessons in the middle.
       const movedIds = { "CJS / ESM이란?": "q-80", "번들러란?": "q-81", "트리 쉐이킹이란?": "q-82", "코드 스플리팅과 청크란?": "q-83" };
-      if (legacyQuestionIndex === 79 && !movedIds[item.title]) legacyQuestionIndex = 83;
+      Object.assign(movedIds, { "DNS란?": "q-21", "로드 밸런서란?": "q-35", "Nginx란?": "q-177" });
+      while ([20, 34, 79, 80, 81, 82].includes(legacyQuestionIndex)) legacyQuestionIndex++;
       const dockerIds = { "도커란?": "q-173", "도커 이미지란?": "q-174", "도커 컨테이너란?": "q-175", "도메인으로 서비스에 접속하기 위한 설정 과정은?": "q-176" };
       const id = dockerIds[item.title] || movedIds[item.title] || (item.title === "모듈 시스템이란?"
         ? "q-172"
@@ -366,7 +367,7 @@ function parseQuestions(raw) {
 function detectCategory(title, answer) {
   const topicGroups = {
     fundamentals: ["Base64 / Base64URL이란?", "Binary 데이터란?", "Bit란?", "Byte란?", "UTF란?", "Unicode란?", "진수란?", "프로세스란?", "스레드란?", "멀티 스레드 / 싱글 스레드란?", "경쟁 상태(Race Condition) 관리란?"],
-    infra: ["도커란?", "도커 이미지란?", "도커 컨테이너란?", "도메인으로 서비스에 접속하기 위한 설정 과정은?", "쿠버네티스(K8s)란?", "인그레스란?", "Load Balancing이란?", "Cold Start란?", "Redis란?"],
+    infra: ["도커란?", "도커 이미지란?", "도커 컨테이너란?", "도메인으로 서비스에 접속하기 위한 설정 과정은?", "쿠버네티스(K8s)란?", "인그레스란?", "로드 밸런서란?", "Nginx란?", "Cold Start란?", "Redis란?"],
     build: ["JS 번들이란?", "번들러란?", "빌드란?", "코드 스플리팅과 청크란?", "트리 쉐이킹이란?", "모듈 시스템이란?", "CJS / ESM이란?", "트랜스파일러란?", "컴파일러란?", "폴리필이란?"],
     css: ["px, em, rem의 차이란?", "Tailwind의 장점 및 단점은?", "CSS-in-JS의 장점 및 단점은?", "Zero Runtime이란?", "FOUC란?"],
     network: ["호스트란?", "도메인이란?", "Origin이란?", "HTTP와 HTTPS의 차이란?"],
