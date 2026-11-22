@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "approvedAt": "2026-11-22T15:52:51.765Z",
+  "approvedAt": "2026-11-22T16:20:59.528Z",
   "questions": {
     "호스트란?": "4fb0a4e8241324c00933655672146fcc9c5b8c80d702c9ef5baf3d3154551690",
     "도메인이란?": "40b3b73b56da657cd0f893ffb05f9ae224e4fe41e332860256700a7c2feeac60",
@@ -40,7 +40,7 @@
     "도커란?": "f1faa40c37ee393d710fa2fe78593616f6bd49f74c510757535f1a0247d5ffcc",
     "도커 이미지란?": "b440e170d9de412a8816657c380cf188a2788b285ea9c2bcbb9dbc42b9eb1ec3",
     "도커 컨테이너란?": "b3be25e03bc3b10f96161d2b5c7e0964622f8b2ac46c4a9b65d268b2bccd3229",
-    "도메인으로 서비스에 접속하기 위한 설정 과정은?": "8081aab132b5720086e186d8770399b74cd017143d1509668f2ff938923c3fe6",
+    "도메인으로 서비스에 접속하기 위한 설정 과정은?": "e871d210e5f13251dc0e92eab7cdc5705bc51e934c7d0231d6d127d85bcdabb5",
     "DNS란?": "b41519af75d24feaf90f2c827626322dbaff85f090169f7a540e244ab388610a",
     "Nginx란?": "bfabb21cfe95e78ef8bf54e2cb2fc887e9af9c67f5b28d5cc0b4bf4ada664060",
     "로드 밸런서란?": "b05b5ff7cb28157656293bd01ea2eedd2c0d57894b94e421267d7b5dad42fbce",
